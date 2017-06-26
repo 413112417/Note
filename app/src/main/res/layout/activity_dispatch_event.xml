@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <pers.xjh.note.widget.dispatchEvent.MyViewGroupA
+        android:id="@+id/my_view_group_a"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red">
+
+        <Button
+            android:id="@+id/btn_my_view_group_a_intercept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textSize="14dp"
+            android:text="传递"/>
+
+        <Button
+            android:id="@+id/btn_my_view_group_a_disposed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="14dp"
+            android:text="处理"/>
+
+        <pers.xjh.note.widget.dispatchEvent.MyViewGroupB
+            android:id="@+id/my_view_group_b"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:background="@color/green">
+
+            <Button
+                android:id="@+id/btn_my_view_group_b_intercept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:textSize="14dp"
+                android:text="传递"/>
+
+            <Button
+                android:id="@+id/btn_my_view_group_b_disposed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textSize="14dp"
+                android:text="处理"/>
+
+            <pers.xjh.note.widget.dispatchEvent.MyView
+                android:id="@+id/my_view"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="@color/blue"/>
+
+            <Button
+                android:id="@+id/btn_my_view_disposed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="14dp"
+                android:text="处理"/>
+        </pers.xjh.note.widget.dispatchEvent.MyViewGroupB>
+    </pers.xjh.note.widget.dispatchEvent.MyViewGroupA>
+</RelativeLayout>

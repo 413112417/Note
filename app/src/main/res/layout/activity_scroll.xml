@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pers.xjh.note.widget.scroll.ViewDragHelperView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"/>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <pers.xjh.note.widget.scroll.LayoutScrollView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/yellow" />
+
+        <pers.xjh.note.widget.scroll.LayoutParamsScrollView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/red" />
+
+        <pers.xjh.note.widget.scroll.ScrollByView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/green" />
+
+        <pers.xjh.note.widget.scroll.ScrollerView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/blue" />
+    </LinearLayout>
+
+</pers.xjh.note.widget.scroll.ViewDragHelperView>

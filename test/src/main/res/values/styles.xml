@@ -1,0 +1,6 @@
+<resources>
+
+    <style name="TestAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    </style>
+</resources>

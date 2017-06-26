@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/two_lines"
+    tools:targetApi="lollipop">
+
+    <target
+        android:animation="@animator/line_one"
+        android:name="path1" />
+
+    <target
+        android:animation="@animator/line_two"
+        android:name="path2" />
+</animated-vector>

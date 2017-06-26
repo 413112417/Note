@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_red_button"
+        android:textSize="14dp"
+        android:textColor="@color/white"
+        android:text="按钮"/>
+
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_red_button"
+        android:clickable="true"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:textColor="@color/white"
+        android:text="文本"/>
+
+    <Button
+        android:id="@+id/btn_btn_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:text="按钮状态"/>
+
+    <Button
+        android:id="@+id/btn_tv_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:text="文本状态"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:text="@string/android_selector_desc"/>
+</LinearLayout>

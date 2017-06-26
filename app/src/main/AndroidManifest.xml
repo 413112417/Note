@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pers.xjh.note">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-sdk android:minSdkVersion="11"/>
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 录制视频/音频权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 挂载sd卡 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 闪光灯 -->
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <!-- 位置信息 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 安装与卸载 -->
+    <!--<uses-permission android:name="android.permission.INSTALL_PACKAGES" />-->
+    <!--<uses-permission android:name="android.permission.DELETE_PACKAGES" />-->
+
+    <application
+        android:name="pers.xjh.note.application.NoteApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/TransparentAppTheme"
+        android:sharedUserId="android.uid.system">
+        <activity android:name=".ui.load.LoadActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
+            <!--如果设置了这个属性为“true”，每次用户重新启动这个应用时，都只会看到根Activity。
+            这个属性也只对根Activity起作用，其他的Activity都会被忽略。-->
+            <!--android:clearTaskOnLaunch="true"-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.note.NoteActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.note.NoteTextActivity" />
+        <activity android:name=".ui.detail.android.ViewMeasureActivity" />
+        <activity android:name=".ui.detail.android.CustomTextViewActivity" />
+        <activity android:name=".ui.detail.android.TitleBarActivity" />
+        <activity android:name=".ui.detail.android.AudioWaveformActivity" />
+        <activity android:name=".ui.detail.android.LineChartViewActivity" />
+        <activity android:name=".ui.detail.android.CustomScrollViewActivity" />
+        <activity android:name=".ui.detail.android.RefreshActivity" />
+        <activity android:name=".ui.detail.android.SlidingFinishActivity" />
+        <activity android:name=".ui.detail.android.CalendarActivity" />
+        <activity android:name=".ui.detail.function.NetworkActivity" />
+        <activity android:name=".ui.detail.function.QRCodeActivity" />
+        <activity android:name=".ui.detail.android.FingerprintActivity" />
+        <activity android:name=".ui.detail.android.NFCActivity"
+            android:launchMode="singleInstance">
+            <intent-filter>
+                <action android:name="android.nfc.action.ACTION_NDEF_DISCOVERED" />
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+                <action android:name="android.nfc.action.ACTION_TAG_DISCOVERED" />
+                <!-- 添加这一条默认设置，能拦截当前页面所有扫描NFC的配置 -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+        </activity>
+        <activity android:name=".ui.detail.android.DispatchEventActivity" />
+        <activity android:name=".ui.detail.android.LockScreenActivity"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".ui.detail.function.BaiduMapActivity" />
+        <activity android:name=".ui.detail.android.ScrollActivity" />
+        <activity android:name=".ui.detail.android.viewLifeCycle.LinearLayoutLifeCycleActivity" />
+        <activity android:name=".ui.detail.android.viewLifeCycle.RelativeLayoutLifeCycleActivity" />
+        <activity android:name=".ui.detail.android.viewLifeCycle.FrameLayoutLifeCycleActivity" />
+        <activity android:name=".ui.detail.android.viewLifeCycle.ViewLifeCycleActivity" />
+        <activity android:name=".ui.detail.android.VideoRecorderActivity" />
+        <activity android:name=".ui.detail.android.VoiceRecorderActivity" />
+        <activity android:name=".ui.detail.android.VideoViewActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.detail.android.MediaPlayerActivity" />
+        <activity android:name=".ui.detail.android.CanvasAPIActivity" />
+        <activity android:name=".ui.detail.android.ClockViewActivity" />
+        <activity android:name=".ui.detail.android.GoodClockViewActivity" />
+        <activity android:name=".ui.detail.android.LayerActivity" />
+        <activity android:name=".ui.detail.android.ColorMatrixActivity" />
+        <activity android:name=".ui.detail.android.ColorMatrixApiActivity" />
+        <activity android:name=".ui.detail.android.PixelsActivity" />
+        <activity android:name=".ui.detail.android.ImageDetailActivity" />
+        <activity android:name=".ui.detail.android.WavingActivity" />
+        <activity android:name=".ui.detail.android.RoundImageActivity"
+            android:hardwareAccelerated="false"/>
+        <activity android:name=".ui.detail.android.ScratchCardActivity" />
+        <activity android:name=".ui.detail.android.ShaderActivity" />
+        <activity android:name=".ui.detail.android.ReflectActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.detail.android.PathEffectActivity" />
+        <activity android:name=".ui.detail.android.SineWaveActivity" />
+        <activity android:name=".ui.detail.android.DrawingBoardActivity" />
+        <activity android:name=".ui.detail.android.WebViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.android.ViewAnimationActivity" />
+        <activity android:name=".ui.detail.android.ObjectAnimatorActivity" />
+        <activity android:name=".ui.detail.android.ValueAnimatorActivity" />
+        <activity android:name=".ui.detail.android.LayoutAnimationActivity" />
+        <activity android:name=".ui.detail.android.CustomAnimationActivity" />
+        <activity android:name=".ui.detail.android.SVGAnimationActivity" />
+        <activity android:name=".ui.detail.android.ThreeBodyActivity" />
+        <activity android:name=".ui.detail.android.SearchBarActivity" />
+        <activity android:name=".ui.detail.android.activityLifeCycle.AActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.BActivity"
+            android:launchMode="standard"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.CActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.DActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.EActivity"
+            android:launchMode="singleInstance"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.TransparentActivity"
+            android:theme="@style/Transparent"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.NotFullActivity"
+            android:theme="@style/NotFullActivity" />
+        <activity android:name=".ui.detail.android.activityLifeCycle.FActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="pers.xjh.note.second"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.GActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="pers.xjh.note.second"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.HActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="pers.xjh.note.third"/>
+        <activity android:name=".ui.detail.android.activityLifeCycle.FinishOnTaskLaunchActivity"
+            android:finishOnTaskLaunch="true"/>
+        <activity android:name=".ui.detail.android.PendingTransitionAActivity"
+            android:theme="@style/AppTheme"
+            android:launchMode="singleTask"/>
+        <activity android:name=".ui.detail.android.PendingTransitionBActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".ui.detail.android.LockScreenServiceActivity" />
+        <activity android:name=".ui.detail.android.MainProcessActivity" />
+        <activity android:name=".ui.detail.android.TestProcessActivity"
+            android:process="pers.xjh.test"/>
+        <activity android:name=".ui.detail.android.NetworkChangeActivity" />
+        <activity android:name=".ui.detail.android.ImageWallActivity" />
+        <activity android:name=".ui.detail.android.BuildInfoActivity" />
+        <activity android:name=".ui.detail.android.SystemPropertyActivity" />
+        <activity android:name=".ui.detail.android.PackageManagerActivity" />
+        <activity android:name=".ui.detail.android.ActivityManagerActivity" />
+        <activity android:name=".ui.detail.android.PackageInstallerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.INSTALL_PACKAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:mimeType="application/vnd.android.package-archive" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.INSTALL_PACKAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.content.pm.action.CONFIRM_PERMISSIONS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.detail.android.OverdrawActivity" />
+        <activity android:name=".ui.detail.android.ViewStubActivity" />
+        <activity android:name=".ui.detail.android.NotificationActivity" />
+        <activity android:name=".ui.detail.android.FragmentActivity" />
+        <activity android:name=".ui.detail.android.ViewPagerActivity" />
+        <activity android:name=".ui.detail.android.FragmentPagerActivity" />
+        <activity android:name=".ui.detail.android.DialogActivity" />
+        <activity android:name=".ui.detail.android.SelectorActivity" />
+        <activity android:name=".ui.detail.android.FlashlightActivity" />
+        <activity android:name=".ui.detail.android.GPSActivity" />
+
+        <activity android:name=".ui.detail.algorithm.SortActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.algorithm.TreeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.algorithm.BinarySearchTreeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.algorithm.RedBlackTreeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.algorithm.GraphActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.algorithm.ShortestPathActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.algorithm.MinimumSpanningTreeActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ui.detail.java.HttpServerActivity" />
+
+        <service android:name=".service.LockScreenService" />
+
+        <receiver android:name=".broadcast.NetworkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <!--<receiver android:name=".broadcast.AppInstallReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>-->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="3xAEUCycvX1YLknSIG6g8mDkXGj8kiyY" />
+    </application>
+</manifest>

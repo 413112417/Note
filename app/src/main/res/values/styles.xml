@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="TransparentAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!-- 所有activity的背景 -->
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowBackground">@color/floralwhite</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
+    <style name="base_dialog" parent="android:Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+    </style>
+
+    <style name="Transparent">
+        <!-- 是否有标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+    　　<item name="android:windowBackground">@color/transparent</item>
+    　　<item name="android:windowIsTranslucent">true</item>
+    　　<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+
+    <style name="NotFullActivity" parent="android:style/Theme.Dialog">
+        <!-- 是否有标题栏 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 点击activity窗口之外时，是否关闭activity -->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <!-- 是否悬浮在其他activity之上；这里必须要设置为true，否则activity显示的时候，窗口虽然不是全屏，但是背景窗口任然是全屏的 -->
+        <item name="android:windowIsFloating">true</item>
+    </style>
+</resources>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <RelativeLayout
+            android:id="@+id/left_arrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/left_arrow"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_time_range"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="14dp"
+            android:textColor="@color/gray_8f"
+            android:text=""/>
+
+        <RelativeLayout
+            android:id="@+id/right_arrow"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="16dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/right_arrow"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <TextView
+            android:id="@+id/tv_mon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="@color/gray_8f"
+            android:textSize="14dp"
+            android:text="一" />
+
+        <TextView
+            android:id="@+id/tv_tues"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="@color/gray_8f"
+            android:textSize="14dp"
+            android:text="二" />
+
+
+        <TextView
+            android:id="@+id/tv_wed"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="@color/gray_8f"
+            android:textSize="14dp"
+            android:text="三" />
+
+        <TextView
+            android:id="@+id/tv_thur"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="@color/gray_8f"
+            android:textSize="14dp"
+            android:text="四" />
+
+        <TextView
+            android:id="@+id/tv_fri"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="@color/gray_8f"
+            android:textSize="14dp"
+            android:text="五" />
+
+        <TextView
+            android:id="@+id/tv_sat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="@color/gray_8f"
+            android:textSize="14dp"
+            android:text="六" />
+
+        <TextView
+            android:id="@+id/tv_sun"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:textColor="@color/gray_8f"
+            android:textSize="14dp"
+            android:text="日" />
+    </LinearLayout>
+
+    <pers.xjh.note.widget.calendar.CalendarViewPager
+        android:id="@+id/calendar_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+    </pers.xjh.note.widget.calendar.CalendarViewPager>
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <pers.xjh.note.widget.CustomTextViewA
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_size_normal"
+        android:gravity="center"
+        android:text="Android"/>
+
+    <pers.xjh.note.widget.CustomTextViewB
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="@dimen/font_size_huge"
+        android:textColor="@color/black"
+        android:text="Custom TextView" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textSize="@dimen/font_size_huge"
+        android:textColor="@color/black"
+        android:text="@string/java_cz"/>
+
+    <TextSwitcher
+        android:id="@+id/text_switcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+    </TextSwitcher>
+</LinearLayout>

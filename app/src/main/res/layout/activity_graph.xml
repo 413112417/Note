@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"
+            android:text="顶点个数"/>
+
+        <EditText
+            android:id="@+id/et_point_count"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:inputType="number"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_et_1"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"
+            android:text="最大边数"/>
+
+        <EditText
+            android:id="@+id/et_max_edge_count"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:inputType="number"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_et_1"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <pers.xjh.note.widget.GraphSurfaceView
+        android:id="@+id/graph_surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layout_weight="1" />
+
+    <pers.xjh.note.widget.MemorySurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layout_weight="1">
+    </pers.xjh.note.widget.MemorySurfaceView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_build"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:background="@drawable/bg_blue_button"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/white"
+            android:text="生成图"/>
+
+        <Button
+            android:id="@+id/btn_dfs"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:background="@drawable/bg_red_button"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/white"
+            android:text="深度优先"/>
+
+        <Button
+            android:id="@+id/btn_bfs"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/bg_red_button"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/white"
+            android:text="广度优先"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"
+            android:text="遍历方式"/>
+
+        <TextView
+            android:id="@+id/tv_search_way"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_et_1"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"
+            android:text="用时"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_et_1"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+</LinearLayout>
