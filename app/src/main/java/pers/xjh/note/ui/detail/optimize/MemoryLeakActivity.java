@@ -4,6 +4,7 @@ import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
 
 /**
+ * 内存泄露
  * Created by xjh on 17-6-28.
  */
 
