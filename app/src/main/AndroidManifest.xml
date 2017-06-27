@@ -211,6 +211,8 @@
 
         <activity android:name=".ui.detail.java.HttpServerActivity" />
 
+        <activity android:name=".ui.detail.optimize.MemoryLeakActivity" />
+
         <service android:name=".service.LockScreenService" />
 
         <receiver android:name=".broadcast.NetworkReceiver">

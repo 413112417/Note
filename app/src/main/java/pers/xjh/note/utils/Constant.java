@@ -18,6 +18,7 @@ public class Constant {
     public static final int NOTE_JAVA = RtEnv.makeID(); //JAVA基础
     public static final int NOTE_ANDROID = RtEnv.makeID(); //安卓基础
     public static final int NOTE_LINUX = RtEnv.makeID(); //Linux
+    public static final int NOTE_OPTIMIZE = RtEnv.makeID(); //优化
     public static final int NOTE_ALGORITHM = RtEnv.makeID(); //算法
     public static final int NOTE_DESIGN = RtEnv.makeID(); //设计模式
     public static final int NOTE_AI = RtEnv.makeID(); //人工智能

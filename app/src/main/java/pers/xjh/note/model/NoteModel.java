@@ -92,6 +92,7 @@ import pers.xjh.note.ui.detail.function.NetworkActivity;
 import pers.xjh.note.ui.detail.function.QRCodeActivity;
 import pers.xjh.note.ui.detail.android.VideoRecorderActivity;
 import pers.xjh.note.ui.detail.android.VoiceRecorderActivity;
+import pers.xjh.note.ui.detail.optimize.MemoryLeakActivity;
 import pers.xjh.note.ui.note.NoteActivity;
 import pers.xjh.note.utils.Constant;
 
@@ -128,6 +129,7 @@ public class NoteModel {
                     noteList.add(new Note("Java", Constant.NOTE_JAVA, NoteActivity.class));
                     noteList.add(new Note("Android", Constant.NOTE_ANDROID, NoteActivity.class));
                     noteList.add(new Note("Linux", Constant.NOTE_LINUX, NoteActivity.class));
+                    noteList.add(new Note("优化", Constant.NOTE_OPTIMIZE, NoteActivity.class));
                     noteList.add(new Note("功能", Constant.NOTE_FUNCTION, NoteActivity.class));
                     noteList.add(new Note("设计模式", Constant.NOTE_DESIGN, NoteActivity.class));
                     noteList.add(new Note("算法", Constant.NOTE_ALGORITHM, NoteActivity.class));
@@ -254,6 +256,8 @@ public class NoteModel {
                     noteList.add(new Note("MediaPlayer", MediaPlayerActivity.class));
                     noteList.add(new Note("闪光灯", FlashlightActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("GPS", GPSActivity.class));
+                } else if(Constant.NOTE_OPTIMIZE == noteType) {
+                    noteList.add(new Note("内存泄露", MemoryLeakActivity.class));
                 } else if(Constant.NOTE_ALGORITHM == noteType) {
                     noteList.add(new Note("数据结构", R.string.arithmetic_structure));
                     noteList.add(new Note("排序", SortActivity.class));
