@@ -37,6 +37,12 @@ public class NetworkChangeActivity extends BaseActivity {
         setTvState(NetworkUtil.getNetworkState(this));
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        NetworkReceiver.deleteListener();
+    }
+
     private void setTvState(int networkState) {
         switch (networkState) {
             case NetworkUtil.NETWORK_NONE:

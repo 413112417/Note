@@ -39,6 +39,10 @@ public class NetworkReceiver extends BroadcastReceiver {
         listeners.add(listener);
     }
 
+    public static void deleteListener() {
+        listeners = null;
+    }
+
     // 自定义接口
     public interface OnNetworkChangeListener {
         void onNetworkChange(int networkState);

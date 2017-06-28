@@ -95,6 +95,14 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView 
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mNotePresenter != null) {
+            mNotePresenter.detachView();
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         if(Constant.NOTE_ALL == noteType) {
             if (System.currentTimeMillis() - mPressBackBottomTime < 2000) {

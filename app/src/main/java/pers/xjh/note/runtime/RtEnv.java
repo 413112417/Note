@@ -28,6 +28,10 @@ public class RtEnv {
         mData.put(key, obj);
     }
 
+    public static void remove(Object obj) {
+        mData.remove(obj);
+    }
+
     /**
      * 获得当前的application
      * @return

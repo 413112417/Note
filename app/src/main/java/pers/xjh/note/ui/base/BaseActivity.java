@@ -77,6 +77,12 @@ public abstract class BaseActivity extends AppCompatActivity  {
         RtEnv.put(Constant.RT_CURRENT_ACTIVITY, this);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RtEnv.remove(this);
+    }
+
     /** 界面初始化，返回布局id即可 */
     protected abstract int initContentView();
 
