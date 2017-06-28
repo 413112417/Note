@@ -49,28 +49,5 @@ public class ViewPagerActivity extends BaseActivity {
         viewList.add(imageView4);
 
         mViewPager.setAdapter(new ViewPagerAdapter<>(viewList));
-
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                if(position == 0) {
-                    setSliding(true, true);
-                } else {
-                    setSliding(false);
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
-        setSliding(true, true);
     }
 }

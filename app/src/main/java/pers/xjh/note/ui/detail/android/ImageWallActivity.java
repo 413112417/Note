@@ -47,8 +47,6 @@ public class ImageWallActivity extends BaseActivity {
         queryImages(mImagePathList);
 
         mAdapter.notifyDataSetChanged();
-
-        setSliding(true, true);
     }
 
     private class ImageWallViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

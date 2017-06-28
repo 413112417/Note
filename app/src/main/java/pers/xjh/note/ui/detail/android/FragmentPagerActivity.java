@@ -50,11 +50,6 @@ public class FragmentPagerActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if(position == 0) {
-                    setSliding(true, true);
-                } else {
-                    setSliding(false);
-                }
                 if(mAdapter.getPageTitle(position) != null) {
                     mTitleBar.setTitle(mAdapter.getPageTitle(position).toString());
                 }
@@ -67,8 +62,6 @@ public class FragmentPagerActivity extends BaseActivity {
         });
 
         mTitleBar.setTitle("A");
-
-        setSliding(true, true);
     }
 
     private class FragmentPagerAdapter<T extends Fragment> extends android.support.v4.app.FragmentPagerAdapter {
@@ -76,7 +69,7 @@ public class FragmentPagerActivity extends BaseActivity {
         private List<T> mFragmentList;
         private String[] mTitles;
 
-        public FragmentPagerAdapter(FragmentManager fm, List<T> list, String[] titles) {
+        private FragmentPagerAdapter(FragmentManager fm, List<T> list, String[] titles) {
             super(fm);
             mFragmentList = list;
             mTitles = titles;

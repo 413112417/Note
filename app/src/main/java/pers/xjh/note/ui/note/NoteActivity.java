@@ -79,8 +79,6 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView 
 
     @Override
     protected void initView() {
-        setSliding(false);
-
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.addItemDecoration(new RecyclerViewDivider(0, 0, 0, 10));

@@ -34,8 +34,6 @@ import pers.xjh.note.widget.dialog.AlertDialog;
 
 public abstract class BaseActivity extends AppCompatActivity  {
 
-    private SlidingFinishLayout mSlidingFinishLayout;
-
     protected TitleBar mTitleBar;
 
     protected String mTitle;
@@ -58,21 +56,6 @@ public abstract class BaseActivity extends AppCompatActivity  {
         }
 
         setContentView(R.layout.activity_base);
-
-        mSlidingFinishLayout = (SlidingFinishLayout) findViewById(R.id.root_container);
-        mSlidingFinishLayout.setOnSlidingFinishListener(new SlidingFinishLayout.OnSlidingFinishListener() {
-            @Override
-            public void onSlidingFinish() {
-                BaseActivity.this.finish();
-                overridePendingTransition(0, R.anim.right_out);
-            }
-        });
-        mSlidingFinishLayout.setOnSlidingListener(new SlidingFinishLayout.OnSlidingListener() {
-            @Override
-            public void onSliding(int scrollX) {
-
-            }
-        });
 
         //界面初始化
         LayoutInflater.from(this).inflate(initContentView(), (ViewGroup) findViewById(R.id.content_container));
@@ -112,31 +95,6 @@ public abstract class BaseActivity extends AppCompatActivity  {
 
     /** 初始化完成后的处理 */
     protected void start() {}
-
-    /**
-     * 设置是否可滑动
-     * @param sliding 是否可滑动
-     */
-    protected void setSliding(boolean sliding) {
-        mSlidingFinishLayout.setSliding(sliding, false);
-    }
-
-    /**
-     * 设置是否强制打断
-     * @param forceIntercept 是否强制打断
-     */
-    protected void setSlidingForceIntercept(boolean forceIntercept) {
-        mSlidingFinishLayout.setSliding(true, forceIntercept);
-    }
-
-    /**
-     *
-     * @param sliding 是否可滑动
-     * @param forceIntercept 是否要强制打断（true，滑动布局优先级高于子布局）
-     */
-    protected void setSliding(boolean sliding, boolean forceIntercept) {
-        mSlidingFinishLayout.setSliding(sliding, forceIntercept);
-    }
 
     /**
      * 隐藏软键盘

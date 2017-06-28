@@ -54,7 +54,6 @@ public class NoteTextActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setSliding(true, true);
         mTvContent = (TextView) findViewById(R.id.tv_content);
     }
 
