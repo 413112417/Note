@@ -65,7 +65,8 @@
             android:theme="@style/TransparentAppTheme"/>
         <activity android:name=".ui.detail.android.CalendarActivity" />
         <activity android:name=".ui.detail.function.NetworkActivity" />
-        <activity android:name=".ui.detail.function.QRCodeActivity" />
+        <activity android:name=".ui.detail.function.QRCodeActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ui.detail.android.FingerprintActivity" />
         <activity android:name=".ui.detail.android.NFCActivity"
             android:launchMode="singleInstance">
