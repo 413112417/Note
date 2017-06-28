@@ -195,7 +195,7 @@ public class PickDialog extends BaseDialog {
                     tv.setTextSize(16);
                     tv.setTextColor(getContext().getResources().getColor(R.color.black));
                     tv.setText(builder.mItemDatas[i]);
-                    tv.setBackground(getContext().getResources().getDrawable(R.drawable.bg_press));
+                    tv.setBackground(getContext().getResources().getDrawable(R.drawable.bg_press_1));
                     tv.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                     tv.setGravity(Gravity.CENTER);
                     //设置条目点击事件

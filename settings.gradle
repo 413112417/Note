@@ -1,1 +1,8 @@
-include ':app', ':zxing', ':common', ':server', ':network', ':test', ':baidumap', ':ai'
+include ':app',
+        ':zxing',
+        ':common',
+        ':server',
+        ':network',
+        ':test',
+        ':baidumap',
+        ':ai'

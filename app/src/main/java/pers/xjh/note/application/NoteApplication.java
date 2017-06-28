@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.baidu.mapapi.SDKInitializer;
+import com.squareup.leakcanary.LeakCanary;
 
 import java.util.List;
 
@@ -47,6 +48,8 @@ public class NoteApplication extends Application {
         RtEnv.put(Constant.RT_APP, this);
 
         CrashHandler.getInstance().init(this);
+        //内存泄露检测工具
+        LeakCanary.install(this);
 
         initBaiduMap();
     }

@@ -21,6 +21,15 @@ public class MemoryLeakActivity extends BaseActivity {
     protected void initView() {
         //内部类导致内存泄露
         mInnerClass = new InnerClass();
+        //传递Activity.this导致内存泄露
+        MemoryLeakTestUtil instance = MemoryLeakTestUtil.getInstance(MemoryLeakActivity.this);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {}
+            }
+        }).start();
     }
 
     /**

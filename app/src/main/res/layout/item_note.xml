@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_press"
+    android:background="@drawable/bg_press_1"
     android:padding="16dp"
     android:gravity="center">
 
