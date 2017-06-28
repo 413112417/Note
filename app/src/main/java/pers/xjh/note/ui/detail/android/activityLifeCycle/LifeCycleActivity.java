@@ -21,61 +21,61 @@ public class LifeCycleActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         RtEnv.put(Constant.RT_CURRENT_ACTIVITY, this);
-        Toast.makeText(this, className + "onCreate. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onCreate. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, className + "onStart", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onStart", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         RtEnv.put(Constant.RT_CURRENT_ACTIVITY, this);
-        Toast.makeText(this, className + "onResume", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onResume", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Toast.makeText(this, className + "onPause", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onPause", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Toast.makeText(this, className + "onStop", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onStop", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Toast.makeText(this, className + "onDestroy", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onDestroy", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Toast.makeText(this, className + "onNewIntent", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onNewIntent", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Toast.makeText(this, className + "onConfigurationChanged", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onConfigurationChanged", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Toast.makeText(this, className + "onSaveInstanceState", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onSaveInstanceState", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Toast.makeText(this, className + "onRestoreInstanceState", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RtEnv.getApplication(), className + "onRestoreInstanceState", Toast.LENGTH_SHORT).show();
     }
 }
