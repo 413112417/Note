@@ -42,10 +42,12 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    //test-tool
+    compile 'com.github.413112417:test-tool:1.0'
 
     compile project(':common')
     compile project(':network')
-    compile project(':test')
+//    compile project(':test')
     compile project(':server')
     compile project(':zxing')
     compile project(':baidumap')

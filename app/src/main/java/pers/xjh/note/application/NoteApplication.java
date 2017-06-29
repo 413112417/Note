@@ -7,11 +7,13 @@ import android.content.Context;
 import com.baidu.mapapi.SDKInitializer;
 import com.squareup.leakcanary.LeakCanary;
 
+import org.xjh.testtool.handler.CrashHandler;
+
 import java.util.List;
 
 import pers.xjh.note.runtime.RtEnv;
 import pers.xjh.note.utils.Constant;
-import pers.xjh.test.handler.CrashHandler;
+
 
 /**
  * Created by XJH on 2017/4/17.
