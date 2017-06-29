@@ -7,12 +7,11 @@ import android.content.Context;
 import com.baidu.mapapi.SDKInitializer;
 import com.squareup.leakcanary.LeakCanary;
 
-import org.xjh.testtool.handler.CrashHandler;
-
 import java.util.List;
 
 import pers.xjh.note.runtime.RtEnv;
 import pers.xjh.note.utils.Constant;
+import pers.xjh.test.TestTool;
 
 
 /**
@@ -49,7 +48,7 @@ public class NoteApplication extends Application {
     private void initMainProcess() {
         RtEnv.put(Constant.RT_APP, this);
 
-        CrashHandler.getInstance().init(this);
+        TestTool.install(this);
         //内存泄露检测工具
         LeakCanary.install(this);
 
@@ -62,7 +61,7 @@ public class NoteApplication extends Application {
     private void initTestProcess() {
         RtEnv.put(Constant.RT_APP, this);
 
-        CrashHandler.getInstance().init(this);
+        TestTool.install(this);
     }
 
     /**
