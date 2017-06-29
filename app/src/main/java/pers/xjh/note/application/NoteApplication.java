@@ -7,11 +7,12 @@ import android.content.Context;
 import com.baidu.mapapi.SDKInitializer;
 import com.squareup.leakcanary.LeakCanary;
 
+import org.xjh.testtool.TestTool;
+
 import java.util.List;
 
 import pers.xjh.note.runtime.RtEnv;
 import pers.xjh.note.utils.Constant;
-import pers.xjh.test.TestTool;
 
 
 /**

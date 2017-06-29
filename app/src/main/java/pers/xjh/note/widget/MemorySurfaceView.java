@@ -118,17 +118,20 @@ public class MemorySurfaceView extends SurfaceView implements SurfaceHolder.Call
             if(mCanvas != null) {
                 //在此处画图
                 mCanvas.drawColor(Color.WHITE);
-                if(mMemoryInfoList != null && mMemoryInfoList.size() > 0) {
+
+                int size = mMemoryInfoList.size();
+
+                if(mMemoryInfoList != null && size > 0) {
 
                     int width = (int) (mCanvas.getWidth() / 100.0f);
 
                     mPaint.setShader(new LinearGradient(0, 0, 0, mCanvas.getHeight(), Color.RED, Color.BLUE, Shader.TileMode.CLAMP));
 
                     //以最新的程序总内存作为Y轴最大值
-                    Debug.MemoryInfo infoNow = mMemoryInfoList.get(mMemoryInfoList.size() - 1);
+                    Debug.MemoryInfo infoNow = mMemoryInfoList.get(size - 1);
 
-                    for(int i=0; i<mMemoryInfoList.size(); i++) {
-                        Debug.MemoryInfo info = mMemoryInfoList.get(mMemoryInfoList.size() - 1 - i);
+                    for(int i=0; i<size; i++) {
+                        Debug.MemoryInfo info = mMemoryInfoList.get(size - 1 - i);
                         mCanvas.drawRect(mCanvas.getWidth()-i*width, mCanvas.getHeight() - info.getTotalPrivateDirty() * 1.0f / infoNow.getTotalPss() * mCanvas.getHeight(),
                                 mCanvas.getWidth()-(i+1)*width, mCanvas.getHeight(), mPaint);
                     }
@@ -137,7 +140,7 @@ public class MemorySurfaceView extends SurfaceView implements SurfaceHolder.Call
                             +  mDecimalFormat.format(infoNow.getTotalPrivateDirty() * 100.0f / infoNow.getTotalPss()) + "%",
                             10, 30, mTextPaint);
 
-                    if(width * mMemoryInfoList.size() > mCanvas.getWidth()) {
+                    if(width * size > mCanvas.getWidth()) {
                         mMemoryInfoList.remove(0);
                     }
                 }
