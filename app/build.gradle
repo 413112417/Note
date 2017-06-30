@@ -43,7 +43,7 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     //test-tool
-    compile 'com.github.413112417:test-tool:1.1'
+    compile 'com.github.413112417:test-tool:1.4'
 
     compile project(':common')
     compile project(':network')
