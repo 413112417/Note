@@ -15,6 +15,7 @@ import pers.xjh.network.Response;
 import pers.xjh.network.interfaces.Callback;
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.utils.ToastUtil;
 import pers.xjh.note.widget.dialog.MapDialog;
 
@@ -92,12 +93,12 @@ public class NetworkActivity extends BaseActivity implements View.OnClickListene
     private void getSync() {
         final String url = mEtUrl.getText().toString();
         if(!TextUtils.isEmpty(url)) {
-            new Thread(new Runnable() {
+            ThreadPool.execute(new Runnable() {
                 @Override
                 public void run() {
                     mHandler.sendMessage(mHandler.obtainMessage(0, HttpClient.getSync(url).getBodyString()));
                 }
-            }).start();
+            });
         } else {
             ToastUtil.show("URL不能为空!");
         }
@@ -106,12 +107,12 @@ public class NetworkActivity extends BaseActivity implements View.OnClickListene
     private void postSync() {
         final String url = mEtUrl.getText().toString();
         if(!TextUtils.isEmpty(url)) {
-            new Thread(new Runnable() {
+            ThreadPool.execute(new Runnable() {
                 @Override
                 public void run() {
                     mHandler.sendMessage(mHandler.obtainMessage(0, HttpClient.postSync(url, mMap).getBodyString()));
                 }
-            }).start();
+            });
         } else {
             ToastUtil.show("URL不能为空!");
         }

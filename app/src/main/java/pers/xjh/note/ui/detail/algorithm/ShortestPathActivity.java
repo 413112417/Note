@@ -13,8 +13,8 @@ import pers.xjh.note.algorithm.Search;
 import pers.xjh.note.algorithm.structure.graph.Graph;
 import pers.xjh.note.algorithm.structure.graph.Point;
 import pers.xjh.note.ui.base.BaseActivity;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.GraphSurfaceView;
-import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.InputDialog;
 
 /**
@@ -141,7 +141,7 @@ public class ShortestPathActivity extends BaseActivity implements View.OnClickLi
             int pointCount = Integer.parseInt(mEtPointCount.getText().toString());
             int maxEdgeCount = Integer.parseInt(mEtMaxEdgeCount.getText().toString());
             mGraphSurfaceView.setGraph(mGraph);
-            new Thread(new BuildTask(pointCount, maxEdgeCount)).start();
+            ThreadPool.execute(new BuildTask(pointCount, maxEdgeCount));
         } catch (Exception e) {
             showErrorDialog(e.getMessage());
         }
@@ -231,7 +231,7 @@ public class ShortestPathActivity extends BaseActivity implements View.OnClickLi
         if(mGraph != null) {
             disableButton();
             showResult("--", "--");
-            new Thread(new SearchTask()).start();
+            ThreadPool.execute(new SearchTask());
         } else {
             showErrorDialog("图为空");
         }

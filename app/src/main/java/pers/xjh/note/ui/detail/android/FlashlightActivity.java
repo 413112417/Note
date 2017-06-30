@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
+import pers.xjh.note.utils.ThreadPool;
 
 /**
  * Created by XJH on 2017/5/23.
@@ -68,7 +69,7 @@ public class FlashlightActivity extends BaseActivity implements View.OnClickList
                 if(!mIsFlashing) {
                     mBtnFlashing.setText("停止闪烁");
                     mIsFlashing = true;
-                    new Thread(new Runnable() {
+                    ThreadPool.execute(new Runnable() {
                         @Override
                         public void run() {
                             try {
@@ -82,7 +83,7 @@ public class FlashlightActivity extends BaseActivity implements View.OnClickList
                                 showErrorDialog(e.getMessage());
                             }
                         }
-                    }).start();
+                    });
                 } else {
                     mBtnFlashing.setText("开始闪烁");
                     mIsFlashing = false;

@@ -12,8 +12,8 @@ import pers.xjh.note.R;
 import pers.xjh.note.algorithm.Search;
 import pers.xjh.note.algorithm.structure.graph.Graph;
 import pers.xjh.note.ui.base.BaseActivity;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.GraphSurfaceView;
-import pers.xjh.note.widget.TitleBar;
 
 /**
  * Created by XJH on 2017/5/2.
@@ -141,7 +141,7 @@ public class GraphActivity extends BaseActivity implements View.OnClickListener 
             int pointCount = Integer.parseInt(mEtPointCount.getText().toString());
             int maxEdgeCount = Integer.parseInt(mEtMaxEdgeCount.getText().toString());
             mGraphSurfaceView.setGraph(mGraph);
-            new Thread(new BuildTask(pointCount, maxEdgeCount)).start();
+            ThreadPool.execute(new BuildTask(pointCount, maxEdgeCount));
         } catch (Exception e) {
             showErrorDialog(e.getMessage());
         }
@@ -171,7 +171,7 @@ public class GraphActivity extends BaseActivity implements View.OnClickListener 
         if(mGraph != null) {
             disableButton();
             showResult(type, "--");
-            new Thread(new SearchTask(type)).start();
+            ThreadPool.execute(new SearchTask(type));
         } else {
             showErrorDialog("图为空!");
         }

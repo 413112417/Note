@@ -16,6 +16,7 @@ import pers.xjh.note.algorithm.structure.tree.BinaryTree;
 import pers.xjh.note.algorithm.structure.tree.BinaryTreeNode;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.MathUtil;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.BinaryTreeSurfaceView;
 import pers.xjh.note.widget.SortSurfaceView;
 import pers.xjh.note.widget.dialog.InputDialog;
@@ -178,7 +179,7 @@ public class BinarySearchTreeActivity extends BaseActivity implements View.OnCli
                         try{
                             int data = Integer.parseInt(inputString);
 
-                            new Thread(new SearchTask(data)).start();
+                            ThreadPool.execute(new SearchTask(data));
                         } catch (Exception e) {
                             showErrorDialog(e.getMessage());
                             enableButton();
@@ -238,7 +239,7 @@ public class BinarySearchTreeActivity extends BaseActivity implements View.OnCli
             }
             mSortSurfaceView.setData(mArray);
 
-            new Thread(new BuildArrayTask(type)).start();
+            ThreadPool.execute(new BuildArrayTask(type));
         } catch (Exception e) {
             mHandler.sendMessage(mHandler.obtainMessage(0));
             showErrorDialog(e.getMessage());
@@ -287,7 +288,7 @@ public class BinarySearchTreeActivity extends BaseActivity implements View.OnCli
             mBinaryTreeSurfaceView.setMaxValue(MathUtil.getMaxValue(mArray));
             mBinaryTreeSurfaceView.setTree(mBinaryTree);
 
-            new Thread(new BuildTreeTask()).start();
+            ThreadPool.execute(new BuildTreeTask());
         } catch (Exception e) {
             mHandler.sendMessage(mHandler.obtainMessage(0));
             showMsgDialog(e.getMessage());

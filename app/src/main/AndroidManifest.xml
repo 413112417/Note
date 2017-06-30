@@ -207,6 +207,7 @@
         <activity android:name=".ui.detail.java.HttpServerActivity" />
 
         <activity android:name=".ui.detail.optimize.MemoryLeakActivity" />
+        <activity android:name=".ui.detail.optimize.StringOptimizeActivity" />
 
         <service android:name=".service.LockScreenService" />
 

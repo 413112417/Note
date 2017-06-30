@@ -10,11 +10,9 @@ import android.widget.TextView;
 
 import pers.xjh.note.R;
 import pers.xjh.note.algorithm.structure.graph.Graph;
-import pers.xjh.note.algorithm.structure.graph.Point;
 import pers.xjh.note.ui.base.BaseActivity;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.GraphSurfaceView;
-import pers.xjh.note.widget.TitleBar;
-import pers.xjh.note.widget.dialog.PickDialog;
 
 /**
  * 最短路径
@@ -141,7 +139,7 @@ public class MinimumSpanningTreeActivity extends BaseActivity implements View.On
             int pointCount = Integer.parseInt(mEtPointCount.getText().toString());
             int maxEdgeCount = Integer.parseInt(mEtMaxEdgeCount.getText().toString());
             mGraphSurfaceView.setGraph(mGraph);
-            new Thread(new BuildTask(pointCount, maxEdgeCount)).start();
+            ThreadPool.execute(new BuildTask(pointCount, maxEdgeCount));
         } catch (Exception e) {
             showErrorDialog(e.getMessage());
         }
@@ -152,7 +150,7 @@ public class MinimumSpanningTreeActivity extends BaseActivity implements View.On
      */
     private void buildMinimumSpanningTree() {
         disableButton();
-        new Thread(new BuildMinimumSpanningTreeTask()).start();
+        ThreadPool.execute(new BuildMinimumSpanningTreeTask());
     }
 
     /**

@@ -11,6 +11,7 @@ import java.util.Random;
 
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
+import pers.xjh.note.utils.ThreadPool;
 
 /**
  * 自定义的TextView
@@ -37,7 +38,7 @@ public class CustomTextViewActivity extends BaseActivity implements ViewSwitcher
         mTextSwitcher.setFactory(this);
         mTextSwitcher.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.bottom_in));
         mTextSwitcher.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.top_out));
-        new Thread(new Runnable() {
+        ThreadPool.execute(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -54,7 +55,7 @@ public class CustomTextViewActivity extends BaseActivity implements ViewSwitcher
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
     }
 
     @Override

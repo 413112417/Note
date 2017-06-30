@@ -15,7 +15,7 @@ import pers.xjh.note.algorithm.Search;
 import pers.xjh.note.algorithm.structure.tree.Tree;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.MathUtil;
-import pers.xjh.note.widget.TitleBar;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.TreeSurfaceView;
 import pers.xjh.note.widget.dialog.PickDialog;
 
@@ -163,7 +163,7 @@ public class TreeActivity extends BaseActivity implements View.OnClickListener {
             }
             mTreeSurfaceView.setMaxValue(MathUtil.getMaxValue(mArray));
             mTreeSurfaceView.setTree(mTree);
-            new Thread(new BuildTask(type)).start();
+            ThreadPool.execute(new BuildTask(type));
         } catch (Exception e) {
             showErrorDialog(e.getMessage());
         }
@@ -203,7 +203,7 @@ public class TreeActivity extends BaseActivity implements View.OnClickListener {
         if(mTree != null) {
             disableButton();
             showResult(type, "--");
-            new Thread(new SearchTask(type)).start();
+            ThreadPool.execute(new SearchTask(type));
         } else {
             showErrorDialog("树为空!");
         }

@@ -93,6 +93,7 @@ import pers.xjh.note.ui.detail.function.QRCodeActivity;
 import pers.xjh.note.ui.detail.android.VideoRecorderActivity;
 import pers.xjh.note.ui.detail.android.VoiceRecorderActivity;
 import pers.xjh.note.ui.detail.optimize.MemoryLeakActivity;
+import pers.xjh.note.ui.detail.optimize.StringOptimizeActivity;
 import pers.xjh.note.ui.note.NoteActivity;
 import pers.xjh.note.utils.Constant;
 
@@ -243,8 +244,6 @@ public class NoteModel {
                     noteList.add(new Note("PackageManager", PackageManagerActivity.class));
                     noteList.add(new Note("ActivityManager", ActivityManagerActivity.class));
                     noteList.add(new Note("PackageInstaller", PackageInstallerActivity.class));
-                    noteList.add(new Note("过度绘制", OverdrawActivity.class));
-                    noteList.add(new Note("ViewStub", ViewStubActivity.class));
                     noteList.add(new Note("推送", NotificationActivity.class));
                     noteList.add(new Note("对话框", DialogActivity.class));
                     noteList.add(new Note("按钮状态", SelectorActivity.class));
@@ -258,6 +257,9 @@ public class NoteModel {
                     noteList.add(new Note("GPS", GPSActivity.class));
                 } else if(Constant.NOTE_OPTIMIZE == noteType) {
                     noteList.add(new Note("内存泄露", MemoryLeakActivity.class));
+                    noteList.add(new Note("字符串优化", StringOptimizeActivity.class));
+                    noteList.add(new Note("过度绘制", OverdrawActivity.class));
+                    noteList.add(new Note("ViewStub", ViewStubActivity.class));
                 } else if(Constant.NOTE_ALGORITHM == noteType) {
                     noteList.add(new Note("数据结构", R.string.arithmetic_structure));
                     noteList.add(new Note("排序", SortActivity.class));

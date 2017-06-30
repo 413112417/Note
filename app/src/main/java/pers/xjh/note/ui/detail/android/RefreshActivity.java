@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
+import pers.xjh.note.utils.ThreadPool;
 
 /**
  * Created by XJH on 2017/6/14.
@@ -33,7 +34,7 @@ public class RefreshActivity extends BaseActivity {
             public void onRefresh() {
                 mTvState.setText("刷新中");
 
-                new Thread(new Runnable() {
+                ThreadPool.execute(new Runnable() {
                     @Override
                     public void run() {
                         try {
@@ -49,7 +50,7 @@ public class RefreshActivity extends BaseActivity {
                             e.printStackTrace();
                         }
                     }
-                }).start();
+                });
             }
         });
     }

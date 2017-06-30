@@ -16,8 +16,8 @@ import pers.xjh.note.algorithm.Sort;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.ImageDetailActivity;
 import pers.xjh.note.utils.Constant;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.SortSurfaceView;
-import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.PickDialog;
 
 /**
@@ -233,7 +233,7 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
                             hideSoftInput();
                             disableButton();
                             showResult(position, "--");
-                            new Thread(new SortTask(position)).start();
+                            ThreadPool.execute(new SortTask(position));
                         } else {
                             showErrorDialog("数组为空");
                         }

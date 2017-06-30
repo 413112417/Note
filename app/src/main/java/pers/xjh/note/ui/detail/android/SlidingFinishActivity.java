@@ -36,7 +36,7 @@ public class SlidingFinishActivity extends AppCompatActivity {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.rgb(0, 176, 255));
+            window.setStatusBarColor(Color.rgb(105, 105, 105));
         }
 
         setContentView(R.layout.activity_sliding_finish_layout);

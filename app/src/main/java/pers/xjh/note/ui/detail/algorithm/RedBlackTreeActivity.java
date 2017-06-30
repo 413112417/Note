@@ -19,9 +19,9 @@ import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.ImageDetailActivity;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.utils.MathUtil;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.RedBlackTreeSurfaceView;
 import pers.xjh.note.widget.SortSurfaceView;
-import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.InputDialog;
 import pers.xjh.note.widget.dialog.PickDialog;
 
@@ -189,8 +189,7 @@ public class RedBlackTreeActivity extends BaseActivity implements View.OnClickLi
                         clearResult();
                         try{
                             int data = Integer.parseInt(inputString);
-
-                            new Thread(new SearchTask(data)).start();
+                            ThreadPool.execute(new SearchTask(data));
                         } catch (Exception e) {
                             showErrorDialog(e.getMessage());
                             enableButton();
@@ -249,7 +248,7 @@ public class RedBlackTreeActivity extends BaseActivity implements View.OnClickLi
                 mArray[i] = mRandom.nextInt(count);
             }
             mSortSurfaceView.setData(mArray);
-            new Thread(new BuildArrayTask(type)).start();
+            ThreadPool.execute(new BuildArrayTask(type));
             mSortSurfaceView.setData(mArray);
         } catch (Exception e) {
             mHandler.sendMessage(mHandler.obtainMessage(0));
@@ -298,8 +297,7 @@ public class RedBlackTreeActivity extends BaseActivity implements View.OnClickLi
             clearResult();
             mRedBlackTreeSurfaceView.setMaxValue(MathUtil.getMaxValue(mArray));
             mRedBlackTreeSurfaceView.setTree(mRedBlackTree);
-
-            new Thread(new BuildTreeTask()).start();
+            ThreadPool.execute(new BuildTreeTask());
         } catch (Exception e) {
             mHandler.sendMessage(mHandler.obtainMessage(0));
             showMsgDialog(e.getMessage());
