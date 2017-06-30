@@ -18,10 +18,10 @@ import pers.xjh.note.utils.Constant;
 
 public class RunTime {
 
+    private RunTime() {}
+
     /** 用弱引用防止内存泄露 */
     private static Map<String, WeakReference> mData = new HashMap<>();
-
-    private RunTime() {}
 
     public static WeakReference get(String key) {
         return mData.get(key);
