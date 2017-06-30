@@ -3,8 +3,6 @@ package pers.xjh.note.runtime;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
-
-import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;

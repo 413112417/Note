@@ -61,7 +61,7 @@ public class TitleBar extends FrameLayout {
 
         if(attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TitleBar);
-            mTitleBackground = ta.getColor(R.styleable.TitleBar_titleBackground, Color.rgb(0, 176, 255));
+            mTitleBackground = ta.getColor(R.styleable.TitleBar_titleBackground, Color.rgb(105, 105, 105));
             mTitle = ta.getString(R.styleable.TitleBar_title);
             mTitleTextSize = ta.getDimension(R.styleable.TitleBar_titleTextSize, 16);
             mTitleTextColor = ta.getColor(R.styleable.TitleBar_titleTextColor, Color.rgb(255, 255, 255));
