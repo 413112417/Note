@@ -9,10 +9,11 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
+
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RtEnv;
+import pers.xjh.note.runtime.RunTime;
 import pers.xjh.note.ui.base.BaseActivity;
-import pers.xjh.note.ui.detail.algorithm.SortActivity;
 import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
 import pers.xjh.note.ui.detail.android.fragment.CFragment;
@@ -98,7 +99,7 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
-        RtEnv.put(Constant.RT_CURRENT_ACTIVITY, this);
+        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
         Toast.makeText(this, className + "onResume", Toast.LENGTH_SHORT).show();
     }
 

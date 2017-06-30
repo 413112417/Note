@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RtEnv;
+import pers.xjh.note.runtime.RunTime;
 
 /**
  * 透明的activity
@@ -21,7 +21,7 @@ public class TransparentActivity extends LifeCycleActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RtEnv.startActivity(BActivity.class);
+                RunTime.startActivity(BActivity.class);
             }
         });
     }

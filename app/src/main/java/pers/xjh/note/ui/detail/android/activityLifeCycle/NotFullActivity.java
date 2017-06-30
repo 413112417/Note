@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RtEnv;
+import pers.xjh.note.runtime.RunTime;
 
 /**
  * 透明的activity
@@ -30,7 +30,7 @@ public class NotFullActivity extends LifeCycleActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RtEnv.startActivity(BActivity.class);
+                RunTime.startActivity(BActivity.class);
             }
         });
     }

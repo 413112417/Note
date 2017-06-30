@@ -7,7 +7,7 @@ import android.support.v4.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-import pers.xjh.note.runtime.RtEnv;
+import pers.xjh.note.runtime.RunTime;
 
 /**
  * 权限管理工具
@@ -36,8 +36,8 @@ public class PermissionUtil {
     public static void requestPermission(String... permission) {
         if(!checkPermission(permission)) {
             String[] permissionNotGranted = filterPermission(permission);
-            mRequestCode = RtEnv.makeID();
-            ActivityCompat.requestPermissions(RtEnv.getCurrentActivity(),
+            mRequestCode = RunTime.makeID();
+            ActivityCompat.requestPermissions(RunTime.getCurrentActivity(),
                     permissionNotGranted, mRequestCode);
         }
     }
@@ -54,7 +54,7 @@ public class PermissionUtil {
 
         List<String> permissionNotGranted = new ArrayList<>();
         for(int i=0; i<permission.length; i++) {
-            if(ContextCompat.checkSelfPermission(RtEnv.getCurrentActivity(), permission[i])
+            if(ContextCompat.checkSelfPermission(RunTime.getCurrentActivity(), permission[i])
                     != PackageManager.PERMISSION_GRANTED) {
                 permissionNotGranted.add(permission[i]);
             }

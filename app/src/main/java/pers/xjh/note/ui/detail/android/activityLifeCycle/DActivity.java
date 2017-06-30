@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RtEnv;
+import pers.xjh.note.runtime.RunTime;
 
 /**
  * Created by XJH on 2017/4/28.
@@ -25,10 +25,10 @@ public class DActivity extends LifeCycleActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_1:
-                RtEnv.startActivity(AActivity.class);
+                RunTime.startActivity(AActivity.class);
                 break;
             case R.id.btn_2:
-                RtEnv.startActivity(DActivity.class);
+                RunTime.startActivity(DActivity.class);
                 break;
         }
     }

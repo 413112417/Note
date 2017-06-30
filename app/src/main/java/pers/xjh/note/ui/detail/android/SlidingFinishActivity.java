@@ -1,6 +1,5 @@
 package pers.xjh.note.ui.detail.android;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,8 +8,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.lang.ref.WeakReference;
+
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RtEnv;
+import pers.xjh.note.runtime.RunTime;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.SlidingFinishLayout;
 
@@ -25,7 +26,7 @@ public class SlidingFinishActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RtEnv.put(Constant.RT_CURRENT_ACTIVITY, this);
+        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
 
         getSupportActionBar().hide();
 
@@ -53,6 +54,6 @@ public class SlidingFinishActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        RtEnv.put(Constant.RT_CURRENT_ACTIVITY, this);
+        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
     }
 }

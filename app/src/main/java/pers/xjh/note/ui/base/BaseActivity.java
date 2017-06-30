@@ -18,16 +18,14 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.lang.ref.WeakReference;
+
 import pers.xjh.note.R;
-import pers.xjh.note.application.NoteApplication;
-import pers.xjh.note.runtime.RtEnv;
+import pers.xjh.note.runtime.RunTime;
 import pers.xjh.note.utils.Constant;
-import pers.xjh.note.utils.ToastUtil;
 import pers.xjh.note.widget.GlideRoundTransform;
-import pers.xjh.note.widget.SlidingFinishLayout;
 import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.AlertDialog;
-import pers.xjh.zxing.ZApplication;
 
 /**
  * Activity基类
@@ -44,7 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity  {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        RtEnv.put(Constant.RT_CURRENT_ACTIVITY, this);
+        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
 
         getSupportActionBar().hide();
 
@@ -74,13 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity  {
     @Override
     protected void onResume() {
         super.onResume();
-        RtEnv.put(Constant.RT_CURRENT_ACTIVITY, this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        RtEnv.remove(this);
+        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
     }
 
     /** 界面初始化，返回布局id即可 */
