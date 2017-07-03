@@ -16,8 +16,6 @@ import pers.xjh.test.util.FileUtil;
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
-    /** 实例 */
-    private static CrashHandler mInstance;
     /** 系统默认的处理器 */
     private Thread.UncaughtExceptionHandler mDefaultHandler;
     /** 上下文 */
@@ -27,14 +25,12 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     /** 单例模式（懒汉模式） */
     public static CrashHandler getInstance() {
-        if(mInstance == null) {
-            synchronized (CrashHandler.class) {
-                if(mInstance == null) {
-                    mInstance = new CrashHandler();
-                }
-            }
-        }
-        return mInstance;
+        return SingletonHolder.mInstance;
+    }
+
+    /** 静态内部类 */
+    private static class SingletonHolder {
+        private static final CrashHandler mInstance = new CrashHandler();
     }
 
     /**
