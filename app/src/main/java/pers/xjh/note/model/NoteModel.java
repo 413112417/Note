@@ -68,6 +68,7 @@ import pers.xjh.note.ui.detail.android.SystemPropertyActivity;
 import pers.xjh.note.ui.detail.android.TestProcessActivity;
 import pers.xjh.note.ui.detail.android.ThreeBodyActivity;
 import pers.xjh.note.ui.detail.android.TitleBarActivity;
+import pers.xjh.note.ui.detail.android.UnlockActivity;
 import pers.xjh.note.ui.detail.android.ValueAnimatorActivity;
 import pers.xjh.note.ui.detail.android.VideoViewActivity;
 import pers.xjh.note.ui.detail.android.ViewAnimationActivity;
@@ -248,6 +249,7 @@ public class NoteModel {
                     noteList.add(new Note("对话框", DialogActivity.class));
                     noteList.add(new Note("按钮状态", SelectorActivity.class));
                     noteList.add(new Note("指纹识别", FingerprintActivity.class));
+                    noteList.add(new Note("手势解锁", UnlockActivity.class));
                     noteList.add(new Note("NFC", NFCActivity.class));
                     noteList.add(new Note("视频录制", VideoRecorderActivity.class, Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO));
                     noteList.add(new Note("音频录制", VoiceRecorderActivity.class, Manifest.permission.RECORD_AUDIO));

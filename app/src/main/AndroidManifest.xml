@@ -185,6 +185,7 @@
         <activity android:name=".ui.detail.android.ViewPagerActivity" />
         <activity android:name=".ui.detail.android.FragmentPagerActivity" />
         <activity android:name=".ui.detail.android.DialogActivity" />
+        <activity android:name=".ui.detail.android.UnlockActivity" />
         <activity android:name=".ui.detail.android.SelectorActivity" />
         <activity android:name=".ui.detail.android.FlashlightActivity" />
         <activity android:name=".ui.detail.android.GPSActivity" />

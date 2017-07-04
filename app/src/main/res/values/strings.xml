@@ -2050,4 +2050,9 @@
         lpr\n
         将文件发送给指定打印机进行打印\n
     </string>
+
+    <string name="message_pattern_dot_added">Dot added to pattern</string>
+    <string name="message_pattern_started">Pattern drawing started</string>
+    <string name="message_pattern_detected">Pattern drawing completed</string>
+    <string name="message_pattern_cleared">Pattern cleared</string>
 </resources>

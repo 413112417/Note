@@ -1,6 +1,5 @@
 include ':app',
         ':zxing',
-        ':common',
         ':server',
         ':network',
         ':test',

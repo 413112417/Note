@@ -12,6 +12,7 @@ import pers.xjh.note.adapter.ViewPagerAdapter;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.DetailImageView;
+import pers.xjh.note.widget.PinchImageView;
 
 /**
  * Created by XJH on 2017/4/25.
@@ -61,7 +62,7 @@ public class ImageDetailActivity extends BaseActivity {
     private void buildDetailImageView(int[] imageResourceIds) {
         List<ImageView> imageViewList = new ArrayList<>();
         for(int i : imageResourceIds) {
-            ImageView imageView = new DetailImageView(this);
+            ImageView imageView = new PinchImageView(this);
             imageView.setImageResource(i);
             imageViewList.add(imageView);
         }
@@ -71,7 +72,7 @@ public class ImageDetailActivity extends BaseActivity {
     private void buildDetailImageView(String[] mImagePaths) {
         List<ImageView> imageViewList = new ArrayList<>();
         for(String path : mImagePaths) {
-            ImageView imageView = new DetailImageView(this);
+            ImageView imageView = new PinchImageView(this);
             showImage(imageView, path);
             imageViewList.add(imageView);
         }
