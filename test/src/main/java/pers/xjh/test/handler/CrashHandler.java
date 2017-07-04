@@ -51,7 +51,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            //保存玩信息后，交给系统默认的处理器去处理
+            //保存信息后，交给系统默认的处理器去处理
             mDefaultHandler.uncaughtException(thread, ex);
         }
     }
