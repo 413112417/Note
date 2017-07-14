@@ -79,6 +79,8 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
      */
     private void initWebViewSetting() {
         mWebView = (WebView) findViewById(R.id.web_view);
+        //开启chrome测试模式
+        mWebView.setWebContentsDebuggingEnabled(true);
         //启用支持javascript
         WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);

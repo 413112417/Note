@@ -20,6 +20,18 @@ public class LifeCycleActivity extends Activity {
     private String className = this.getClass().getSimpleName() + ":";
 
     @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Toast.makeText(RunTime.getApplication(), className + "onAttachedToWindow. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        Toast.makeText(RunTime.getApplication(), className + "onDetachedFromWindow. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));

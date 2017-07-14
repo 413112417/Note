@@ -31,6 +31,7 @@ import pers.xjh.note.ui.detail.android.CustomScrollViewActivity;
 import pers.xjh.note.ui.detail.android.CustomTextViewActivity;
 import pers.xjh.note.ui.detail.android.DialogActivity;
 import pers.xjh.note.ui.detail.android.DispatchEventActivity;
+import pers.xjh.note.ui.detail.android.DrawerLayoutActivity;
 import pers.xjh.note.ui.detail.android.DrawingBoardActivity;
 import pers.xjh.note.ui.detail.android.FlashlightActivity;
 import pers.xjh.note.ui.detail.android.FragmentActivity;
@@ -199,6 +200,7 @@ public class NoteModel {
                     noteList.add(new Note("自定义ViewGroup", CustomScrollViewActivity.class));
                     noteList.add(new Note("下拉刷新", RefreshActivity.class));
                     noteList.add(new Note("右滑返回", SlidingFinishActivity.class));
+                    noteList.add(new Note("侧滑菜单", DrawerLayoutActivity.class));
                     noteList.add(new Note("日历控件", CalendarActivity.class));
                     noteList.add(new Note("ViewGroup生命周期", FrameLayoutLifeCycleActivity.class));
                     noteList.add(new Note("View生命周期", ViewLifeCycleActivity.class));
