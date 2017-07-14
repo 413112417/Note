@@ -52,7 +52,7 @@ public class NoteApplication extends Application {
 
         TestTool.install(this);
         //内存泄露检测工具
-        LeakCanary.install(this);
+//        LeakCanary.install(this);
 
         initBaiduMap();
     }
