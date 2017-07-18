@@ -14,11 +14,6 @@ import pers.xjh.note.runtime.RunTime;
  */
 public class FileUtil {
 
-    /** 保存视频的文件夹名 */
-    private static String mVideoDir = "/video";
-    /** 保存音频的文件夹名 */
-    private static String mVoiceDir = "/voice";
-
     /**
      * 注:getExternalCacheDir得到外部的缓存路径
      *    getExternalFilesDir得到外部文件路径
@@ -31,7 +26,7 @@ public class FileUtil {
      * @return
      */
     public static File getVideoDir() {
-        File videoDir= new File(RunTime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsoluteFile(), mVideoDir);
+        File videoDir= new File(RunTime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsolutePath());
         if(!videoDir.exists()) {
             videoDir.mkdir();
         }
@@ -43,7 +38,7 @@ public class FileUtil {
      * @return
      */
     public static File getVoiceDir() {
-        File voiceDir = new File(RunTime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsoluteFile(), mVoiceDir);
+        File voiceDir = new File(RunTime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
         if(!voiceDir.exists()) {
             voiceDir.mkdir();
         }
