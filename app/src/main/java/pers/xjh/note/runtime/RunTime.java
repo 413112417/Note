@@ -90,7 +90,6 @@ public class RunTime {
         RunTime.getCurrentActivity().startActivity(intent);
     }
 
-
     public static void startActivityForResult(Class activity, int requestCode) {
         Intent intent = new Intent(RunTime.getCurrentActivity(), activity);
         RunTime.getCurrentActivity().startActivityForResult(intent, requestCode);
