@@ -42,6 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity  {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // 用弱引用防止内存泄露
         RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
 
         getSupportActionBar().hide();
@@ -72,6 +73,7 @@ public abstract class BaseActivity extends AppCompatActivity  {
     @Override
     protected void onResume() {
         super.onResume();
+        // 用弱引用防止内存泄露
         RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
     }
 

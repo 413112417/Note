@@ -48,6 +48,7 @@ public class NoteApplication extends Application {
      * 对主进程进行初始化
      */
     private void initMainProcess() {
+        // 用弱引用防止内存泄露
         RunTime.put(Constant.RT_APP, new WeakReference(this));
 
         TestTool.install(this);
