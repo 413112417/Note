@@ -1,6 +1,6 @@
 package pers.xjh.note.utils;
 
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 
 /**
  * 常量
@@ -14,15 +14,15 @@ public class Constant {
     public static final String RT_CURRENT_ACTIVITY = "CURRENT_ACTIVITY"; //当前的activity
 
     /** 笔记类型 */
-    public static final int NOTE_ALL = RunTime.makeID(); //所有笔记
-    public static final int NOTE_JAVA = RunTime.makeID(); //JAVA基础
-    public static final int NOTE_ANDROID = RunTime.makeID(); //安卓基础
-    public static final int NOTE_LINUX = RunTime.makeID(); //Linux
-    public static final int NOTE_OPTIMIZE = RunTime.makeID(); //优化
-    public static final int NOTE_ALGORITHM = RunTime.makeID(); //算法
-    public static final int NOTE_DESIGN = RunTime.makeID(); //设计模式
-    public static final int NOTE_AI = RunTime.makeID(); //人工智能
-    public static final int NOTE_FUNCTION = RunTime.makeID(); //功能
+    public static final int NOTE_ALL = Runtime.makeID(); //所有笔记
+    public static final int NOTE_JAVA = Runtime.makeID(); //JAVA基础
+    public static final int NOTE_ANDROID = Runtime.makeID(); //安卓基础
+    public static final int NOTE_LINUX = Runtime.makeID(); //Linux
+    public static final int NOTE_OPTIMIZE = Runtime.makeID(); //优化
+    public static final int NOTE_ALGORITHM = Runtime.makeID(); //算法
+    public static final int NOTE_DESIGN = Runtime.makeID(); //设计模式
+    public static final int NOTE_AI = Runtime.makeID(); //人工智能
+    public static final int NOTE_FUNCTION = Runtime.makeID(); //功能
 
     /** 页面传值字段 */
     public static final String KEY_TITLE = "KEY_TITLE"; //笔记描述标题

@@ -13,6 +13,7 @@ import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
 import pers.xjh.note.ui.detail.android.fragment.CFragment;
 import pers.xjh.note.ui.detail.android.fragment.DFragment;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * Created by XJH on 2017/5/18.
@@ -22,11 +23,19 @@ public class FragmentPagerActivity extends BaseActivity {
 
     private ViewPager mViewPager;
 
+    private TitleBar mTitleBar;
+
     private FragmentPagerAdapter mAdapter;
 
     @Override
     protected int initContentView() {
         return R.layout.activity_fragment_pager;
+    }
+
+    @Override
+    protected void initTitle(TitleBar titleBar) {
+        mTitleBar = titleBar;
+        mTitleBar.setTitle("A");
     }
 
     @Override
@@ -60,8 +69,6 @@ public class FragmentPagerActivity extends BaseActivity {
 
             }
         });
-
-        mTitleBar.setTitle("A");
     }
 
     private class FragmentPagerAdapter<T extends Fragment> extends android.support.v4.app.FragmentPagerAdapter {

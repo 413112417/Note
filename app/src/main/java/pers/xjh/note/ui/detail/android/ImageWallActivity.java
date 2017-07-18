@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.Constant;
 
@@ -107,7 +107,7 @@ public class ImageWallActivity extends BaseActivity {
      */
     public void queryImages(List<String> imagePathList) {
         //通过ContentResolver去查询手机里jpg和png格式的图片,按照修改的时间排序
-        Cursor cursor = RunTime.getApplication().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null,
+        Cursor cursor = Runtime.getApplication().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null,
                 MediaStore.Images.Media.MIME_TYPE + "=? or "
                         + MediaStore.Images.Media.MIME_TYPE + "=?",
                 new String[]{"image/jpeg", "image/png"}, MediaStore.Images.Media.DATE_MODIFIED);

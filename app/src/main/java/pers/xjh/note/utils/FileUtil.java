@@ -6,7 +6,7 @@ import android.os.Environment;
 import java.io.File;
 import java.io.IOException;
 
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 
 /**
  * 文件管理工具类
@@ -26,7 +26,7 @@ public class FileUtil {
      * @return
      */
     public static File getVideoDir() {
-        File videoDir= new File(RunTime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsolutePath());
+        File videoDir= new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsolutePath());
         if(!videoDir.exists()) {
             videoDir.mkdir();
         }
@@ -38,7 +38,7 @@ public class FileUtil {
      * @return
      */
     public static File getVoiceDir() {
-        File voiceDir = new File(RunTime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
+        File voiceDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
         if(!voiceDir.exists()) {
             voiceDir.mkdir();
         }

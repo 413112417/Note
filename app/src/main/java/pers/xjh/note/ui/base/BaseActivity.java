@@ -1,6 +1,7 @@
 package pers.xjh.note.ui.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,7 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.lang.ref.WeakReference;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.GlideRoundTransform;
 import pers.xjh.note.widget.TitleBar;
@@ -34,16 +35,12 @@ import pers.xjh.note.widget.dialog.AlertDialog;
 
 public abstract class BaseActivity extends AppCompatActivity  {
 
-    protected TitleBar mTitleBar;
-
-    protected String mTitle;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // 用弱引用防止内存泄露
-        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
 
         getSupportActionBar().hide();
 
@@ -58,12 +55,17 @@ public abstract class BaseActivity extends AppCompatActivity  {
 
         setContentView(R.layout.activity_base);
 
+        //设置默认标题
+        String titleStr = getIntent().getStringExtra(Constant.KEY_TITLE);
+        TitleBar titleBar = (TitleBar) findViewById(R.id.title_bar);
+        titleBar.setTitle(titleStr);
+
         //界面初始化
         LayoutInflater.from(this).inflate(initContentView(), (ViewGroup) findViewById(R.id.content_container));
         //从Intent中获取数据
-        getIntentData();
+        getIntentData(getIntent());
         //初始化标题
-        initTitle();
+        initTitle(titleBar);
         //控件初始化
         initView();
         //开始处理
@@ -74,23 +76,19 @@ public abstract class BaseActivity extends AppCompatActivity  {
     protected void onResume() {
         super.onResume();
         // 用弱引用防止内存泄露
-        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
     }
 
     /** 界面初始化，返回布局id即可 */
     protected abstract int initContentView();
 
     /** 从Intent中获取数据 */
-    protected void getIntentData() {}
+    protected void getIntentData(Intent intent) {}
 
     /**
      * 设置标题
      */
-    protected void initTitle() {
-        mTitle = getIntent().getStringExtra(Constant.KEY_TITLE);
-        mTitleBar = (TitleBar) findViewById(R.id.title_bar);
-        mTitleBar.setTitle(mTitle);
-    }
+    protected void initTitle(TitleBar titleBar) {}
 
     /** 控件初始化 */
     protected abstract void initView();

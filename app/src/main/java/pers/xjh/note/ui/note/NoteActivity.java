@@ -22,6 +22,7 @@ import pers.xjh.note.utils.Constant;
 import pers.xjh.note.utils.PermissionUtil;
 import pers.xjh.note.utils.ToastUtil;
 import pers.xjh.note.widget.RecyclerViewDivider;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * 笔记列表页
@@ -48,8 +49,7 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView 
     }
 
     @Override
-    protected void getIntentData() {
-        Intent intent = getIntent();
+    protected void getIntentData(Intent intent) {
         if (intent != null) {
             noteType = intent.getIntExtra(Constant.KEY_NOTE_TYPE, Constant.NOTE_ALL);
         }
@@ -59,21 +59,20 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView 
      * 初始化标题
      */
     @Override
-    protected void initTitle() {
-        super.initTitle();
+    protected void initTitle(TitleBar titleBar) {
         if(Constant.NOTE_ALL == noteType) {
-            mTitleBar.setTitle("学习笔记");
-            mTitleBar.setLeftTitleVisibility(false);
+            titleBar.setTitle("学习笔记");
+            titleBar.setLeftTitleVisibility(false);
         } else if(Constant.NOTE_JAVA == noteType) {
-            mTitleBar.setTitle("JAVA笔记");
+            titleBar.setTitle("JAVA笔记");
         } else if(Constant.NOTE_ALGORITHM == noteType) {
-            mTitleBar.setTitle("算法笔记");
+            titleBar.setTitle("算法笔记");
         } else if(Constant.NOTE_DESIGN == noteType) {
-            mTitleBar.setTitle("设计模式笔记");
+            titleBar.setTitle("设计模式笔记");
         } else if(Constant.NOTE_ANDROID == noteType) {
-            mTitleBar.setTitle("安卓笔记");
+            titleBar.setTitle("安卓笔记");
         } else if(Constant.NOTE_FUNCTION == noteType) {
-            mTitleBar.setTitle("功能笔记");
+            titleBar.setTitle("功能笔记");
         }
     }
 

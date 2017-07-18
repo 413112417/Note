@@ -14,6 +14,7 @@ import java.io.File;
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.FileUtil;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * Created by XJH on 2017/6/14.
@@ -39,17 +40,16 @@ public class VideoViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
+    protected void initTitle(TitleBar titleBar) {
         Configuration configuration = getResources().getConfiguration();
         int ori = configuration.orientation;
         //横屏时隐藏标题
         if(ori == configuration.ORIENTATION_LANDSCAPE) {
-            mTitleBar.setVisibility(View.GONE);
+            titleBar.setVisibility(View.GONE);
         } else {
-            mTitleBar.setVisibility(View.VISIBLE);
-            mTitleBar.setTitleRight("全屏");
-            mTitleBar.setRightTitleClickListener(new View.OnClickListener() {
+            titleBar.setVisibility(View.VISIBLE);
+            titleBar.setTitleRight("全屏");
+            titleBar.setRightTitleClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //切换为横屏

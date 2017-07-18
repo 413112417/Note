@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.utils.Constant;
 
 /**
@@ -22,74 +22,74 @@ public class LifeCycleActivity extends Activity {
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        Toast.makeText(RunTime.getApplication(), className + "onAttachedToWindow. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onAttachedToWindow. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        Toast.makeText(RunTime.getApplication(), className + "onDetachedFromWindow. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onDetachedFromWindow. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
-        Toast.makeText(RunTime.getApplication(), className + "onCreate. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
+        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        Toast.makeText(Runtime.getApplication(), className + "onCreate. TaskId=" + getTaskId(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(RunTime.getApplication(), className + "onStart", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onStart", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
-        Toast.makeText(RunTime.getApplication(), className + "onResume", Toast.LENGTH_SHORT).show();
+        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        Toast.makeText(Runtime.getApplication(), className + "onResume", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Toast.makeText(RunTime.getApplication(), className + "onPause", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onPause", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Toast.makeText(RunTime.getApplication(), className + "onStop", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onStop", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Toast.makeText(RunTime.getApplication(), className + "onDestroy", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onDestroy", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Toast.makeText(RunTime.getApplication(), className + "onNewIntent", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onNewIntent", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Toast.makeText(RunTime.getApplication(), className + "onConfigurationChanged", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onConfigurationChanged", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Toast.makeText(RunTime.getApplication(), className + "onSaveInstanceState", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onSaveInstanceState", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Toast.makeText(RunTime.getApplication(), className + "onRestoreInstanceState", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Runtime.getApplication(), className + "onRestoreInstanceState", Toast.LENGTH_SHORT).show();
     }
 }

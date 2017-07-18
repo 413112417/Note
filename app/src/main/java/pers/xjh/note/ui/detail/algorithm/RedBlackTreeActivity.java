@@ -22,6 +22,7 @@ import pers.xjh.note.utils.MathUtil;
 import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.RedBlackTreeSurfaceView;
 import pers.xjh.note.widget.SortSurfaceView;
+import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.InputDialog;
 import pers.xjh.note.widget.dialog.PickDialog;
 
@@ -73,10 +74,9 @@ public class RedBlackTreeActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("图片");
-        mTitleBar.setRightTitleClickListener(new View.OnClickListener() {
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("图片");
+        titleBar.setRightTitleClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RedBlackTreeActivity.this, ImageDetailActivity.class);

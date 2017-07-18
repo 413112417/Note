@@ -19,6 +19,7 @@ import pers.xjh.note.utils.MathUtil;
 import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.BinaryTreeSurfaceView;
 import pers.xjh.note.widget.SortSurfaceView;
+import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.InputDialog;
 import pers.xjh.note.widget.dialog.PickDialog;
 
@@ -70,9 +71,8 @@ public class BinarySearchTreeActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("说明");
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("说明");
     }
 
     @Override

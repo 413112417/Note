@@ -14,6 +14,7 @@ import pers.xjh.note.algorithm.structure.graph.Graph;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.GraphSurfaceView;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * Created by XJH on 2017/5/2.
@@ -54,9 +55,8 @@ public class GraphActivity extends BaseActivity implements View.OnClickListener 
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("说明");
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("说明");
     }
 
     @Override

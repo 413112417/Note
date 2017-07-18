@@ -12,13 +12,14 @@ import android.widget.Toast;
 import java.lang.ref.WeakReference;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
 import pers.xjh.note.ui.detail.android.fragment.CFragment;
 import pers.xjh.note.ui.detail.android.fragment.DFragment;
 import pers.xjh.note.utils.Constant;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * Created by XJH on 2017/5/18.
@@ -39,10 +40,9 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("图片");
-        mTitleBar.setRightTitleClickListener(new View.OnClickListener() {
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("图片");
+        titleBar.setRightTitleClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FragmentActivity.this, ImageDetailActivity.class);
@@ -99,7 +99,7 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
-        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
         Toast.makeText(this, className + "onResume", Toast.LENGTH_SHORT).show();
     }
 

@@ -20,10 +20,9 @@ public class OverdrawActivity extends BaseActivity {
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("设置");
-        mTitleBar.setRightTitleClickListener(new View.OnClickListener() {
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("设置");
+        titleBar.setRightTitleClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //跳转开发人员选项

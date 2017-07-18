@@ -35,8 +35,7 @@ public class ImageDetailActivity extends BaseActivity {
     }
 
     @Override
-    protected void getIntentData() {
-        Intent intent = getIntent();
+    protected void getIntentData(Intent intent) {
         if(intent != null) {
             mImageResourceIds = intent.getIntArrayExtra(Constant.KEY_IMAGE_URL);
             mImagePaths = intent.getStringArrayExtra(Constant.KEY_IMAGE_URL);

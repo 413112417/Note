@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.ui.note.NoteActivity;
 
 /**
@@ -56,7 +56,7 @@ public class LockScreenActivity extends AppCompatActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.img:
                 //以SingleTask模式启动
-                RunTime.startActivity(NoteActivity.class, Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Runtime.startActivity(NoteActivity.class, Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 finish();
                 break;
         }
