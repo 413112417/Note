@@ -13,6 +13,7 @@ import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
 import pers.xjh.note.ui.detail.android.fragment.CFragment;
 import pers.xjh.note.ui.detail.android.fragment.DFragment;
+import pers.xjh.note.widget.PagerSlidingTabStrip;
 import pers.xjh.note.widget.TitleBar;
 
 /**
@@ -22,6 +23,8 @@ import pers.xjh.note.widget.TitleBar;
 public class FragmentPagerActivity extends BaseActivity {
 
     private ViewPager mViewPager;
+
+    private PagerSlidingTabStrip mTab;
 
     private TitleBar mTitleBar;
 
@@ -41,6 +44,7 @@ public class FragmentPagerActivity extends BaseActivity {
     @Override
     protected void initView() {
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mTab = (PagerSlidingTabStrip) findViewById(R.id.tab);
 
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new AFragment());
@@ -50,6 +54,7 @@ public class FragmentPagerActivity extends BaseActivity {
 
         mAdapter = new FragmentPagerAdapter<>(getSupportFragmentManager(), fragmentList, new String[] {"A", "B", "C", "D"});
         mViewPager.setAdapter(mAdapter);
+        mTab.setViewPager(mViewPager);
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
