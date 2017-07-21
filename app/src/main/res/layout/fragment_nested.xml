@@ -12,7 +12,7 @@
         app:pstsShouldExpand="true">
     </pers.xjh.note.widget.PagerSlidingTabStrip>
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <pers.xjh.note.widget.NiceRefreshLayout
         android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,5 +22,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </android.support.v4.view.ViewPager>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </pers.xjh.note.widget.NiceRefreshLayout>
 </LinearLayout>

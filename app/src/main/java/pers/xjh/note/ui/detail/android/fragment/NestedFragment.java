@@ -16,6 +16,7 @@ import pers.xjh.note.R;
 import pers.xjh.note.adapter.FragmentPagerAdapter;
 import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.PagerSlidingTabStrip;
+import pers.xjh.note.widget.NiceRefreshLayout;
 
 /**
  * 嵌套的fragment
@@ -26,7 +27,7 @@ public class NestedFragment extends LifeCycleFragment {
 
     private ViewPager mViewPager;
 
-    private SwipeRefreshLayout mRefreshLayout;
+    private NiceRefreshLayout mRefreshLayout;
 
     private PagerSlidingTabStrip mTab;
 
@@ -45,7 +46,7 @@ public class NestedFragment extends LifeCycleFragment {
     private void initView(View view) {
 
         mViewPager = (ViewPager) view.findViewById(R.id.view_pager);
-        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
+        mRefreshLayout = (NiceRefreshLayout) view.findViewById(R.id.refresh_layout);
         mTab = (PagerSlidingTabStrip) view.findViewById(R.id.tab);
 
         List<Fragment> fragmentList = new ArrayList<>();
