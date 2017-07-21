@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 
 /**
- * 子控件左右滑不沖突的下拉刷新控件
+ * 子控件左右滑动不沖突的下拉刷新控件
  * Created by XJH on 2017/7/21.
  */
 public class NiceRefreshLayout extends SwipeRefreshLayout {
@@ -15,7 +15,7 @@ public class NiceRefreshLayout extends SwipeRefreshLayout {
     private float startY;
 
     private float startX;
-    // 记录子控件是否移動的标记
+    // 记录子控件是否移动的标记
     private boolean mIsChildMove;
 
     private int mTouchSlop;
