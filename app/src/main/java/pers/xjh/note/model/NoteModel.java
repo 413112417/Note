@@ -35,6 +35,7 @@ import pers.xjh.note.ui.detail.android.DrawerLayoutActivity;
 import pers.xjh.note.ui.detail.android.DrawingBoardActivity;
 import pers.xjh.note.ui.detail.android.FlashlightActivity;
 import pers.xjh.note.ui.detail.android.FragmentActivity;
+import pers.xjh.note.ui.detail.android.FragmentNestedActivity;
 import pers.xjh.note.ui.detail.android.FragmentPagerActivity;
 import pers.xjh.note.ui.detail.android.GPSActivity;
 import pers.xjh.note.ui.detail.android.GoodClockViewActivity;
@@ -235,6 +236,7 @@ public class NoteModel {
                     noteList.add(new Note("Activity切换动画", PendingTransitionAActivity.class));
                     noteList.add(new Note("清除任务栈", FinishOnTaskLaunchActivity.class));
                     noteList.add(new Note("Fragment", FragmentActivity.class));
+                    noteList.add(new Note("Fragment嵌套", FragmentNestedActivity.class));
                     noteList.add(new Note("ViewPager", ViewPagerActivity.class));
                     noteList.add(new Note("FragmentPager", FragmentPagerActivity.class));
                     noteList.add(new Note("开启锁屏服务", LockScreenServiceActivity.class));

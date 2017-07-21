@@ -182,6 +182,7 @@
         <activity android:name=".ui.detail.android.ViewStubActivity" />
         <activity android:name=".ui.detail.android.NotificationActivity" />
         <activity android:name=".ui.detail.android.FragmentActivity" />
+        <activity android:name=".ui.detail.android.FragmentNestedActivity" />
         <activity android:name=".ui.detail.android.ViewPagerActivity" />
         <activity android:name=".ui.detail.android.DrawerLayoutActivity" />
         <activity android:name=".ui.detail.android.FragmentPagerActivity" />
