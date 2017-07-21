@@ -22,7 +22,7 @@ import pers.xjh.note.widget.PagerSlidingTabStrip;
  * Created by XJH on 2017/7/21.
  */
 
-public class NestedFragment extends Fragment {
+public class NestedFragment extends LifeCycleFragment {
 
     private ViewPager mViewPager;
 
