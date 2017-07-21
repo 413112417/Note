@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pers.xjh.note.R;
+import pers.xjh.note.adapter.FragmentPagerAdapter;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
@@ -74,32 +75,5 @@ public class FragmentPagerActivity extends BaseActivity {
 
             }
         });
-    }
-
-    private class FragmentPagerAdapter<T extends Fragment> extends android.support.v4.app.FragmentPagerAdapter {
-
-        private List<T> mFragmentList;
-        private String[] mTitles;
-
-        private FragmentPagerAdapter(FragmentManager fm, List<T> list, String[] titles) {
-            super(fm);
-            mFragmentList = list;
-            mTitles = titles;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles == null ? super.getPageTitle(position) : mTitles[position];
-        }
     }
 }

@@ -18,6 +18,7 @@ import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
 import pers.xjh.note.ui.detail.android.fragment.CFragment;
 import pers.xjh.note.ui.detail.android.fragment.DFragment;
+import pers.xjh.note.ui.detail.android.fragment.NestFragment;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.TitleBar;
 
@@ -61,7 +62,7 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
         findViewById(R.id.tv_c).setOnClickListener(this);
         findViewById(R.id.tv_d).setOnClickListener(this);
 
-        mAFragment = new AFragment();
+        mAFragment = new NestFragment();
         mBFragment = new BFragment();
         mCFragment = new CFragment();
         mDFragment = new DFragment();
