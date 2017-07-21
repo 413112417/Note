@@ -37,6 +37,7 @@
         <attr name="pathEndAnimationDuration" format="integer"/>
     </declare-styleable>
 
+    <!-- ViewPager指示器 -->
     <declare-styleable name="PagerSlidingTabStrip">
         <attr name="pstsIndicatorColor" format="color" />
         <attr name="pstsUnderlineColor" format="color" />

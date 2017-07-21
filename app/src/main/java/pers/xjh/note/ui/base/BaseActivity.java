@@ -79,21 +79,19 @@ public abstract class BaseActivity extends AppCompatActivity  {
         Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
     }
 
-    /** 界面初始化，返回布局id即可 */
+    //界面初始化，返回布局id即可
     protected abstract int initContentView();
 
-    /** 从Intent中获取数据 */
+    //从Intent中获取数据
     protected void getIntentData(Intent intent) {}
 
-    /**
-     * 设置标题
-     */
+    //设置标题
     protected void initTitle(TitleBar titleBar) {}
 
-    /** 控件初始化 */
+    //控件初始化
     protected abstract void initView();
 
-    /** 初始化完成后的处理 */
+    //初始化完成后的处理
     protected void start() {}
 
     /**
