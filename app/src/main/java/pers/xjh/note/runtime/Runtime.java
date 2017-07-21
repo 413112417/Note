@@ -35,12 +35,7 @@ public class Runtime {
      */
     public static Application getApplication() {
         if(get(Constant.RT_APP) != null) {
-            Object obj = get(Constant.RT_APP);
-            if(obj instanceof WeakReference) {
-                return (Application) ((WeakReference) obj).get();
-            } else {
-                throw new RuntimeException("application对象不是弱引用，容易引起内存泄漏");
-            }
+            return (Application) get(Constant.RT_APP);
         }
         return null;
     }
