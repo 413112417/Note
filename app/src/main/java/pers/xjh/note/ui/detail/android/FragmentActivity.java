@@ -14,11 +14,10 @@ import java.lang.ref.WeakReference;
 import pers.xjh.note.R;
 import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.ui.base.BaseActivity;
-import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
 import pers.xjh.note.ui.detail.android.fragment.CFragment;
 import pers.xjh.note.ui.detail.android.fragment.DFragment;
-import pers.xjh.note.ui.detail.android.fragment.NestFragment;
+import pers.xjh.note.ui.detail.android.fragment.NestedFragment;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.TitleBar;
 
@@ -62,7 +61,7 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
         findViewById(R.id.tv_c).setOnClickListener(this);
         findViewById(R.id.tv_d).setOnClickListener(this);
 
-        mAFragment = new NestFragment();
+        mAFragment = new NestedFragment();
         mBFragment = new BFragment();
         mCFragment = new CFragment();
         mDFragment = new DFragment();

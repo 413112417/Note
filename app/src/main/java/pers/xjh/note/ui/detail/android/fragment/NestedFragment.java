@@ -3,8 +3,8 @@ package pers.xjh.note.ui.detail.android.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +14,7 @@ import java.util.List;
 
 import pers.xjh.note.R;
 import pers.xjh.note.adapter.FragmentPagerAdapter;
+import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.PagerSlidingTabStrip;
 
 /**
@@ -21,9 +22,11 @@ import pers.xjh.note.widget.PagerSlidingTabStrip;
  * Created by XJH on 2017/7/21.
  */
 
-public class NestFragment extends Fragment {
+public class NestedFragment extends Fragment {
 
     private ViewPager mViewPager;
+
+    private SwipeRefreshLayout mRefreshLayout;
 
     private PagerSlidingTabStrip mTab;
 
@@ -32,7 +35,7 @@ public class NestFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_nest, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_nested, container, false);
 
         initView(rootView);
 
@@ -42,7 +45,7 @@ public class NestFragment extends Fragment {
     private void initView(View view) {
 
         mViewPager = (ViewPager) view.findViewById(R.id.view_pager);
-
+        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refresh_layout);
         mTab = (PagerSlidingTabStrip) view.findViewById(R.id.tab);
 
         List<Fragment> fragmentList = new ArrayList<>();
@@ -70,6 +73,28 @@ public class NestFragment extends Fragment {
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ThreadPool.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1000);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mRefreshLayout.setRefreshing(false);
+                                }
+                            });
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
     }
