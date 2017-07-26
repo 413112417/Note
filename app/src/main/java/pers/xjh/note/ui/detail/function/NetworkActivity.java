@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,16 +32,35 @@ public class NetworkActivity extends BaseActivity implements View.OnClickListene
 
     private Map<String, String> mMap = new HashMap<>();
 
-    private Handler mHandler = new Handler() {
+    //第一步，将Handler改成静态内部类。
+    private static class NetworkHandler extends Handler {
+        //第二步，将需要引用Activity的地方，改成弱引用。
+        private WeakReference<NetworkActivity> activityInstance;
+
+        public NetworkHandler(NetworkActivity activity) {
+            this.activityInstance = new WeakReference<NetworkActivity>(activity);
+        }
+
         @Override
         public void handleMessage(Message msg) {
+
+            NetworkActivity activity = activityInstance == null ? null : activityInstance.get();
+
+            //如果Activity被释放回收了，则不处理这些消息
+            if (activity == null || activity.isFinishing()) {
+                ToastUtil.show("activity已被回收");
+                return;
+            }
+
             switch (msg.what) {
                 case 0:
-                    mTvContent.setText(((String) msg.obj));
+                    activity.mTvContent.setText(((String) msg.obj));
                     break;
             }
         }
-    };
+    }
+
+    private Handler mHandler = new NetworkHandler(this);
 
     @Override
     protected int initContentView() {
@@ -62,8 +82,8 @@ public class NetworkActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //避免handler引起内存泄漏
-        mHandler.removeCallbacksAndMessages(null);
+        //避免handler引起内存泄漏，这是最佳方法，上面的弱引用为测试方案
+//        mHandler.removeCallbacksAndMessages(null);
     }
 
     @Override
