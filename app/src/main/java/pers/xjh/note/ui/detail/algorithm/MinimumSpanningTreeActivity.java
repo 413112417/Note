@@ -88,6 +88,13 @@ public class MinimumSpanningTreeActivity extends BaseActivity implements View.On
         mMinimumSpanningGraphSurfaceView.stop();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //避免handler引起内存泄漏
+        mHandler.removeCallbacksAndMessages(null);
+    }
+
     /**
      * 禁用按钮
      */

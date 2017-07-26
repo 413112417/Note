@@ -92,6 +92,13 @@ public class ShortestPathActivity extends BaseActivity implements View.OnClickLi
         mGraphSurfaceView.stop();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //避免handler引起内存泄漏
+        mHandler.removeCallbacksAndMessages(null);
+    }
+
     /**
      * 禁用按钮
      */

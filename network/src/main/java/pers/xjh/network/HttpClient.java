@@ -1,6 +1,9 @@
 package pers.xjh.network;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +13,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import pers.xjh.network.interfaces.Callback;
+import pers.xjh.network.interfaces.ProgressCallback;
 
 /**
  * http请求客户端
@@ -43,8 +47,7 @@ public class HttpClient {
     public static pers.xjh.network.Response getSync(String url) {
         try {
             Request request = new Request.Builder().url(url).build();
-            Call call = mClient.newCall(request);
-            return new pers.xjh.network.Response(call.execute());
+            return new pers.xjh.network.Response(mClient.newCall(request).execute());
         } catch (Exception e) {
             return new pers.xjh.network.Response(e.getMessage());
         }
@@ -58,8 +61,7 @@ public class HttpClient {
     public static void getAsync(String url, final Callback callback) {
         try {
             Request request = new Request.Builder().url(url).build();
-            Call call = mClient.newCall(request);
-            call.enqueue(new okhttp3.Callback() {
+            mClient.newCall(request).enqueue(new okhttp3.Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     callback.onFailure(e);
@@ -94,9 +96,7 @@ public class HttpClient {
 
             Request request = new Request.Builder().url(url).post(formBody).build();
 
-            Call call = mClient.newCall(request);
-
-            return new pers.xjh.network.Response(call.execute());
+            return new pers.xjh.network.Response(mClient.newCall(request).execute());
         } catch (Exception e) {
             return new pers.xjh.network.Response(e.getMessage());
         }
@@ -122,8 +122,7 @@ public class HttpClient {
 
             Request request = new Request.Builder().url(url).post(formBody).build();
 
-            Call call = mClient.newCall(request);
-            call.enqueue(new okhttp3.Callback() {
+            mClient.newCall(request).enqueue(new okhttp3.Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     callback.onFailure(e);
@@ -136,6 +135,60 @@ public class HttpClient {
             });
         } catch (Exception e) {
             callback.onFailure(e);
+        }
+    }
+
+    /**
+     * 下载文件
+     * @param url 请求地址
+     * @param file 保存的文件名
+     * @param progressCallback 回调函数
+     */
+    public static void download(String url, final File file, final ProgressCallback progressCallback) {
+        try {
+            Request request = new Request.Builder().url(url).build();
+            mClient.newCall(request).enqueue(new okhttp3.Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    progressCallback.onFailure(e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    InputStream is = null;
+                    FileOutputStream fos = null;
+                    byte[] buffer = new byte[1024];
+                    int length = 0;
+
+                    try {
+                        is = response.body().byteStream();
+                        fos = new FileOutputStream(file);
+
+                        long total = response.body().contentLength();
+                        long sum = 0;
+
+                        while ((length = is.read(buffer)) != -1) {
+                            fos.write(buffer, 0, length);
+                            sum += length;
+                            int progress = (int) (sum * 1.0f / total * 100);
+                            progressCallback.onProgress(progress);
+                        }
+                        fos.flush();
+                        progressCallback.onResponse(new pers.xjh.network.Response("下载成功"));
+                    } catch (Exception e) {
+                        progressCallback.onFailure(e);
+                    } finally {
+                        try {
+                            if (is != null) is.close();
+                        } catch (IOException e) {}
+                        try {
+                            if (fos != null) fos.close();
+                        } catch (IOException e) {}
+                    }
+                }
+            });
+        } catch (Exception e) {
+            progressCallback.onFailure(e);
         }
     }
 }

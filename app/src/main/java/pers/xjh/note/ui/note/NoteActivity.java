@@ -63,16 +63,6 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView 
         if(Constant.NOTE_ALL == noteType) {
             titleBar.setTitle("学习笔记");
             titleBar.setLeftTitleVisibility(false);
-        } else if(Constant.NOTE_JAVA == noteType) {
-            titleBar.setTitle("JAVA笔记");
-        } else if(Constant.NOTE_ALGORITHM == noteType) {
-            titleBar.setTitle("算法笔记");
-        } else if(Constant.NOTE_DESIGN == noteType) {
-            titleBar.setTitle("设计模式笔记");
-        } else if(Constant.NOTE_ANDROID == noteType) {
-            titleBar.setTitle("安卓笔记");
-        } else if(Constant.NOTE_FUNCTION == noteType) {
-            titleBar.setTitle("功能笔记");
         }
     }
 
