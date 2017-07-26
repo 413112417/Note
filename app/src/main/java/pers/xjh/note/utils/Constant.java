@@ -29,6 +29,7 @@ public class Constant {
     public static final String KEY_STRING = "KEY_STRING"; //笔记描述文本资源id
     public static final String KEY_NOTE_TYPE = "KEY_NOTE_TYPE"; //笔记类型
     public static final String KEY_IMAGE_URL = "KEY_IMAGE_URL"; //图片地址
+    public static final String KEY_SKIP_CACHE = "KEY_SKIP_CACHE"; //是否跳过缓存
     public static final String KEY_IMAGE_INDEX = "KEY_IMAGE_INDEX"; //图片地址
     public static final String KEY_WEB_URL = "KEY_WEB_URL"; //网址
 

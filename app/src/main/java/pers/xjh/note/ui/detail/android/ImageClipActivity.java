@@ -44,6 +44,7 @@ public class ImageClipActivity extends BaseActivity {
                     //跳转到图片详情
                     Intent intent = new Intent(ImageClipActivity.this, ImageDetailActivity.class);
                     intent.putExtra(Constant.KEY_IMAGE_URL, new String[] {FileUtil.getImageFile("clipImage").getAbsolutePath()});
+                    intent.putExtra(Constant.KEY_SKIP_CACHE, true);
                     startActivity(intent);
                 } catch (IOException e) {
                     e.printStackTrace();

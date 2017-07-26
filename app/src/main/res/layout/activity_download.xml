@@ -29,7 +29,7 @@
             android:background="@drawable/bg_et_1"
             android:layout_weight="1"
             android:textSize="@dimen/font_size_small"
-            android:text="http://pic.jj20.com/up/allimg/1011/02051G34959/1F205134959-5.jpg"/>
+            android:text="http://img.taopic.com/uploads/allimg/131009/235013-13100ZP54561.jpg"/>
 
         <Button
             android:id="@+id/btn_download"

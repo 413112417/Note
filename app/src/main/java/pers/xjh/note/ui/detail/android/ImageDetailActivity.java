@@ -25,6 +25,8 @@ public class ImageDetailActivity extends BaseActivity {
     private String[] mImagePaths;
     //图片下标
     private int mIndex;
+    //是否跳过缓存
+    private boolean mSkipCache;
 
     private ViewPager mViewPager;
 
@@ -40,6 +42,7 @@ public class ImageDetailActivity extends BaseActivity {
                 mImageResourceIds = intent.getIntArrayExtra(Constant.KEY_IMAGE_URL);
                 mImagePaths = intent.getStringArrayExtra(Constant.KEY_IMAGE_URL);
                 mIndex = intent.getIntExtra(Constant.KEY_IMAGE_INDEX, 0);
+                mSkipCache = intent.getBooleanExtra(Constant.KEY_SKIP_CACHE, false);
             } catch (Exception e) {
 
             }
@@ -65,7 +68,8 @@ public class ImageDetailActivity extends BaseActivity {
         List<ImageView> imageViewList = new ArrayList<>();
         for(int i : imageResourceIds) {
             ImageView imageView = new DetailImageView(this);
-            imageView.setImageResource(i);
+            if(mSkipCache) showImageSkipCache(imageView, i);
+            else showImage(imageView, i);
             imageViewList.add(imageView);
         }
         mViewPager.setAdapter(new ViewPagerAdapter<>(imageViewList));
@@ -75,7 +79,8 @@ public class ImageDetailActivity extends BaseActivity {
         List<ImageView> imageViewList = new ArrayList<>();
         for(String path : mImagePaths) {
             ImageView imageView = new DetailImageView(this);
-            showImage(imageView, path);
+            if(mSkipCache) showImageSkipCache(imageView, path);
+            else showImage(imageView, path);
             imageViewList.add(imageView);
         }
         mViewPager.setAdapter(new ViewPagerAdapter<>(imageViewList));

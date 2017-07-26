@@ -62,6 +62,7 @@ public class DownloadActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DownloadActivity.this, ImageDetailActivity.class);
                 intent.putExtra(Constant.KEY_IMAGE_URL, new String[] {FileUtil.getDownloadFile("test.jpg").getAbsolutePath()});
+                intent.putExtra(Constant.KEY_SKIP_CACHE, true);
                 DownloadActivity.this.startActivity(intent);
             }
         });
@@ -83,7 +84,7 @@ public class DownloadActivity extends BaseActivity {
 
         @Override
         public void run() {
-            HttpClient.download(url, FileUtil.newDownloadFile("test.jpg"), new ProgressCallback() {
+            HttpClient.download(url, FileUtil.getDownloadFile("test.jpg"), new ProgressCallback() {
                 @Override
                 public void onProgress(final int progress) {
                     final DownloadActivity activity = activityInstance.get();
