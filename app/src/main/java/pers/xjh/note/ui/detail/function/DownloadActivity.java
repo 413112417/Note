@@ -51,7 +51,7 @@ public class DownloadActivity extends BaseActivity {
                     ThreadPool.execute(new Runnable() {
                         @Override
                         public void run() {
-                            HttpClient.download(url, FileUtil.getDownloadFile("test.jpg"), new ProcessCallback() {
+                            HttpClient.download(url, FileUtil.newDownloadFile("test.jpg"), new ProcessCallback() {
                                 @Override
                                 public void onProcess(final int progress) {
                                     runOnUiThread(new Runnable() {

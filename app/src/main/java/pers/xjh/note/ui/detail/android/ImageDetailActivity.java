@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import pers.xjh.note.R;
 import pers.xjh.note.adapter.ViewPagerAdapter;
@@ -37,9 +38,13 @@ public class ImageDetailActivity extends BaseActivity {
     @Override
     protected void getIntentData(Intent intent) {
         if(intent != null) {
-            mImageResourceIds = intent.getIntArrayExtra(Constant.KEY_IMAGE_URL);
-            mImagePaths = intent.getStringArrayExtra(Constant.KEY_IMAGE_URL);
-            mIndex = intent.getIntExtra(Constant.KEY_IMAGE_INDEX, 0);
+            try {
+                mImageResourceIds = intent.getIntArrayExtra(Constant.KEY_IMAGE_URL);
+                mImagePaths = intent.getStringArrayExtra(Constant.KEY_IMAGE_URL);
+                mIndex = intent.getIntExtra(Constant.KEY_IMAGE_INDEX, 0);
+            } catch (Exception e) {
+
+            }
         }
     }
 
