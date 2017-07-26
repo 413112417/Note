@@ -105,6 +105,13 @@ public class BinarySearchTreeActivity extends BaseActivity implements View.OnCli
         mBinaryTreeSurfaceView.stop();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //避免handler引起内存泄漏
+        mHandler.removeCallbacksAndMessages(null);
+    }
+
     /**
      * 禁用按钮
      */
