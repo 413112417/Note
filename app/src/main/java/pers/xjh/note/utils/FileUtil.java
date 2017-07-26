@@ -6,18 +6,13 @@ import android.os.Environment;
 import java.io.File;
 import java.io.IOException;
 
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 
 /**
  * 文件管理工具类
  * Created by xjh on 2017/1/18.
  */
 public class FileUtil {
-
-    /** 保存视频的文件夹名 */
-    private static String mVideoDir = "/video";
-    /** 保存音频的文件夹名 */
-    private static String mVoiceDir = "/voice";
 
     /**
      * 注:getExternalCacheDir得到外部的缓存路径
@@ -31,7 +26,7 @@ public class FileUtil {
      * @return
      */
     public static File getVideoDir() {
-        File videoDir= new File(RunTime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsoluteFile(), mVideoDir);
+        File videoDir= new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsolutePath());
         if(!videoDir.exists()) {
             videoDir.mkdir();
         }
@@ -43,7 +38,7 @@ public class FileUtil {
      * @return
      */
     public static File getVoiceDir() {
-        File voiceDir = new File(RunTime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsoluteFile(), mVoiceDir);
+        File voiceDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
         if(!voiceDir.exists()) {
             voiceDir.mkdir();
         }
@@ -80,6 +75,41 @@ public class FileUtil {
             e.printStackTrace();
         }
         return voiceFile;
+    }
+
+    /**
+     * 得到下载文件
+     * @param fileName
+     * @return
+     */
+    public static File getDownloadFile(String fileName) {
+        File downloadFile = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath(), fileName);
+        try {
+            if(!downloadFile.exists()) {
+                downloadFile.createNewFile();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return downloadFile;
+    }
+
+    /**
+     * 生成下载文件
+     * @param fileName
+     * @return
+     */
+    public static File newDownloadFile(String fileName) {
+        File downloadFile = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath(), fileName);
+        try {
+            if(downloadFile.exists()) {
+                downloadFile.delete();
+            }
+            downloadFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return downloadFile;
     }
 
     /**

@@ -9,6 +9,7 @@ import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.ImageDetailActivity;
 import pers.xjh.note.utils.Constant;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * Created by XJH on 2017/5/22.
@@ -30,18 +31,17 @@ public class NoteTextActivity extends BaseActivity {
     }
 
     @Override
-    protected void getIntentData() {
-        mStringId = getIntent().getIntExtra(Constant.KEY_STRING, 0);
-        mString = getIntent().getStringExtra(Constant.KEY_STRING);
-        mImageResourceId = getIntent().getIntArrayExtra(Constant.KEY_IMAGE_URL);
+    protected void getIntentData(Intent intent) {
+        mStringId = intent.getIntExtra(Constant.KEY_STRING, 0);
+        mString = intent.getStringExtra(Constant.KEY_STRING);
+        mImageResourceId = intent.getIntArrayExtra(Constant.KEY_IMAGE_URL);
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
+    protected void initTitle(TitleBar titleBar) {
         if(mImageResourceId != null) {
-            mTitleBar.setTitleRight("图片");
-            mTitleBar.setRightTitleClickListener(new View.OnClickListener() {
+            titleBar.setTitleRight("图片");
+            titleBar.setRightTitleClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(NoteTextActivity.this, ImageDetailActivity.class);

@@ -13,6 +13,7 @@ import pers.xjh.note.algorithm.structure.graph.Graph;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.GraphSurfaceView;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * 最短路径
@@ -54,9 +55,8 @@ public class MinimumSpanningTreeActivity extends BaseActivity implements View.On
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("说明");
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("说明");
     }
 
     @Override
@@ -86,6 +86,13 @@ public class MinimumSpanningTreeActivity extends BaseActivity implements View.On
         super.onPause();
         mGraphSurfaceView.stop();
         mMinimumSpanningGraphSurfaceView.stop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //避免handler引起内存泄漏
+        mHandler.removeCallbacksAndMessages(null);
     }
 
     /**

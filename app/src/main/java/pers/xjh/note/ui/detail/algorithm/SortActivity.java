@@ -18,6 +18,7 @@ import pers.xjh.note.ui.detail.android.ImageDetailActivity;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.SortSurfaceView;
+import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.PickDialog;
 
 /**
@@ -63,10 +64,9 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("图片");
-        mTitleBar.setRightTitleClickListener(new View.OnClickListener() {
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("图片");
+        titleBar.setRightTitleClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SortActivity.this, ImageDetailActivity.class);
@@ -108,6 +108,13 @@ public class SortActivity extends BaseActivity implements View.OnClickListener {
     protected void onPause() {
         super.onPause();
         mSortSurfaceView.stop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //避免handler引起内存泄漏
+        mHandler.removeCallbacksAndMessages(null);
     }
 
     /**

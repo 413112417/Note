@@ -14,18 +14,17 @@ import pers.xjh.note.utils.Constant;
  * Created by XJH on 2017/3/27.
  */
 
-public class RunTime {
+public class Runtime {
 
-    private RunTime() {}
+    private Runtime() {}
 
-    /** 用弱引用防止内存泄露 */
-    private static Map<String, WeakReference> mData = new HashMap<>();
+    private static Map<String, Object> mData = new HashMap<>();
 
-    public static WeakReference get(String key) {
+    public static Object get(String key) {
         return mData.get(key);
     }
 
-    public static void put(String key, WeakReference obj) {
+    public static void put(String key, Object obj) {
         mData.put(key, obj);
     }
 
@@ -36,10 +35,9 @@ public class RunTime {
      */
     public static Application getApplication() {
         if(get(Constant.RT_APP) != null) {
-            return (Application) get(Constant.RT_APP).get();
-        } else {
-            return null;
+            return (Application) get(Constant.RT_APP);
         }
+        return null;
     }
 
     /**
@@ -48,10 +46,14 @@ public class RunTime {
      */
     public static Activity getCurrentActivity() {
         if(get(Constant.RT_CURRENT_ACTIVITY) != null) {
-            return (Activity) get(Constant.RT_CURRENT_ACTIVITY).get();
-        } else {
-            return null;
+            Object obj = get(Constant.RT_CURRENT_ACTIVITY);
+            if(obj instanceof WeakReference) {
+                return (Activity) ((WeakReference) obj).get();
+            } else {
+                throw new RuntimeException("activity对象不是弱引用，容易引起内存泄漏");
+            }
         }
+        return null;
     }
 
     /**
@@ -68,8 +70,8 @@ public class RunTime {
      * @param activity
      */
     public static void startActivity(Class activity) {
-        Intent intent = new Intent(RunTime.getCurrentActivity(), activity);
-        RunTime.getCurrentActivity().startActivity(intent);
+        Intent intent = new Intent(Runtime.getCurrentActivity(), activity);
+        Runtime.getCurrentActivity().startActivity(intent);
     }
 
     /**
@@ -78,14 +80,13 @@ public class RunTime {
      * @param flag 启动模式
      */
     public static void startActivity(Class activity, int flag) {
-        Intent intent = new Intent(RunTime.getCurrentActivity(), activity);
+        Intent intent = new Intent(Runtime.getCurrentActivity(), activity);
         intent.setFlags(flag);
-        RunTime.getCurrentActivity().startActivity(intent);
+        Runtime.getCurrentActivity().startActivity(intent);
     }
 
-
     public static void startActivityForResult(Class activity, int requestCode) {
-        Intent intent = new Intent(RunTime.getCurrentActivity(), activity);
-        RunTime.getCurrentActivity().startActivityForResult(intent, requestCode);
+        Intent intent = new Intent(Runtime.getCurrentActivity(), activity);
+        Runtime.getCurrentActivity().startActivityForResult(intent, requestCode);
     }
 }

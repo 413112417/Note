@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.widget.dialog.AlertDialog;
 
 /**
@@ -32,25 +32,25 @@ public class AActivity extends LifeCycleActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_1:
-                RunTime.startActivity(BActivity.class);
+                Runtime.startActivity(BActivity.class);
                 break;
             case R.id.btn_2:
-                RunTime.startActivity(CActivity.class);
+                Runtime.startActivity(CActivity.class);
                 break;
             case R.id.btn_3:
-                RunTime.startActivity(DActivity.class);
+                Runtime.startActivity(DActivity.class);
                 break;
             case R.id.btn_4:
-                RunTime.startActivity(EActivity.class);
+                Runtime.startActivity(EActivity.class);
                 break;
             case R.id.btn_5:
-                RunTime.startActivity(FActivity.class);
+                Runtime.startActivity(FActivity.class);
                 break;
             case R.id.btn_6:
-                RunTime.startActivity(TransparentActivity.class);
+                Runtime.startActivity(TransparentActivity.class);
                 break;
             case R.id.btn_7:
-                RunTime.startActivity(NotFullActivity.class);
+                Runtime.startActivity(NotFullActivity.class);
                 break;
             case R.id.btn_8:
                 new AlertDialog.Builder(this).setInAnimation(R.anim.soft_in).build().show();

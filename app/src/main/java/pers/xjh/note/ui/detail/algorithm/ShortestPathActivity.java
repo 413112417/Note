@@ -15,6 +15,7 @@ import pers.xjh.note.algorithm.structure.graph.Point;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.widget.GraphSurfaceView;
+import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.InputDialog;
 
 /**
@@ -61,9 +62,8 @@ public class ShortestPathActivity extends BaseActivity implements View.OnClickLi
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("说明");
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("说明");
     }
 
     @Override
@@ -90,6 +90,13 @@ public class ShortestPathActivity extends BaseActivity implements View.OnClickLi
     protected void onPause() {
         super.onPause();
         mGraphSurfaceView.stop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //避免handler引起内存泄漏
+        mHandler.removeCallbacksAndMessages(null);
     }
 
     /**

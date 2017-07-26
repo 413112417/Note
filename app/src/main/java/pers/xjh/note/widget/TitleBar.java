@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.utils.UiUtil;
 
 /**
@@ -102,7 +102,7 @@ public class TitleBar extends FrameLayout {
         mLeftTitleContainer.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                RunTime.getCurrentActivity().onBackPressed();
+                Runtime.getCurrentActivity().onBackPressed();
             }
         });
     }
@@ -137,7 +137,7 @@ public class TitleBar extends FrameLayout {
             mLeftTitleContainer.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    RunTime.getCurrentActivity().onBackPressed();
+                    Runtime.getCurrentActivity().onBackPressed();
                 }
             });
         } else {

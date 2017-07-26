@@ -31,9 +31,11 @@ import pers.xjh.note.ui.detail.android.CustomScrollViewActivity;
 import pers.xjh.note.ui.detail.android.CustomTextViewActivity;
 import pers.xjh.note.ui.detail.android.DialogActivity;
 import pers.xjh.note.ui.detail.android.DispatchEventActivity;
+import pers.xjh.note.ui.detail.android.DrawerLayoutActivity;
 import pers.xjh.note.ui.detail.android.DrawingBoardActivity;
 import pers.xjh.note.ui.detail.android.FlashlightActivity;
 import pers.xjh.note.ui.detail.android.FragmentActivity;
+import pers.xjh.note.ui.detail.android.FragmentNestedActivity;
 import pers.xjh.note.ui.detail.android.FragmentPagerActivity;
 import pers.xjh.note.ui.detail.android.GPSActivity;
 import pers.xjh.note.ui.detail.android.GoodClockViewActivity;
@@ -85,6 +87,7 @@ import pers.xjh.note.ui.detail.algorithm.RedBlackTreeActivity;
 import pers.xjh.note.ui.detail.algorithm.TreeActivity;
 import pers.xjh.note.ui.detail.algorithm.BinarySearchTreeActivity;
 import pers.xjh.note.ui.detail.algorithm.SortActivity;
+import pers.xjh.note.ui.detail.function.DownloadActivity;
 import pers.xjh.note.ui.detail.java.HttpServerActivity;
 import pers.xjh.note.ui.detail.function.BaiduMapActivity;
 import pers.xjh.note.ui.detail.android.FingerprintActivity;
@@ -199,6 +202,7 @@ public class NoteModel {
                     noteList.add(new Note("自定义ViewGroup", CustomScrollViewActivity.class));
                     noteList.add(new Note("下拉刷新", RefreshActivity.class));
                     noteList.add(new Note("右滑返回", SlidingFinishActivity.class));
+                    noteList.add(new Note("侧滑菜单", DrawerLayoutActivity.class));
                     noteList.add(new Note("日历控件", CalendarActivity.class));
                     noteList.add(new Note("ViewGroup生命周期", FrameLayoutLifeCycleActivity.class));
                     noteList.add(new Note("View生命周期", ViewLifeCycleActivity.class));
@@ -233,6 +237,7 @@ public class NoteModel {
                     noteList.add(new Note("Activity切换动画", PendingTransitionAActivity.class));
                     noteList.add(new Note("清除任务栈", FinishOnTaskLaunchActivity.class));
                     noteList.add(new Note("Fragment", FragmentActivity.class));
+                    noteList.add(new Note("Fragment嵌套", FragmentNestedActivity.class));
                     noteList.add(new Note("ViewPager", ViewPagerActivity.class));
                     noteList.add(new Note("FragmentPager", FragmentPagerActivity.class));
                     noteList.add(new Note("开启锁屏服务", LockScreenServiceActivity.class));
@@ -299,6 +304,7 @@ public class NoteModel {
                     noteList.add(new Note("访问者模式", R.string.design_fwz));
                 } else if(Constant.NOTE_FUNCTION == noteType) {
                     noteList.add(new Note("网络请求", NetworkActivity.class));
+                    noteList.add(new Note("文件下载", DownloadActivity.class));
                     noteList.add(new Note("二维码扫描", QRCodeActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("百度地图", BaiduMapActivity.class));
                 }

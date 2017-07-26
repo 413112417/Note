@@ -12,7 +12,7 @@ import org.xjh.testtool.TestTool;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.utils.Constant;
 
 
@@ -48,7 +48,7 @@ public class NoteApplication extends Application {
      * 对主进程进行初始化
      */
     private void initMainProcess() {
-        RunTime.put(Constant.RT_APP, new WeakReference(this));
+        Runtime.put(Constant.RT_APP, new WeakReference(this));
 
         TestTool.install(this);
         //内存泄露检测工具
@@ -61,7 +61,7 @@ public class NoteApplication extends Application {
      * 对测试进程进行初始化
      */
     private void initTestProcess() {
-        RunTime.put(Constant.RT_APP, new WeakReference(this));
+        Runtime.put(Constant.RT_APP, new WeakReference(this));
 
         TestTool.install(this);
     }

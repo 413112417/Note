@@ -64,9 +64,6 @@
         <activity android:name=".ui.detail.android.SlidingFinishActivity"
             android:theme="@style/TransparentAppTheme"/>
         <activity android:name=".ui.detail.android.CalendarActivity" />
-        <activity android:name=".ui.detail.function.NetworkActivity" />
-        <activity android:name=".ui.detail.function.QRCodeActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".ui.detail.android.FingerprintActivity" />
         <activity android:name=".ui.detail.android.NFCActivity"
             android:launchMode="singleInstance">
@@ -84,7 +81,7 @@
         <activity android:name=".ui.detail.android.DispatchEventActivity" />
         <activity android:name=".ui.detail.android.LockScreenActivity"
             android:launchMode="singleInstance"/>
-        <activity android:name=".ui.detail.function.BaiduMapActivity" />
+
         <activity android:name=".ui.detail.android.ScrollActivity" />
         <activity android:name=".ui.detail.android.viewLifeCycle.LinearLayoutLifeCycleActivity" />
         <activity android:name=".ui.detail.android.viewLifeCycle.RelativeLayoutLifeCycleActivity" />
@@ -182,7 +179,9 @@
         <activity android:name=".ui.detail.android.ViewStubActivity" />
         <activity android:name=".ui.detail.android.NotificationActivity" />
         <activity android:name=".ui.detail.android.FragmentActivity" />
+        <activity android:name=".ui.detail.android.FragmentNestedActivity" />
         <activity android:name=".ui.detail.android.ViewPagerActivity" />
+        <activity android:name=".ui.detail.android.DrawerLayoutActivity" />
         <activity android:name=".ui.detail.android.FragmentPagerActivity" />
         <activity android:name=".ui.detail.android.DialogActivity" />
         <activity android:name=".ui.detail.android.UnlockActivity" />
@@ -209,6 +208,12 @@
 
         <activity android:name=".ui.detail.optimize.MemoryLeakActivity" />
         <activity android:name=".ui.detail.optimize.StringOptimizeActivity" />
+
+        <activity android:name=".ui.detail.function.NetworkActivity" />
+        <activity android:name=".ui.detail.function.QRCodeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.function.BaiduMapActivity" />
+        <activity android:name=".ui.detail.function.DownloadActivity" />
 
         <service android:name=".service.LockScreenService" />
 

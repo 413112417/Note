@@ -12,13 +12,14 @@ import android.widget.Toast;
 import java.lang.ref.WeakReference;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
 import pers.xjh.note.ui.detail.android.fragment.CFragment;
 import pers.xjh.note.ui.detail.android.fragment.DFragment;
 import pers.xjh.note.utils.Constant;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * Created by XJH on 2017/5/18.
@@ -34,15 +35,14 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     protected int initContentView() {
-        Toast.makeText(this, className + "onCreate", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onCreate", Toast.LENGTH_SHORT).show();
         return R.layout.activity_fragment;
     }
 
     @Override
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setTitleRight("图片");
-        mTitleBar.setRightTitleClickListener(new View.OnClickListener() {
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setTitleRight("图片");
+        titleBar.setRightTitleClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FragmentActivity.this, ImageDetailActivity.class);
@@ -93,55 +93,55 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, className + "onStart", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onStart", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        RunTime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
-        Toast.makeText(this, className + "onResume", Toast.LENGTH_SHORT).show();
+        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        Toast.makeText(getApplicationContext(), className + "onResume", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Toast.makeText(this, className + "onPause", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onPause", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Toast.makeText(this, className + "onStop", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onStop", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Toast.makeText(this, className + "onDestroy", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onDestroy", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Toast.makeText(this, className + "onNewIntent", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onNewIntent", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        Toast.makeText(this, className + "onConfigurationChanged", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onConfigurationChanged", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Toast.makeText(this, className + "onSaveInstanceState", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onSaveInstanceState", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Toast.makeText(this, className + "onRestoreInstanceState", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), className + "onRestoreInstanceState", Toast.LENGTH_SHORT).show();
     }
 }

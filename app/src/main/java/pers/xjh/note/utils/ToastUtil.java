@@ -3,7 +3,7 @@ package pers.xjh.note.utils;
 import android.view.Gravity;
 import android.widget.Toast;
 
-import pers.xjh.note.runtime.RunTime;
+import pers.xjh.note.runtime.Runtime;
 
 /**
  * Toast工具类
@@ -52,7 +52,7 @@ public class ToastUtil {
      */
     public synchronized static void show(String msg, int duration, int gravity, int xOffset, int yOffset) {
         if(mToast == null){
-            mToast = Toast.makeText(RunTime.getApplication(), msg, duration);
+            mToast = Toast.makeText(Runtime.getApplication(), msg, duration);
         } else {
             mToast.setText(msg);
             mToast.setDuration(duration);

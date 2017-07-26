@@ -8,11 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pers.xjh.note.R;
+import pers.xjh.note.adapter.FragmentPagerAdapter;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
 import pers.xjh.note.ui.detail.android.fragment.CFragment;
 import pers.xjh.note.ui.detail.android.fragment.DFragment;
+import pers.xjh.note.widget.PagerSlidingTabStrip;
+import pers.xjh.note.widget.TitleBar;
 
 /**
  * Created by XJH on 2017/5/18.
@@ -22,6 +25,10 @@ public class FragmentPagerActivity extends BaseActivity {
 
     private ViewPager mViewPager;
 
+    private PagerSlidingTabStrip mTab;
+
+    private TitleBar mTitleBar;
+
     private FragmentPagerAdapter mAdapter;
 
     @Override
@@ -30,8 +37,15 @@ public class FragmentPagerActivity extends BaseActivity {
     }
 
     @Override
+    protected void initTitle(TitleBar titleBar) {
+        mTitleBar = titleBar;
+        mTitleBar.setTitle("A");
+    }
+
+    @Override
     protected void initView() {
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
+        mTab = (PagerSlidingTabStrip) findViewById(R.id.tab);
 
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new AFragment());
@@ -41,6 +55,7 @@ public class FragmentPagerActivity extends BaseActivity {
 
         mAdapter = new FragmentPagerAdapter<>(getSupportFragmentManager(), fragmentList, new String[] {"A", "B", "C", "D"});
         mViewPager.setAdapter(mAdapter);
+        mTab.setViewPager(mViewPager);
 
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -60,34 +75,5 @@ public class FragmentPagerActivity extends BaseActivity {
 
             }
         });
-
-        mTitleBar.setTitle("A");
-    }
-
-    private class FragmentPagerAdapter<T extends Fragment> extends android.support.v4.app.FragmentPagerAdapter {
-
-        private List<T> mFragmentList;
-        private String[] mTitles;
-
-        private FragmentPagerAdapter(FragmentManager fm, List<T> list, String[] titles) {
-            super(fm);
-            mFragmentList = list;
-            mTitles = titles;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mTitles == null ? super.getPageTitle(position) : mTitles[position];
-        }
     }
 }

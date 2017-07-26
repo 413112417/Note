@@ -12,7 +12,6 @@ import pers.xjh.note.adapter.ViewPagerAdapter;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.DetailImageView;
-import pers.xjh.note.widget.PinchImageView;
 
 /**
  * Created by XJH on 2017/4/25.
@@ -35,12 +34,15 @@ public class ImageDetailActivity extends BaseActivity {
     }
 
     @Override
-    protected void getIntentData() {
-        Intent intent = getIntent();
+    protected void getIntentData(Intent intent) {
         if(intent != null) {
-            mImageResourceIds = intent.getIntArrayExtra(Constant.KEY_IMAGE_URL);
-            mImagePaths = intent.getStringArrayExtra(Constant.KEY_IMAGE_URL);
-            mIndex = intent.getIntExtra(Constant.KEY_IMAGE_INDEX, 0);
+            try {
+                mImageResourceIds = intent.getIntArrayExtra(Constant.KEY_IMAGE_URL);
+                mImagePaths = intent.getStringArrayExtra(Constant.KEY_IMAGE_URL);
+                mIndex = intent.getIntExtra(Constant.KEY_IMAGE_INDEX, 0);
+            } catch (Exception e) {
+
+            }
         }
     }
 
@@ -62,7 +64,7 @@ public class ImageDetailActivity extends BaseActivity {
     private void buildDetailImageView(int[] imageResourceIds) {
         List<ImageView> imageViewList = new ArrayList<>();
         for(int i : imageResourceIds) {
-            ImageView imageView = new PinchImageView(this);
+            ImageView imageView = new DetailImageView(this);
             imageView.setImageResource(i);
             imageViewList.add(imageView);
         }
@@ -72,7 +74,7 @@ public class ImageDetailActivity extends BaseActivity {
     private void buildDetailImageView(String[] mImagePaths) {
         List<ImageView> imageViewList = new ArrayList<>();
         for(String path : mImagePaths) {
-            ImageView imageView = new PinchImageView(this);
+            ImageView imageView = new DetailImageView(this);
             showImage(imageView, path);
             imageViewList.add(imageView);
         }

@@ -33,21 +33,19 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
-    protected void getIntentData() {
-        Intent intent = getIntent();
+    protected void getIntentData(Intent intent) {
         if(intent != null) {
             mWebUrl = intent.getStringExtra(Constant.KEY_WEB_URL);
         }
     }
 
-    protected void initTitle() {
-        super.initTitle();
-        mTitleBar.setLeftTitleClickListener(this);
+    @Override
+    protected void initTitle(TitleBar titleBar) {
+        titleBar.setLeftTitleClickListener(this);
     }
 
     @Override
     protected void initView() {
-        initTitle();
         initWebViewSetting();
 
         mRectProgressBar = (RectProgressBar) findViewById(R.id.progress_bar);
@@ -79,6 +77,8 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
      */
     private void initWebViewSetting() {
         mWebView = (WebView) findViewById(R.id.web_view);
+        //开启chrome测试模式
+        mWebView.setWebContentsDebuggingEnabled(true);
         //启用支持javascript
         WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);

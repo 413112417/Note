@@ -26,8 +26,7 @@ public class PackageInstallerActivity extends BaseActivity {
     }
 
     @Override
-    protected void getIntentData() {
-        final Intent intent = getIntent();
+    protected void getIntentData(Intent intent) {
         mPackageUri = intent.getData();
         mPm = getPackageManager();
 //        mPackageInfo = PackageUtil.getPackageInfo(mPackageURI);
