@@ -13,7 +13,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import pers.xjh.network.interfaces.Callback;
-import pers.xjh.network.interfaces.ProcessCallback;
+import pers.xjh.network.interfaces.ProgressCallback;
 
 /**
  * http请求客户端
@@ -142,15 +142,15 @@ public class HttpClient {
      * 下载文件
      * @param url 请求地址
      * @param file 保存的文件名
-     * @param processCallback 回调函数
+     * @param progressCallback 回调函数
      */
-    public static void download(String url, final File file, final ProcessCallback processCallback) {
+    public static void download(String url, final File file, final ProgressCallback progressCallback) {
         try {
             Request request = new Request.Builder().url(url).build();
             mClient.newCall(request).enqueue(new okhttp3.Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    processCallback.onFailure(e);
+                    progressCallback.onFailure(e);
                 }
 
                 @Override
@@ -171,12 +171,12 @@ public class HttpClient {
                             fos.write(buffer, 0, length);
                             sum += length;
                             int progress = (int) (sum * 1.0f / total * 100);
-                            processCallback.onProcess(progress);
+                            progressCallback.onProgress(progress);
                         }
                         fos.flush();
-                        processCallback.onResponse(new pers.xjh.network.Response("下载成功"));
+                        progressCallback.onResponse(new pers.xjh.network.Response("下载成功"));
                     } catch (Exception e) {
-                        processCallback.onFailure(e);
+                        progressCallback.onFailure(e);
                     } finally {
                         try {
                             if (is != null) is.close();
@@ -188,7 +188,7 @@ public class HttpClient {
                 }
             });
         } catch (Exception e) {
-            processCallback.onFailure(e);
+            progressCallback.onFailure(e);
         }
     }
 }

@@ -5,11 +5,10 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 
 import pers.xjh.network.HttpClient;
 import pers.xjh.network.Response;
-import pers.xjh.network.interfaces.ProcessCallback;
+import pers.xjh.network.interfaces.ProgressCallback;
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.ImageDetailActivity;
@@ -51,9 +50,9 @@ public class DownloadActivity extends BaseActivity {
                     ThreadPool.execute(new Runnable() {
                         @Override
                         public void run() {
-                            HttpClient.download(url, FileUtil.newDownloadFile("test.jpg"), new ProcessCallback() {
+                            HttpClient.download(url, FileUtil.newDownloadFile("test.jpg"), new ProgressCallback() {
                                 @Override
-                                public void onProcess(final int progress) {
+                                public void onProgress(final int progress) {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
