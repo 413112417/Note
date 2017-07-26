@@ -37,12 +37,36 @@ public class FileUtil {
      * 得到音频的文件夹的路径
      * @return
      */
-    public static File getVoiceDir() {
+    public static File getAudioDir() {
         File voiceDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
         if(!voiceDir.exists()) {
             voiceDir.mkdir();
         }
         return voiceDir;
+    }
+
+    /**
+     * 得到下载的文件夹的路径
+     * @return
+     */
+    public static File getDownloadDir() {
+        File downloadDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
+        if(!downloadDir.exists()) {
+            downloadDir.mkdir();
+        }
+        return downloadDir;
+    }
+
+    /**
+     * 得到图片的文件夹的路径
+     * @return
+     */
+    public static File getImageDir() {
+        File imageDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+        if(!imageDir.exists()) {
+            imageDir.mkdir();
+        }
+        return imageDir;
     }
 
     /**
@@ -65,8 +89,8 @@ public class FileUtil {
      * 生成一个对应名字的音频路径
      * @return
      */
-    public static File getVoiceFile(String fileName) {
-        File voiceFile = new File(getVoiceDir().getAbsolutePath(), fileName);
+    public static File getAudioFile(String fileName) {
+        File voiceFile = new File(getAudioDir().getAbsolutePath(), fileName);
         try {
             if(!voiceFile.exists()) {
                 voiceFile.createNewFile();
@@ -83,7 +107,7 @@ public class FileUtil {
      * @return
      */
     public static File getDownloadFile(String fileName) {
-        File downloadFile = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath(), fileName);
+        File downloadFile = new File(getDownloadDir().getAbsolutePath(), fileName);
         try {
             if(!downloadFile.exists()) {
                 downloadFile.createNewFile();
@@ -100,7 +124,7 @@ public class FileUtil {
      * @return
      */
     public static File getImageFile(String fileName) {
-        File imageFile = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath(), fileName);
+        File imageFile = new File(getImageDir().getAbsolutePath(), fileName);
         try {
             if(!imageFile.exists()) {
                 imageFile.createNewFile();
