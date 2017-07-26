@@ -44,7 +44,7 @@ public class NetworkActivity extends BaseActivity implements View.OnClickListene
         @Override
         public void handleMessage(Message msg) {
 
-            NetworkActivity activity = activityInstance == null ? null : activityInstance.get();
+            NetworkActivity activity = activityInstance.get();
 
             //如果Activity被释放回收了，则不处理这些消息
             if (activity == null || activity.isFinishing()) {
