@@ -12,6 +12,7 @@ import pers.xjh.network.HttpClient;
 import pers.xjh.network.Response;
 import pers.xjh.network.interfaces.ProgressCallback;
 import pers.xjh.note.R;
+import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.ImageDetailActivity;
 import pers.xjh.note.utils.Constant;
@@ -99,30 +100,22 @@ public class DownloadActivity extends BaseActivity {
 
                 @Override
                 public void onResponse(final Response response) {
-                    final DownloadActivity activity = activityInstance.get();
-
-                    if(activity != null && !activity.isFinishing()) {
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ToastUtil.show(response.getBodyString());
-                            }
-                        });
-                    }
+                    Runtime.getCurrentActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtil.show(response.getBodyString());
+                        }
+                    });
                 }
 
                 @Override
                 public void onFailure(final Exception e) {
-                    final DownloadActivity activity = activityInstance.get();
-
-                    if(activity != null && !activity.isFinishing()) {
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ToastUtil.show(e.getMessage());
-                            }
-                        });
-                    }
+                    Runtime.getCurrentActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ToastUtil.show(e.getMessage());
+                        }
+                    });
                 }
             });
         }
