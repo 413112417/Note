@@ -60,6 +60,12 @@ public class NetworkActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mHandler.removeCallbacksAndMessages(null);
+    }
+
+    @Override
     public void onClick(View v) {
         hideSoftInput();
         switch (v.getId()) {
