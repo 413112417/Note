@@ -38,11 +38,11 @@ public class FileUtil {
      * @return
      */
     public static File getAudioDir() {
-        File voiceDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
-        if(!voiceDir.exists()) {
-            voiceDir.mkdir();
+        File audioDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
+        if(!audioDir.exists()) {
+            audioDir.mkdir();
         }
-        return voiceDir;
+        return audioDir;
     }
 
     /**
@@ -90,15 +90,15 @@ public class FileUtil {
      * @return
      */
     public static File getAudioFile(String fileName) {
-        File voiceFile = new File(getAudioDir().getAbsolutePath(), fileName);
+        File audioFile = new File(getAudioDir().getAbsolutePath(), fileName);
         try {
-            if(!voiceFile.exists()) {
-                voiceFile.createNewFile();
+            if(!audioFile.exists()) {
+                audioFile.createNewFile();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return voiceFile;
+        return audioFile;
     }
 
     /**
