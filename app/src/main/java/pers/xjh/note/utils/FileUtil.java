@@ -100,15 +100,15 @@ public class FileUtil {
      * @return
      */
     public static File getImageFile(String fileName) {
-        File downloadFile = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath(), fileName);
+        File imageFile = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath(), fileName);
         try {
-            if(!downloadFile.exists()) {
-                downloadFile.createNewFile();
+            if(!imageFile.exists()) {
+                imageFile.createNewFile();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return downloadFile;
+        return imageFile;
     }
 
     /**
