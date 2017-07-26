@@ -78,6 +78,23 @@ public class FileUtil {
     }
 
     /**
+     * 生成下载文件
+     * @param fileName
+     * @return
+     */
+    public static File getDownloadFile(String fileName) {
+        File downloadFile = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath(), fileName);
+        try {
+            if(!downloadFile.exists()) {
+                downloadFile.createNewFile();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return downloadFile;
+    }
+
+    /**
      * 删除一个文件
      * @param path
      */
