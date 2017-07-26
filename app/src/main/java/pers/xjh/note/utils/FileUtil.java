@@ -95,6 +95,23 @@ public class FileUtil {
     }
 
     /**
+     * 得到图片文件
+     * @param fileName
+     * @return
+     */
+    public static File getImageFile(String fileName) {
+        File downloadFile = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath(), fileName);
+        try {
+            if(!downloadFile.exists()) {
+                downloadFile.createNewFile();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return downloadFile;
+    }
+
+    /**
      * 生成下载文件
      * @param fileName
      * @return

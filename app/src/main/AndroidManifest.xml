@@ -99,6 +99,7 @@
         <activity android:name=".ui.detail.android.ColorMatrixApiActivity" />
         <activity android:name=".ui.detail.android.PixelsActivity" />
         <activity android:name=".ui.detail.android.ImageDetailActivity" />
+        <activity android:name=".ui.detail.android.ImageClipActivity" />
         <activity android:name=".ui.detail.android.WavingActivity" />
         <activity android:name=".ui.detail.android.RoundImageActivity"
             android:hardwareAccelerated="false"/>
