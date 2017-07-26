@@ -304,9 +304,9 @@ public class NoteModel {
                     noteList.add(new Note("访问者模式", R.string.design_fwz));
                 } else if(Constant.NOTE_FUNCTION == noteType) {
                     noteList.add(new Note("网络请求", NetworkActivity.class));
+                    noteList.add(new Note("文件下载", DownloadActivity.class));
                     noteList.add(new Note("二维码扫描", QRCodeActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("百度地图", BaiduMapActivity.class));
-                    noteList.add(new Note("文件下载", DownloadActivity.class));
                 }
 
                 e.onNext(noteList);
