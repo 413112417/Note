@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/btn_start_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/bg_blue_button"
+        android:textSize="@dimen/font_size_normal"
+        android:textColor="@color/white"
+        android:text="开启服务"/>
+
+    <Button
+        android:id="@+id/btn_bind_unbind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:background="@drawable/bg_red_button"
+        android:textSize="@dimen/font_size_normal"
+        android:textColor="@color/white"
+        android:text="绑定服务"/>
+</LinearLayout>

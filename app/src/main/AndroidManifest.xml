@@ -88,7 +88,7 @@
         <activity android:name=".ui.detail.android.viewLifeCycle.FrameLayoutLifeCycleActivity" />
         <activity android:name=".ui.detail.android.viewLifeCycle.ViewLifeCycleActivity" />
         <activity android:name=".ui.detail.android.VideoRecorderActivity" />
-        <activity android:name=".ui.detail.android.VoiceRecorderActivity" />
+        <activity android:name=".ui.detail.android.AudioRecorderActivity" />
         <activity android:name=".ui.detail.android.VideoViewActivity" />
         <activity android:name=".ui.detail.android.MediaPlayerActivity" />
         <activity android:name=".ui.detail.android.CanvasAPIActivity" />
@@ -147,6 +147,7 @@
             android:launchMode="singleTask"/>
         <activity android:name=".ui.detail.android.PendingTransitionBActivity"
             android:launchMode="singleTask"/>
+        <activity android:name=".ui.detail.android.ServiceLifeCycleActivity" />
         <activity android:name=".ui.detail.android.LockScreenServiceActivity" />
         <activity android:name=".ui.detail.android.MainProcessActivity" />
         <activity android:name=".ui.detail.android.TestProcessActivity"
@@ -216,6 +217,7 @@
         <activity android:name=".ui.detail.function.BaiduMapActivity" />
         <activity android:name=".ui.detail.function.DownloadActivity" />
 
+        <service android:name=".service.LifeCycleService" />
         <service android:name=".service.LockScreenService" />
 
         <receiver android:name=".broadcast.NetworkReceiver">
