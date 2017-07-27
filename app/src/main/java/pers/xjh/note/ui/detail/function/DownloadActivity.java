@@ -1,18 +1,26 @@
 package pers.xjh.note.ui.detail.function;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import pers.xjh.network.HttpClient;
 import pers.xjh.network.Response;
 import pers.xjh.network.interfaces.ProgressCallback;
 import pers.xjh.note.R;
 import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.service.DownloadService;
+import pers.xjh.note.service.LifeCycleService;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.ImageDetailActivity;
 import pers.xjh.note.utils.Constant;
@@ -22,7 +30,7 @@ import pers.xjh.note.utils.ToastUtil;
 import pers.xjh.note.widget.RectProgressBar;
 
 /**
- * Created by xujunhui on 2017/7/26.
+ * Created by XJH on 2017/7/26.
  */
 
 public class DownloadActivity extends BaseActivity {
@@ -32,6 +40,23 @@ public class DownloadActivity extends BaseActivity {
     private RectProgressBar mProgressBar;
 
     private Button mBtnDownload, mBtnView;
+
+    private DownloadService.DownloadBinder mBinder;
+
+    private ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mBinder = ((DownloadService.DownloadBinder) service);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
+
+    private Timer mTimer = new Timer();
+
 
     @Override
     protected int initContentView() {
@@ -45,12 +70,14 @@ public class DownloadActivity extends BaseActivity {
         mBtnDownload = (Button) findViewById(R.id.btn_download);
         mBtnView = (Button) findViewById(R.id.btn_view);
 
+        bindService(new Intent(DownloadActivity.this, DownloadService.class), mServiceConnection, BIND_AUTO_CREATE);
+
         mBtnDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String url = mEtUrl.getText().toString();
                 if(!TextUtils.isEmpty(url)) {
-                    ThreadPool.execute(new DownloadTask(DownloadActivity.this, url));
+                    mBinder.startDownload(url, "test.jpg");
                 } else {
                     ToastUtil.show("URL不能为空!");
                 }
@@ -66,59 +93,25 @@ public class DownloadActivity extends BaseActivity {
                 DownloadActivity.this.startActivity(intent);
             }
         });
+
+        mTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                if(mProgressBar != null && mBinder != null) {
+                    mProgressBar.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProgressBar.setProgress(mBinder.getProgress());
+                        }
+                    });
+                }
+            }
+        }, 0, 100);
     }
 
-    /**
-     * 静态内部类防止内存泄漏
-     */
-    private static class DownloadTask implements Runnable {
-
-        private WeakReference<DownloadActivity> activityInstance;
-
-        private String url;
-
-        public DownloadTask(DownloadActivity activity, String url) {
-            this.activityInstance = new WeakReference<DownloadActivity>(activity);
-            this.url = url;
-        }
-
-        @Override
-        public void run() {
-            HttpClient.download(url, FileUtil.getDownloadFile("test.jpg"), new ProgressCallback() {
-                @Override
-                public void onProgress(final int progress) {
-                    final DownloadActivity activity = activityInstance.get();
-
-                    if(activity != null && !activity.isFinishing()) {
-                        activity.runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                activity.mProgressBar.setProgress(progress);
-                            }
-                        });
-                    }
-                }
-
-                @Override
-                public void onResponse(final Response response) {
-                    Runtime.getCurrentActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ToastUtil.show(response.getBodyString());
-                        }
-                    });
-                }
-
-                @Override
-                public void onFailure(final Exception e) {
-                    Runtime.getCurrentActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ToastUtil.show(e.getMessage());
-                        }
-                    });
-                }
-            });
-        }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mTimer.cancel();
     }
 }

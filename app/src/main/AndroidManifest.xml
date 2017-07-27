@@ -219,6 +219,7 @@
 
         <service android:name=".service.LifeCycleService" />
         <service android:name=".service.LockScreenService" />
+        <service android:name=".service.DownloadService" />
 
         <receiver android:name=".broadcast.NetworkReceiver">
             <intent-filter>

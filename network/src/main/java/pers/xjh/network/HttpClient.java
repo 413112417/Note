@@ -150,7 +150,9 @@ public class HttpClient {
             mClient.newCall(request).enqueue(new okhttp3.Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    progressCallback.onFailure(e);
+                    if(progressCallback != null) {
+                        progressCallback.onFailure(e);
+                    }
                 }
 
                 @Override
@@ -174,9 +176,13 @@ public class HttpClient {
                             progressCallback.onProgress(progress);
                         }
                         fos.flush();
-                        progressCallback.onResponse(new pers.xjh.network.Response("下载成功"));
+                        if(progressCallback != null) {
+                            progressCallback.onResponse(new pers.xjh.network.Response("下载成功"));
+                        }
                     } catch (Exception e) {
-                        progressCallback.onFailure(e);
+                        if(progressCallback != null) {
+                            progressCallback.onFailure(e);
+                        }
                     } finally {
                         try {
                             if (is != null) is.close();
@@ -188,7 +194,9 @@ public class HttpClient {
                 }
             });
         } catch (Exception e) {
-            progressCallback.onFailure(e);
+            if(progressCallback != null) {
+                progressCallback.onFailure(e);
+            }
         }
     }
 }
