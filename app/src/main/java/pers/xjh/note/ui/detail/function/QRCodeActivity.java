@@ -46,8 +46,7 @@ public class QRCodeActivity extends BaseActivity {
     CodeUtils.AnalyzeCallback analyzeCallback = new CodeUtils.AnalyzeCallback() {
         @Override
         public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-            Intent intent = new Intent(QRCodeActivity.this, NoteTextActivity.class);
-            intent.putExtra(Constant.KEY_TITLE, "二维码扫描结果");
+            Intent intent = new Intent(QRCodeActivity.this, QRCodeResultActivity.class);
             intent.putExtra(Constant.KEY_STRING, result);
             QRCodeActivity.this.startActivity(intent);
             QRCodeActivity.this.finish();

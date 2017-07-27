@@ -214,6 +214,7 @@
         <activity android:name=".ui.detail.function.NetworkActivity" />
         <activity android:name=".ui.detail.function.QRCodeActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.function.QRCodeResultActivity" />
         <activity android:name=".ui.detail.function.BaiduMapActivity" />
         <activity android:name=".ui.detail.function.DownloadActivity" />
 
