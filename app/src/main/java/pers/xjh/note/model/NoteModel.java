@@ -219,7 +219,7 @@ public class NoteModel {
                     noteList.add(new Note("颜色矩阵", ColorMatrixActivity.class));
                     noteList.add(new Note("像素点分析", PixelsActivity.class));
                     noteList.add(new Note("图片墙", ImageWallActivity.class, Manifest.permission.READ_EXTERNAL_STORAGE));
-                    noteList.add(new Note("图片裁剪", ImageClipActivity.class, Manifest.permission.READ_EXTERNAL_STORAGE));
+                    noteList.add(new Note("图片裁剪", ImageClipActivity.class));
                     noteList.add(new Note("飘扬效果", WavingActivity.class));
                     noteList.add(new Note("遮罩(圆角图片)", RoundImageActivity.class));
                     noteList.add(new Note("遮罩(刮刮卡)", ScratchCardActivity.class));
