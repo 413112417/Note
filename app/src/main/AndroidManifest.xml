@@ -112,6 +112,7 @@
         <activity android:name=".ui.detail.android.WebViewActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.detail.android.ViewAnimationActivity" />
+        <activity android:name=".ui.detail.android.FrameAnimationActivity" />
         <activity android:name=".ui.detail.android.ObjectAnimatorActivity" />
         <activity android:name=".ui.detail.android.ValueAnimatorActivity" />
         <activity android:name=".ui.detail.android.LayoutAnimationActivity" />

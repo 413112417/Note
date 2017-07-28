@@ -37,6 +37,7 @@ import pers.xjh.note.ui.detail.android.FlashlightActivity;
 import pers.xjh.note.ui.detail.android.FragmentActivity;
 import pers.xjh.note.ui.detail.android.FragmentNestedActivity;
 import pers.xjh.note.ui.detail.android.FragmentPagerActivity;
+import pers.xjh.note.ui.detail.android.FrameAnimationActivity;
 import pers.xjh.note.ui.detail.android.GPSActivity;
 import pers.xjh.note.ui.detail.android.GoodClockViewActivity;
 import pers.xjh.note.ui.detail.android.ImageClipActivity;
@@ -229,6 +230,7 @@ public class NoteModel {
                     noteList.add(new Note("画板", DrawingBoardActivity.class));
                     noteList.add(new Note("WebView", WebViewActivity.class));
                     noteList.add(new Note("视图动画", ViewAnimationActivity.class));
+                    noteList.add(new Note("逐帧动画", FrameAnimationActivity.class));
                     noteList.add(new Note("ObjectAnimator", ObjectAnimatorActivity.class));
                     noteList.add(new Note("ValueAnimator", ValueAnimatorActivity.class));
                     noteList.add(new Note("LayoutAnimation", LayoutAnimationActivity.class));
