@@ -1,5 +1,7 @@
 package pers.xjh.note.ui.detail.android;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.widget.TextView;
 
 import pers.xjh.note.R;
@@ -15,6 +17,16 @@ public class NetworkChangeActivity extends BaseActivity {
 
     private TextView mTvState;
 
+    private NetworkReceiver mNetworkReceiver;
+
+    private NetworkReceiver.OnNetworkChangeListener mOnNetworkChangeListener = new NetworkReceiver.OnNetworkChangeListener() {
+        @Override
+        public void onNetworkChange(int networkState) {
+            setTvState(networkState);
+            showMsgDialog("网络状态改变", mTvState.getText().toString());
+        }
+    };
+
     @Override
     protected int initContentView() {
         return R.layout.activity_network_change;
@@ -24,12 +36,10 @@ public class NetworkChangeActivity extends BaseActivity {
     protected void initView() {
         mTvState = (TextView) findViewById(R.id.tv_state);
 
-        NetworkReceiver.addOnNetworkChangeListener(new NetworkReceiver.OnNetworkChangeListener() {
-            @Override
-            public void onNetworkChange(int networkState) {
-                setTvState(networkState);
-            }
-        });
+        mNetworkReceiver = new NetworkReceiver();
+        //安卓为了提高后台的性能，去掉了网络改变广播的静态注册方式（同时去除的还有拍照广播和录视频广播）
+        registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        mNetworkReceiver.addOnNetworkChangeListener(mOnNetworkChangeListener);
     }
 
     @Override
@@ -40,7 +50,7 @@ public class NetworkChangeActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        NetworkReceiver.deleteListener();
+        mNetworkReceiver.removeListener(mOnNetworkChangeListener);
     }
 
     private void setTvState(int networkState) {
