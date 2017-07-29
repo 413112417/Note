@@ -16,7 +16,7 @@ import pers.xjh.note.utils.NetworkUtil;
 
 public class NetworkReceiver extends BroadcastReceiver {
 
-    private static List<OnNetworkChangeListener> listeners;
+    private List<OnNetworkChangeListener> listeners;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -32,14 +32,14 @@ public class NetworkReceiver extends BroadcastReceiver {
         }
     }
 
-    public static void addOnNetworkChangeListener(OnNetworkChangeListener listener) {
+    public void addOnNetworkChangeListener(OnNetworkChangeListener listener) {
         if(listeners == null) {
             listeners = new ArrayList<>();
         }
         listeners.add(listener);
     }
 
-    public static void removeListener(OnNetworkChangeListener listener) {
+    public void removeListener(OnNetworkChangeListener listener) {
         if(listeners != null) {
             listeners.remove(listener);
         }
