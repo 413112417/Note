@@ -21,12 +21,6 @@ public class GradientDescent {
      */
     private static void batchGradientDescent(Point[] targets, float[] weights, float diff) {
 
-        for(int i=0; i<weights.length; i++) {
-            for(int j=0; j<targets.length; j++) {
-                weights[i] += (targets[j].getY() - (weights[0] + weights[1] * targets[j].getX())) * targets[j].getX() * 0.3f;
-            }
-        }
-
         float newDiff = 0;
         for(int j=0; j<targets.length; j++) {
             newDiff += (targets[j].getY() - (weights[0] + weights[1] * targets[j].getX())) * (targets[j].getY() - (weights[0] + weights[1] * targets[j].getX()));
@@ -35,6 +29,11 @@ public class GradientDescent {
         if(newDiff > diff && diff != -1) {
             return;
         } else {
+            for(int i=0; i<weights.length; i++) {
+                for(int j=0; j<targets.length; j++) {
+                    weights[i] += (targets[j].getY() - (weights[0] + weights[1] * targets[j].getX())) * targets[j].getX() * 0.3f;
+                }
+            }
             batchGradientDescent(targets, weights, newDiff);
         }
     }

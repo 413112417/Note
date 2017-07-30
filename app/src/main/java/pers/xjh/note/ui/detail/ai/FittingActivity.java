@@ -27,15 +27,13 @@ import pers.xjh.note.widget.dialog.PickDialog;
 
 public class FittingActivity extends BaseActivity implements View.OnClickListener {
 
-    private EditText mEtCount, mEtWeight1, mEtWeight2;
+    private EditText mEtCount, mEtWeight1, mEtWeight2, mEtFloat;
 
     private FittingSurfaceView mFittingSurfaceView;
 
-    private TextView mTvSearchWay, mTvTime;
+    private TextView mTvWeight1, mTvWeight2;
 
     private Button mBtnBuild, mBtnBGD, mBtnSGD;
-
-    private Tree mTree = new Tree();
 
     private Point[] mPoints;
 
@@ -49,7 +47,7 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
             switch (msg.what) {
                 case 0:
                     enableButton();
-                    showResult(msg.arg1, msg.arg2 + "ms");
+                    showResult();
                     break;
                 case 1:
                     enableButton();
@@ -75,9 +73,10 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
         mEtCount = (EditText) findViewById(R.id.et_count);
         mEtWeight1 = (EditText) findViewById(R.id.et_weight_1);
         mEtWeight2 = (EditText) findViewById(R.id.et_weight_2);
+        mEtFloat = (EditText) findViewById(R.id.et_float);
         mFittingSurfaceView = (FittingSurfaceView) findViewById(R.id.fitting_surface_view);
-        mTvSearchWay = (TextView) findViewById(R.id.tv_search_way);
-        mTvTime = (TextView) findViewById(R.id.tv_time);
+        mTvWeight1 = (TextView) findViewById(R.id.tv_weight_1);
+        mTvWeight2 = (TextView) findViewById(R.id.tv_weight_2);
 
         mBtnBuild = (Button) findViewById(R.id.btn_build);
         mBtnBuild.setOnClickListener(this);
@@ -131,10 +130,10 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
                 buildData();
                 break;
             case R.id.btn_bgd:
-                startSearch(0);
+                startFitting(0);
                 break;
             case R.id.btn_sgd:
-                startSearch(1);
+                startFitting(1);
                 break;
         }
     }
@@ -145,9 +144,10 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
     private void buildData() {
         //如果输入长度为空，则输入默认长度
         if (TextUtils.isEmpty(mEtCount.getText())) {
-            mEtCount.setText("100");
-            mEtWeight1.setText("0.2");
+            mEtCount.setText("1000");
+            mEtWeight1.setText("0.1");
             mEtWeight2.setText("1");
+            mEtFloat.setText("0.5");
             buildData();
             return;
         }
@@ -156,12 +156,13 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
             int count = Integer.parseInt(mEtCount.getText().toString());
             float weight1 = Float.parseFloat(mEtWeight1.getText().toString());
             float weight2 = Float.parseFloat(mEtWeight2.getText().toString());
+            float floatValue = Float.parseFloat(mEtFloat.getText().toString());
 
             mWeights = new float[2];
             mPoints = new Point[count];
             for (int i = 0; i < count; i++) {
                 float x = mRandom.nextFloat();
-                mPoints[i] = new Point(x,  weight1 + weight2 * x + (mRandom.nextFloat() - 0.5f) * 0.5f);
+                mPoints[i] = new Point(x,  weight1 + weight2 * x + (mRandom.nextFloat() - 0.5f) * floatValue);
             }
             mFittingSurfaceView.setPoints(mPoints);
             mFittingSurfaceView.setWeights(mWeights);
@@ -170,24 +171,24 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    private void startSearch(int type) {
-        if(mTree != null) {
+    private void startFitting(int type) {
+        if(mPoints != null) {
             disableButton();
-            showResult(type, "--");
-            ThreadPool.execute(new SearchTask(type));
+            clearResult();
+            ThreadPool.execute(new FittingTask(type));
         } else {
-            showErrorDialog("树为空!");
+            showErrorDialog("样本为空!");
         }
     }
 
     /**
-     * 遍历任务
+     * 拟合任务
      */
-    private class SearchTask implements Runnable {
+    private class FittingTask implements Runnable {
 
         private int type;
 
-        public SearchTask(int type) {
+        public FittingTask(int type) {
             this.type = type;
         }
 
@@ -217,7 +218,6 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
                 GradientDescent.batchGradientDescent(mPoints, mWeights);
                 break;
             case 1:
-                Search.broadFirstSearch(mTree);
                 break;
         }
         long end = System.currentTimeMillis();
@@ -227,15 +227,16 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
     /**
      * 显示处理结果
      */
-    private void showResult(int way, String time) {
-        switch (way) {
-            case 0:
-                mTvSearchWay.setText("批量梯度下降");
-                break;
-            case 1:
-                mTvSearchWay.setText("随机梯度下降");
-                break;
-        }
-        mTvTime.setText(time);
+    private void showResult() {
+        mTvWeight1.setText(mWeights[0] + "");
+        mTvWeight2.setText(mWeights[1] + "");
+    }
+
+    /**
+     * 清除结果
+     */
+    private void clearResult() {
+        mTvWeight1.setText("");
+        mTvWeight2.setText("");
     }
 }
