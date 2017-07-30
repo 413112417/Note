@@ -27,7 +27,7 @@ import pers.xjh.note.widget.dialog.PickDialog;
 
 public class FittingActivity extends BaseActivity implements View.OnClickListener {
 
-    private EditText mEtCount;
+    private EditText mEtCount, mEtWeight1, mEtWeight2;
 
     private FittingSurfaceView mFittingSurfaceView;
 
@@ -73,6 +73,8 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void initView() {
         mEtCount = (EditText) findViewById(R.id.et_count);
+        mEtWeight1 = (EditText) findViewById(R.id.et_weight_1);
+        mEtWeight2 = (EditText) findViewById(R.id.et_weight_2);
         mFittingSurfaceView = (FittingSurfaceView) findViewById(R.id.fitting_surface_view);
         mTvSearchWay = (TextView) findViewById(R.id.tv_search_way);
         mTvTime = (TextView) findViewById(R.id.tv_time);
@@ -126,7 +128,7 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_build:
-                showBuildTypeDialog();
+                buildData();
                 break;
             case R.id.btn_bgd:
                 startSearch(0);
@@ -138,41 +140,28 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
     }
 
     /**
-     * 显示选择生成树类型的对话框
-     */
-    private void showBuildTypeDialog() {
-        new PickDialog.Builder(this)
-                .setTitle("树的类型")
-                .setItemDatas("随机树", "完全二叉树", "最大堆", "最小堆")
-                .setInAnimation(R.anim.soft_in)
-                .setItemClickListener(new PickDialog.OnItemClickListener() {
-                    @Override
-                    public void onItemClicked(PickDialog dialog, int position) {
-                        buildData(position);
-                        dialog.dismiss();
-                    }
-                }).build().show();
-    }
-
-    /**
      * 生成数据
      */
-    private void buildData(int type) {
+    private void buildData() {
         //如果输入长度为空，则输入默认长度
         if (TextUtils.isEmpty(mEtCount.getText())) {
             mEtCount.setText("100");
-            buildData(type);
+            mEtWeight1.setText("0.2");
+            mEtWeight2.setText("1");
+            buildData();
             return;
         }
 
         try {
             int count = Integer.parseInt(mEtCount.getText().toString());
+            float weight1 = Float.parseFloat(mEtWeight1.getText().toString());
+            float weight2 = Float.parseFloat(mEtWeight2.getText().toString());
 
             mWeights = new float[2];
             mPoints = new Point[count];
             for (int i = 0; i < count; i++) {
                 float x = mRandom.nextFloat();
-                mPoints[i] = new Point(x,  x + (mRandom.nextFloat() - 0.5f) * 0.5f + 0.1f);
+                mPoints[i] = new Point(x,  weight1 + weight2 * x + (mRandom.nextFloat() - 0.5f) * 0.5f);
             }
             mFittingSurfaceView.setPoints(mPoints);
             mFittingSurfaceView.setWeights(mWeights);
@@ -241,10 +230,10 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
     private void showResult(int way, String time) {
         switch (way) {
             case 0:
-                mTvSearchWay.setText("深度优先");
+                mTvSearchWay.setText("批量梯度下降");
                 break;
             case 1:
-                mTvSearchWay.setText("广度优先");
+                mTvSearchWay.setText("随机梯度下降");
                 break;
         }
         mTvTime.setText(time);

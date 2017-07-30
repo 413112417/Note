@@ -16,6 +16,50 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_size_normal"
             android:textColor="@color/black"
+            android:text="权重１"/>
+
+        <EditText
+            android:id="@+id/et_weight_1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_et_1"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"
+            android:text="权重２"/>
+
+        <EditText
+            android:id="@+id/et_weight_2"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_et_1"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"
             android:text="样本个数"/>
 
         <EditText
@@ -47,13 +91,6 @@
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:layout_weight="1" />
-
-    <pers.xjh.note.widget.MemorySurfaceView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        android:layout_weight="1">
-    </pers.xjh.note.widget.MemorySurfaceView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,7 +137,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_size_normal"
             android:textColor="@color/black"
-            android:text="遍历方式"/>
+            android:text="方式"/>
 
         <TextView
             android:id="@+id/tv_search_way"

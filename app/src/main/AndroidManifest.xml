@@ -206,6 +206,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.detail.algorithm.MinimumSpanningTreeActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".ui.detail.ai.FittingActivity"
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".ui.detail.java.HttpServerActivity" />
 
@@ -218,8 +220,6 @@
         <activity android:name=".ui.detail.function.QRCodeResultActivity" />
         <activity android:name=".ui.detail.function.BaiduMapActivity" />
         <activity android:name=".ui.detail.function.DownloadActivity" />
-
-        <activity android:name=".ui.detail.ai.FittingActivity" />
 
         <service android:name=".service.LifeCycleService" />
         <service android:name=".service.LockScreenService" />
