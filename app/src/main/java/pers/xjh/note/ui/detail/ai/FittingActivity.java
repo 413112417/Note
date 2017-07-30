@@ -27,7 +27,7 @@ import pers.xjh.note.widget.dialog.PickDialog;
 
 public class FittingActivity extends BaseActivity implements View.OnClickListener {
 
-    private EditText mEtCount, mEtWeight1, mEtWeight2, mEtFloat;
+    private EditText mEtCount, mEtWeight1, mEtWeight2, mEtFloat, mEtDescent;
 
     private FittingSurfaceView mFittingSurfaceView;
 
@@ -38,6 +38,8 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
     private Point[] mPoints;
 
     private float[] mWeights;
+
+    private float mDescender;
 
     private Random mRandom = new Random();
 
@@ -74,6 +76,7 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
         mEtWeight1 = (EditText) findViewById(R.id.et_weight_1);
         mEtWeight2 = (EditText) findViewById(R.id.et_weight_2);
         mEtFloat = (EditText) findViewById(R.id.et_float);
+        mEtDescent = (EditText) findViewById(R.id.et_descent);
         mFittingSurfaceView = (FittingSurfaceView) findViewById(R.id.fitting_surface_view);
         mTvWeight1 = (TextView) findViewById(R.id.tv_weight_1);
         mTvWeight2 = (TextView) findViewById(R.id.tv_weight_2);
@@ -148,6 +151,7 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
             mEtWeight1.setText("0.1");
             mEtWeight2.setText("1");
             mEtFloat.setText("0.5");
+            mEtDescent.setText("0.1");
             buildData();
             return;
         }
@@ -157,6 +161,7 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
             float weight1 = Float.parseFloat(mEtWeight1.getText().toString());
             float weight2 = Float.parseFloat(mEtWeight2.getText().toString());
             float floatValue = Float.parseFloat(mEtFloat.getText().toString());
+            mDescender = Float.parseFloat(mEtDescent.getText().toString());
 
             mWeights = new float[2];
             mPoints = new Point[count];
@@ -215,7 +220,7 @@ public class FittingActivity extends BaseActivity implements View.OnClickListene
         long start = System.currentTimeMillis();
         switch (way) {
             case 0:
-                GradientDescent.batchGradientDescent(mPoints, mWeights);
+                GradientDescent.batchGradientDescent(mPoints, mWeights, mDescender);
                 break;
             case 1:
                 break;

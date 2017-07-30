@@ -12,14 +12,14 @@ public class GradientDescent {
     /**
      * 批量梯度下降
      */
-    public static void batchGradientDescent(Point[] targets, float[] weights) {
-        batchGradientDescent(targets, weights, -1);
+    public static void batchGradientDescent(Point[] targets, float[] weights, float descender) {
+        batchGradientDescent(targets, weights, -1, descender);
     }
 
     /**
      * 批量梯度下降
      */
-    private static void batchGradientDescent(Point[] targets, float[] weights, float diff) {
+    private static void batchGradientDescent(Point[] targets, float[] weights, float diff, float descender) {
 
         float newDiff = 0;
         for(int j=0; j<targets.length; j++) {
@@ -31,10 +31,10 @@ public class GradientDescent {
         } else {
             for(int i=0; i<weights.length; i++) {
                 for(int j=0; j<targets.length; j++) {
-                    weights[i] += (targets[j].getY() - (weights[0] + weights[1] * targets[j].getX())) * targets[j].getX() * 0.3f;
+                    weights[i] += (targets[j].getY() - (weights[0] + weights[1] * targets[j].getX())) * targets[j].getX() * descender;
                 }
             }
-            batchGradientDescent(targets, weights, newDiff);
+            batchGradientDescent(targets, weights, newDiff, descender);
         }
     }
 }

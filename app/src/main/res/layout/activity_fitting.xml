@@ -45,12 +45,22 @@
             android:background="@drawable/bg_et_1"
             android:layout_weight="1"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:gravity="center">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/font_size_normal"
             android:textColor="@color/black"
-            android:text="浮动"/>
+            android:text="偏移幅度"/>
 
         <EditText
             android:id="@+id/et_float"
@@ -62,6 +72,22 @@
             android:background="@drawable/bg_et_1"
             android:layout_weight="1"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_normal"
+            android:textColor="@color/black"
+            android:text="下降幅度"/>
+
+        <EditText
+            android:id="@+id/et_descent"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_et_1"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <LinearLayout
