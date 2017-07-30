@@ -44,10 +44,10 @@ dependencies {
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
     //test-tool
     compile 'com.github.413112417:test-tool:1.4'
-
     compile project(':network')
-//    compile project(':test')
+    //    compile project(':test')
     compile project(':server')
     compile project(':zxing')
     compile project(':baidumap')
+    compile project(':ai')
 }

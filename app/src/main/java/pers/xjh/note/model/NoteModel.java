@@ -15,6 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 import pers.xjh.note.R;
 import pers.xjh.note.listener.OnResponseListener;
 import pers.xjh.note.model.bean.Note;
+import pers.xjh.note.ui.detail.ai.FittingActivity;
 import pers.xjh.note.ui.detail.algorithm.GraphActivity;
 import pers.xjh.note.ui.detail.algorithm.MinimumSpanningTreeActivity;
 import pers.xjh.note.ui.detail.algorithm.ShortestPathActivity;
@@ -313,6 +314,8 @@ public class NoteModel {
                     noteList.add(new Note("文件下载", DownloadActivity.class));
                     noteList.add(new Note("二维码扫描", QRCodeActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("百度地图", BaiduMapActivity.class));
+                } else if(Constant.NOTE_AI == noteType) {
+                    noteList.add(new Note("梯度下降", FittingActivity.class));
                 }
 
                 e.onNext(noteList);
