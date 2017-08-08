@@ -92,6 +92,7 @@ import pers.xjh.note.ui.detail.algorithm.TreeActivity;
 import pers.xjh.note.ui.detail.algorithm.BinarySearchTreeActivity;
 import pers.xjh.note.ui.detail.algorithm.SortActivity;
 import pers.xjh.note.ui.detail.function.DownloadActivity;
+import pers.xjh.note.ui.detail.function.RxJavaActivity;
 import pers.xjh.note.ui.detail.java.HttpServerActivity;
 import pers.xjh.note.ui.detail.function.BaiduMapActivity;
 import pers.xjh.note.ui.detail.android.FingerprintActivity;
@@ -311,6 +312,7 @@ public class NoteModel {
                     noteList.add(new Note("访问者模式", R.string.design_fwz));
                 } else if(Constant.NOTE_FUNCTION == noteType) {
                     noteList.add(new Note("网络请求", NetworkActivity.class));
+                    noteList.add(new Note("RxJava", RxJavaActivity.class));
                     noteList.add(new Note("文件下载", DownloadActivity.class));
                     noteList.add(new Note("二维码扫描", QRCodeActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("百度地图", BaiduMapActivity.class));

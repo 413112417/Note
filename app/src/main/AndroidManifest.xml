@@ -215,6 +215,7 @@
         <activity android:name=".ui.detail.optimize.StringOptimizeActivity" />
 
         <activity android:name=".ui.detail.function.NetworkActivity" />
+        <activity android:name=".ui.detail.function.RxJavaActivity" />
         <activity android:name=".ui.detail.function.QRCodeActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.detail.function.QRCodeResultActivity" />
