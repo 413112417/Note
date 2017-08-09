@@ -153,7 +153,7 @@ public class RxJavaActivity extends BaseActivity implements View.OnClickListener
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(RxJavaActivity.this, "subscribe() 线程id:" + threadId, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RxJavaActivity.this, "处理 线程id:" + threadId, Toast.LENGTH_SHORT).show();
                     }
                 });
                 e.onNext("小明");
