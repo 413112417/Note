@@ -11,10 +11,12 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subjects.PublishSubject;
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
 
@@ -38,6 +40,7 @@ public class RxJavaActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.btn_4).setOnClickListener(this);
         findViewById(R.id.btn_5).setOnClickListener(this);
         findViewById(R.id.btn_6).setOnClickListener(this);
+        findViewById(R.id.btn_7).setOnClickListener(this);
     }
 
     @Override
@@ -60,6 +63,9 @@ public class RxJavaActivity extends BaseActivity implements View.OnClickListener
                 break;
             case R.id.btn_6:
                 test();
+                break;
+            case R.id.btn_7:
+                combine();
                 break;
         }
     }
@@ -192,7 +198,7 @@ public class RxJavaActivity extends BaseActivity implements View.OnClickListener
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Consumer<Integer>() {
             @Override
-            public void accept(Integer i) throws Exception {
+            public void accept(Integer integer) throws Exception {
                 final long threadId = Thread.currentThread().getId();
                 runOnUiThread(new Runnable() {
                     @Override
@@ -200,8 +206,48 @@ public class RxJavaActivity extends BaseActivity implements View.OnClickListener
                         Toast.makeText(RxJavaActivity.this, "回调 线程id:" + threadId, Toast.LENGTH_SHORT).show();
                     }
                 });
-                Toast.makeText(RxJavaActivity.this, i + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RxJavaActivity.this, integer + "", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void combine() {
+        PublishSubject<String> publishSubject1 = PublishSubject.create();
+        publishSubject1.subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                Toast.makeText(RxJavaActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        PublishSubject<Integer> publishSubject2 = PublishSubject.create();
+        publishSubject2.subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Exception {
+                Toast.makeText(RxJavaActivity.this, integer + "", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Observable.combineLatest(publishSubject1, publishSubject2, new BiFunction<String, Integer, String>() {
+
+            @Override
+            public String apply(String s, Integer integer) throws Exception {
+                return s + integer;
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                Toast.makeText(RxJavaActivity.this, s, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        publishSubject1.onNext("string1");
+        publishSubject1.onNext("string2");
+        publishSubject1.onNext("string3");
+
+        publishSubject2.onNext(1);
+        publishSubject2.onNext(2);
+        publishSubject2.onNext(3);
     }
 }
