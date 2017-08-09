@@ -149,6 +149,13 @@ public class RxJavaActivity extends BaseActivity implements View.OnClickListener
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> e) throws Exception {
+                final long threadId = Thread.currentThread().getId();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RxJavaActivity.this, "subscribe() 线程id:" + threadId, Toast.LENGTH_SHORT).show();
+                    }
+                });
                 e.onNext("小明");
                 e.onNext("大明");
                 e.onNext("小许");
@@ -159,12 +166,26 @@ public class RxJavaActivity extends BaseActivity implements View.OnClickListener
         }).filter(new Predicate<String>() {
             @Override
             public boolean test(String s) throws Exception {
+                final long threadId = Thread.currentThread().getId();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RxJavaActivity.this, "过滤 线程id:" + threadId, Toast.LENGTH_SHORT).show();
+                    }
+                });
                 return (s.indexOf("许") != -1);
             }
             //转化
         }).map(new Function<String, Integer>() {
             @Override
             public Integer apply(String s) throws Exception {
+                final long threadId = Thread.currentThread().getId();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RxJavaActivity.this, "转化 线程id:" + threadId, Toast.LENGTH_SHORT).show();
+                    }
+                });
                 return s.hashCode();
             }
         }).subscribeOn(Schedulers.io())
@@ -172,6 +193,13 @@ public class RxJavaActivity extends BaseActivity implements View.OnClickListener
         .subscribe(new Consumer<Integer>() {
             @Override
             public void accept(Integer i) throws Exception {
+                final long threadId = Thread.currentThread().getId();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RxJavaActivity.this, "回调 线程id:" + threadId, Toast.LENGTH_SHORT).show();
+                    }
+                });
                 Toast.makeText(RxJavaActivity.this, i + "", Toast.LENGTH_SHORT).show();
             }
         });
