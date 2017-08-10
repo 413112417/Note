@@ -8,24 +8,16 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import pers.xjh.network.HttpClient;
-import pers.xjh.network.Response;
-import pers.xjh.network.interfaces.ProgressCallback;
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
 import pers.xjh.note.service.DownloadService;
-import pers.xjh.note.service.LifeCycleService;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.ImageDetailActivity;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.utils.FileUtil;
-import pers.xjh.note.utils.ThreadPool;
 import pers.xjh.note.utils.ToastUtil;
 import pers.xjh.note.widget.RectProgressBar;
 

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 import pers.xjh.note.service.LifeCycleService;
 import pers.xjh.note.ui.base.BaseActivity;
 
@@ -24,14 +24,14 @@ public class ServiceLifeCycleActivity extends BaseActivity implements View.OnCli
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            Toast.makeText(Runtime.getApplication(), "onServiceConnected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AppRuntime.getApplication(), "onServiceConnected", Toast.LENGTH_SHORT).show();
             ((LifeCycleService.LifeCycleServiceBinder) service).binderMethod();
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
             //正常情况下是不被调用的,调用时机是当Service服务被意外销毁时,例如内存的资源不足时这个方法才被自动调用.
-            Toast.makeText(Runtime.getApplication(), "onServiceDisconnected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AppRuntime.getApplication(), "onServiceDisconnected", Toast.LENGTH_SHORT).show();
         }
     };
 

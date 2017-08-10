@@ -14,9 +14,9 @@ import pers.xjh.note.utils.Constant;
  * Created by XJH on 2017/3/27.
  */
 
-public class Runtime {
+public class AppRuntime {
 
-    private Runtime() {}
+    private AppRuntime() {}
 
     private static Map<String, Object> mData = new HashMap<>();
 
@@ -70,8 +70,8 @@ public class Runtime {
      * @param activity
      */
     public static void startActivity(Class activity) {
-        Intent intent = new Intent(Runtime.getCurrentActivity(), activity);
-        Runtime.getCurrentActivity().startActivity(intent);
+        Intent intent = new Intent(AppRuntime.getCurrentActivity(), activity);
+        AppRuntime.getCurrentActivity().startActivity(intent);
     }
 
     /**
@@ -80,13 +80,13 @@ public class Runtime {
      * @param flag 启动模式
      */
     public static void startActivity(Class activity, int flag) {
-        Intent intent = new Intent(Runtime.getCurrentActivity(), activity);
+        Intent intent = new Intent(AppRuntime.getCurrentActivity(), activity);
         intent.setFlags(flag);
-        Runtime.getCurrentActivity().startActivity(intent);
+        AppRuntime.getCurrentActivity().startActivity(intent);
     }
 
     public static void startActivityForResult(Class activity, int requestCode) {
-        Intent intent = new Intent(Runtime.getCurrentActivity(), activity);
-        Runtime.getCurrentActivity().startActivityForResult(intent, requestCode);
+        Intent intent = new Intent(AppRuntime.getCurrentActivity(), activity);
+        AppRuntime.getCurrentActivity().startActivityForResult(intent, requestCode);
     }
 }

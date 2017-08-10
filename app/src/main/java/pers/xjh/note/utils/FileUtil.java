@@ -6,7 +6,7 @@ import android.os.Environment;
 import java.io.File;
 import java.io.IOException;
 
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 
 /**
  * 文件管理工具类
@@ -26,7 +26,7 @@ public class FileUtil {
      * @return
      */
     public static File getVideoDir() {
-        File videoDir= new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsolutePath());
+        File videoDir= new File(AppRuntime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsolutePath());
         if(!videoDir.exists()) {
             videoDir.mkdir();
         }
@@ -38,7 +38,7 @@ public class FileUtil {
      * @return
      */
     public static File getAudioDir() {
-        File audioDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
+        File audioDir = new File(AppRuntime.getApplication().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
         if(!audioDir.exists()) {
             audioDir.mkdir();
         }
@@ -50,7 +50,7 @@ public class FileUtil {
      * @return
      */
     public static File getDownloadDir() {
-        File downloadDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
+        File downloadDir = new File(AppRuntime.getApplication().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
         if(!downloadDir.exists()) {
             downloadDir.mkdir();
         }
@@ -62,7 +62,7 @@ public class FileUtil {
      * @return
      */
     public static File getImageDir() {
-        File imageDir = new File(Runtime.getApplication().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+        File imageDir = new File(AppRuntime.getApplication().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath());
         if(!imageDir.exists()) {
             imageDir.mkdir();
         }

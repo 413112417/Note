@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import java.lang.ref.WeakReference;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.SlidingFinishLayout;
 
@@ -26,7 +26,7 @@ public class SlidingFinishActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        AppRuntime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
 
         getSupportActionBar().hide();
 
@@ -54,6 +54,6 @@ public class SlidingFinishActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        AppRuntime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
     }
 }

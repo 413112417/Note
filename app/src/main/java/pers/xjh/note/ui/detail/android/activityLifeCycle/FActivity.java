@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 
 /**
  * Created by XJH on 2017/4/28.
@@ -24,7 +24,7 @@ public class FActivity extends LifeCycleActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_1:
-                Runtime.startActivity(HActivity.class);
+                AppRuntime.startActivity(HActivity.class);
                 break;
         }
     }

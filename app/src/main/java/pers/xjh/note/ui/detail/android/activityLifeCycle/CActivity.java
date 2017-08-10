@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 
 /**
  * Created by XJH on 2017/4/28.
@@ -25,10 +25,10 @@ public class CActivity extends LifeCycleActivity implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_1:
-                Runtime.startActivity(AActivity.class);
+                AppRuntime.startActivity(AActivity.class);
                 break;
             case R.id.btn_2:
-                Runtime.startActivity(CActivity.class);
+                AppRuntime.startActivity(CActivity.class);
                 break;
         }
     }

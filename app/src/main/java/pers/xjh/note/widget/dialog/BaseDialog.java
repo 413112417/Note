@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 import pers.xjh.note.utils.ToastUtil;
 
 
@@ -95,7 +95,7 @@ public class BaseDialog extends Dialog {
     protected void finalize() throws Throwable {
         final long gcThreadId = Thread.currentThread().getId();
 
-        Runtime.getCurrentActivity().runOnUiThread(new Runnable() {
+        AppRuntime.getCurrentActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 long mainThreadId = Thread.currentThread().getId();

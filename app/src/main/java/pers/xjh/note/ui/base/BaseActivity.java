@@ -22,7 +22,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.lang.ref.WeakReference;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.GlideRoundTransform;
 import pers.xjh.note.widget.TitleBar;
@@ -40,7 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
 
         // 用弱引用防止内存泄露
-        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        AppRuntime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
 
         getSupportActionBar().hide();
 
@@ -76,7 +76,7 @@ public abstract class BaseActivity extends AppCompatActivity  {
     protected void onResume() {
         super.onResume();
         // 用弱引用防止内存泄露
-        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        AppRuntime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
     }
 
     //界面初始化，返回布局id即可

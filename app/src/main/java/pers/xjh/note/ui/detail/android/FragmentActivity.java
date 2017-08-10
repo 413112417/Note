@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.lang.ref.WeakReference;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.ui.detail.android.fragment.AFragment;
 import pers.xjh.note.ui.detail.android.fragment.BFragment;
@@ -99,7 +99,7 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onResume() {
         super.onResume();
-        Runtime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
+        AppRuntime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
         Toast.makeText(getApplicationContext(), className + "onResume", Toast.LENGTH_SHORT).show();
     }
 

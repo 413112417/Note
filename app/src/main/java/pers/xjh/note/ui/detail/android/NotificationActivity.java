@@ -13,7 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.RemoteViews;
 
 import pers.xjh.note.R;
-import pers.xjh.note.runtime.Runtime;
+import pers.xjh.note.runtime.AppRuntime;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.Constant;
 
@@ -76,7 +76,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
         selectNotificationLevel(builder);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(Runtime.makeID(), builder.build());
+        notificationManager.notify(AppRuntime.makeID(), builder.build());
     }
 
     /**
@@ -106,7 +106,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
         selectNotificationLevel(builder);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(Runtime.makeID(), notification);
+        notificationManager.notify(AppRuntime.makeID(), notification);
     }
 
     /**
@@ -137,7 +137,7 @@ public class NotificationActivity extends BaseActivity implements View.OnClickLi
         selectNotificationLevel(builder);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.notify(Runtime.makeID(), builder.build());
+        notificationManager.notify(AppRuntime.makeID(), builder.build());
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
