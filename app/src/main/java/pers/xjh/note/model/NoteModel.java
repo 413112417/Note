@@ -101,6 +101,7 @@ import pers.xjh.note.ui.detail.function.NetworkActivity;
 import pers.xjh.note.ui.detail.function.QRCodeActivity;
 import pers.xjh.note.ui.detail.android.VideoRecorderActivity;
 import pers.xjh.note.ui.detail.android.AudioRecorderActivity;
+import pers.xjh.note.ui.detail.jni.JNITestActivity;
 import pers.xjh.note.ui.detail.optimize.MemoryLeakActivity;
 import pers.xjh.note.ui.detail.optimize.StringOptimizeActivity;
 import pers.xjh.note.ui.note.NoteActivity;
@@ -138,6 +139,7 @@ public class NoteModel {
                 if(Constant.NOTE_ALL == noteType) {
                     noteList.add(new Note("Java", Constant.NOTE_JAVA, NoteActivity.class));
                     noteList.add(new Note("Android", Constant.NOTE_ANDROID, NoteActivity.class));
+                    noteList.add(new Note("JNI", Constant.NOTE_JNI, NoteActivity.class));
                     noteList.add(new Note("Linux", Constant.NOTE_LINUX, NoteActivity.class));
                     noteList.add(new Note("优化", Constant.NOTE_OPTIMIZE, NoteActivity.class));
                     noteList.add(new Note("功能", Constant.NOTE_FUNCTION, NoteActivity.class));
@@ -165,6 +167,8 @@ public class NoteModel {
                     noteList.add(new Note("反射", R.string.java_reflect));
                     noteList.add(new Note("注解", R.string.java_annotation));
                     noteList.add(new Note("Http服务器", HttpServerActivity.class));
+                } else if(Constant.NOTE_JNI == noteType) {
+                    noteList.add(new Note("JNI测试", JNITestActivity.class));
                 } else if(Constant.NOTE_LINUX == noteType) {
                     noteList.add(new Note("常用快捷键", R.string.linux_kjj));
                     noteList.add(new Note("目录基本操作", R.string.linux_mljbcz));

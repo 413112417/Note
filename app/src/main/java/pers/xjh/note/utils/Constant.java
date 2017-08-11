@@ -16,6 +16,7 @@ public class Constant {
     /** 笔记类型 */
     public static final int NOTE_ALL = AppRuntime.makeID(); //所有笔记
     public static final int NOTE_JAVA = AppRuntime.makeID(); //JAVA基础
+    public static final int NOTE_JNI = AppRuntime.makeID(); //JNI
     public static final int NOTE_ANDROID = AppRuntime.makeID(); //安卓基础
     public static final int NOTE_LINUX = AppRuntime.makeID(); //Linux
     public static final int NOTE_OPTIMIZE = AppRuntime.makeID(); //优化

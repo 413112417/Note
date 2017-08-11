@@ -222,6 +222,8 @@
         <activity android:name=".ui.detail.function.BaiduMapActivity" />
         <activity android:name=".ui.detail.function.DownloadActivity" />
 
+        <activity android:name=".ui.detail.jni.JNITestActivity"/>
+
         <service android:name=".service.LifeCycleService" />
         <service android:name=".service.LockScreenService" />
         <service android:name=".service.DownloadService" />
