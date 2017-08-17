@@ -73,6 +73,7 @@ import pers.xjh.note.ui.detail.android.SlidingFinishActivity;
 import pers.xjh.note.ui.detail.android.SystemPropertyActivity;
 import pers.xjh.note.ui.detail.android.TestProcessActivity;
 import pers.xjh.note.ui.detail.android.ThreeBodyActivity;
+import pers.xjh.note.ui.detail.android.TimePickerActivity;
 import pers.xjh.note.ui.detail.android.TitleBarActivity;
 import pers.xjh.note.ui.detail.android.UnlockActivity;
 import pers.xjh.note.ui.detail.android.ValueAnimatorActivity;
@@ -274,6 +275,7 @@ public class NoteModel {
                     noteList.add(new Note("MediaPlayer", MediaPlayerActivity.class));
                     noteList.add(new Note("闪光灯", FlashlightActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("GPS", GPSActivity.class));
+                    noteList.add(new Note("时间选择", TimePickerActivity.class));
                 } else if(Constant.NOTE_OPTIMIZE == noteType) {
                     noteList.add(new Note("内存泄露", MemoryLeakActivity.class));
                     noteList.add(new Note("字符串优化", StringOptimizeActivity.class));

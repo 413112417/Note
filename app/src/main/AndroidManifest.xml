@@ -191,6 +191,7 @@
         <activity android:name=".ui.detail.android.SelectorActivity" />
         <activity android:name=".ui.detail.android.FlashlightActivity" />
         <activity android:name=".ui.detail.android.GPSActivity" />
+        <activity android:name=".ui.detail.android.TimePickerActivity" />
 
         <activity android:name=".ui.detail.algorithm.SortActivity"
             android:screenOrientation="portrait"/>
