@@ -24,5 +24,6 @@ public class ProcessDialog extends BaseDialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_process);
+        setCancelable(false);
     }
 }
