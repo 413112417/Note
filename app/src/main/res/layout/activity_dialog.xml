@@ -48,4 +48,13 @@
         android:textSize="14dp"
         android:textColor="@color/black"
         android:text="弹出5个对话框，2，3不可取消"/>
+
+    <Button
+        android:id="@+id/btn_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:text="弹出进度条对话框"/>
 </LinearLayout>

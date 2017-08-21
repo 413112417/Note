@@ -1,5 +1,6 @@
 package pers.xjh.note.ui.base;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,6 +28,7 @@ import pers.xjh.note.utils.Constant;
 import pers.xjh.note.widget.GlideRoundTransform;
 import pers.xjh.note.widget.TitleBar;
 import pers.xjh.note.widget.dialog.AlertDialog;
+import pers.xjh.note.widget.dialog.ProcessDialog;
 
 /**
  * Activity基类
@@ -34,6 +36,8 @@ import pers.xjh.note.widget.dialog.AlertDialog;
  */
 
 public abstract class BaseActivity extends AppCompatActivity  {
+
+    private Dialog mDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -175,6 +179,11 @@ public abstract class BaseActivity extends AppCompatActivity  {
         showMsgDialog("错误", message, true, null, null, null, null);
     }
 
+    protected void showProcessDialog() {
+        mDialog = new ProcessDialog(this);
+        mDialog.show();
+    }
+
     /**
      * 显示消息对话框
      * @param message
@@ -183,15 +192,23 @@ public abstract class BaseActivity extends AppCompatActivity  {
                                  String positiveStr, AlertDialog.OnClickListener positiveListener,
                                  String negativeStr, AlertDialog.OnClickListener negativeListener) {
         if(!TextUtils.isEmpty(title) || !TextUtils.isEmpty(message)) {
-            new AlertDialog.Builder(this)
+            mDialog = new AlertDialog.Builder(this)
                     .setTitle(title)
                     .setContent(message)
                     .setCancelable(cancelable)
                     .setPositiveButton(positiveStr, positiveListener)
                     .setNegativeButton(negativeStr, negativeListener)
-                    .build().show();
+                    .build();
+            mDialog.show();
         } else {
             return;
         }
+    }
+
+    /**
+     * 取消对话框
+     */
+    protected void dismissDialog() {
+        mDialog.dismiss();
     }
 }

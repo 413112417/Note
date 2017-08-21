@@ -24,6 +24,7 @@ public class DialogActivity extends BaseActivity implements View.OnClickListener
         findViewById(R.id.btn_3).setOnClickListener(this);
         findViewById(R.id.btn_4).setOnClickListener(this);
         findViewById(R.id.btn_5).setOnClickListener(this);
+        findViewById(R.id.btn_6).setOnClickListener(this);
     }
 
     @Override
@@ -76,6 +77,32 @@ public class DialogActivity extends BaseActivity implements View.OnClickListener
                     }
                 });
                 showMsgDialog("测试对话框",5 + "");
+                break;
+            case R.id.btn_6:
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    showProcessDialog();
+                                }
+                            });
+
+                            Thread.sleep(2000);
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dismissDialog();
+                                }
+                            });
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
                 break;
         }
     }
