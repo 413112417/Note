@@ -72,6 +72,7 @@ import pers.xjh.note.ui.detail.android.ServiceLifeCycleActivity;
 import pers.xjh.note.ui.detail.android.ShaderActivity;
 import pers.xjh.note.ui.detail.android.SineWaveActivity;
 import pers.xjh.note.ui.detail.android.SlidingFinishActivity;
+import pers.xjh.note.ui.detail.android.SoundPoolActivity;
 import pers.xjh.note.ui.detail.android.SystemPropertyActivity;
 import pers.xjh.note.ui.detail.android.TestProcessActivity;
 import pers.xjh.note.ui.detail.android.ThreeBodyActivity;
@@ -277,6 +278,7 @@ public class NoteModel {
                     noteList.add(new Note("Camera2", Camera2Activity.class));
                     noteList.add(new Note("VideoView", VideoViewActivity.class));
                     noteList.add(new Note("MediaPlayer", MediaPlayerActivity.class));
+                    noteList.add(new Note("SoundPool", SoundPoolActivity.class));
                     noteList.add(new Note("闪光灯", FlashlightActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("GPS", GPSActivity.class));
                     noteList.add(new Note("时间选择", TimePickerActivity.class));
