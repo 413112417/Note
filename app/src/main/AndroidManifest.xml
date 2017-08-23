@@ -89,6 +89,8 @@
         <activity android:name=".ui.detail.android.viewLifeCycle.ViewLifeCycleActivity" />
         <activity android:name=".ui.detail.android.VideoRecorderActivity" />
         <activity android:name=".ui.detail.android.AudioRecorderActivity" />
+        <activity android:name=".ui.detail.android.CameraActivity" />
+        <activity android:name=".ui.detail.android.Camera2Activity" />
         <activity android:name=".ui.detail.android.VideoViewActivity" />
         <activity android:name=".ui.detail.android.MediaPlayerActivity" />
         <activity android:name=".ui.detail.android.CanvasAPIActivity" />

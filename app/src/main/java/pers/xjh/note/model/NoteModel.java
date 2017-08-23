@@ -23,6 +23,8 @@ import pers.xjh.note.ui.detail.android.ActivityManagerActivity;
 import pers.xjh.note.ui.detail.android.AudioWaveformActivity;
 import pers.xjh.note.ui.detail.android.BuildInfoActivity;
 import pers.xjh.note.ui.detail.android.CalendarActivity;
+import pers.xjh.note.ui.detail.android.Camera2Activity;
+import pers.xjh.note.ui.detail.android.CameraActivity;
 import pers.xjh.note.ui.detail.android.CanvasAPIActivity;
 import pers.xjh.note.ui.detail.android.ClockViewActivity;
 import pers.xjh.note.ui.detail.android.ColorMatrixActivity;
@@ -271,6 +273,8 @@ public class NoteModel {
                     noteList.add(new Note("NFC", NFCActivity.class));
                     noteList.add(new Note("视频录制", VideoRecorderActivity.class, Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO));
                     noteList.add(new Note("音频录制", AudioRecorderActivity.class, Manifest.permission.RECORD_AUDIO));
+                    noteList.add(new Note("Camera", CameraActivity.class));
+                    noteList.add(new Note("Camera2", Camera2Activity.class));
                     noteList.add(new Note("VideoView", VideoViewActivity.class));
                     noteList.add(new Note("MediaPlayer", MediaPlayerActivity.class));
                     noteList.add(new Note("闪光灯", FlashlightActivity.class, Manifest.permission.CAMERA));

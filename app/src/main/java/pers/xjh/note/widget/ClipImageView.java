@@ -193,10 +193,8 @@ public class ClipImageView extends ImageView {
      * 剪切图片，返回剪切后的bitmap对象
      * @return
      */
-    public Bitmap clip()
-    {
-        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(),
-                Bitmap.Config.ARGB_8888);
+    public Bitmap clip() {
+        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         draw(canvas);
         //这个“1”是为了去掉白色框部分
