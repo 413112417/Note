@@ -28,7 +28,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
         return -1;
     }
     /* success -- return valid version number */
-    result = JNI_VERSION_1_4;
+    result = JNI_VERSION_1_6;
 
     return result;
 }
