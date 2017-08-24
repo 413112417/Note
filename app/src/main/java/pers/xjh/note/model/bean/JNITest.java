@@ -24,6 +24,8 @@ public class JNITest {
 
     public static native void staticFieldAccess();
 
+    public static native String hello();
+
     static {
         System.loadLibrary("JniTest");
     }

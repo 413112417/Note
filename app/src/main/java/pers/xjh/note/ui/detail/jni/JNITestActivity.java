@@ -13,7 +13,7 @@ import pers.xjh.note.ui.base.BaseActivity;
 
 public class JNITestActivity extends BaseActivity {
 
-    private TextView mTv1, mTv2, mTv3, mTv4, mTv5, mTv6, mTv7;
+    private TextView mTv1, mTv2, mTv3, mTv4, mTv5, mTv6, mTv7, mTv8;
 
     @Override
     protected int initContentView() {
@@ -29,6 +29,7 @@ public class JNITestActivity extends BaseActivity {
         mTv5 = (TextView) findViewById(R.id.tv_5);
         mTv6 = (TextView) findViewById(R.id.tv_6);
         mTv7 = (TextView) findViewById(R.id.tv_7);
+        mTv8 = (TextView) findViewById(R.id.tv_8);
 
         mTv1.setText(JNITest.sayHello());
         mTv2.setText("2+3=" + JNITest.add(2, 3));
@@ -47,5 +48,7 @@ public class JNITestActivity extends BaseActivity {
         Note jniNote = new Note("jni");
         JNITest.setNoteName(jniNote);
         mTv7.setText(jniNote.getNoteName());
+
+        mTv8.setText(JNITest.hello());
     }
 }
