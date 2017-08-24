@@ -43,7 +43,7 @@ static JNINativeMethod gMethods[] = {
 };
 
 JNIEXPORT jstring JNICALL native_hello(JNIEnv *env, jclass clazz) {
-    return env->NewStringUTF("onload注册函数");
+    return env->NewStringUTF("OnLoad注册函数");
 }
 
 /**
