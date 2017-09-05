@@ -20,11 +20,7 @@ public class AppRuntime {
 
     private static Map<String, Object> mData = new HashMap<>();
 
-    public static Object get(String key) {
-        return mData.get(key);
-    }
-
-    public static <T> T get(String key, Class<T> clazz) {
+    public static <T> T get(String key) {
         return mData.get(key) == null ? null : ((T) mData.get(key));
     }
 
