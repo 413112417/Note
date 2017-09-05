@@ -24,6 +24,10 @@ public class AppRuntime {
         return mData.get(key);
     }
 
+    public static <T> T get(String key, Class<T> clazz) {
+        return mData.get(key) == null ? null : ((T) mData.get(key));
+    }
+
     public static void put(String key, Object obj) {
         mData.put(key, obj);
     }
