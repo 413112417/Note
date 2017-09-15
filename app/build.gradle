@@ -58,6 +58,9 @@ dependencies {
     compile 'com.github.413112417:test-tool:1.4'
     compile project(':network')
     //    compile project(':test')
+
+    compile 'com.github.wseemann:FFmpegMediaMetadataRetriever:1.0.14'
+
     compile project(':server')
     compile project(':zxing')
     compile project(':baidumap')

@@ -92,7 +92,9 @@
         <activity android:name=".ui.detail.android.CameraActivity" />
         <activity android:name=".ui.detail.android.Camera2Activity" />
         <activity android:name=".ui.detail.android.VideoViewActivity" />
+        <activity android:name=".ui.detail.android.VideoViewNetworkActivity" />
         <activity android:name=".ui.detail.android.MediaPlayerActivity" />
+        <activity android:name=".ui.detail.android.MediaPlayerNetworkActivity" />
         <activity android:name=".ui.detail.android.SoundPoolActivity" />
         <activity android:name=".ui.detail.android.CanvasAPIActivity" />
         <activity android:name=".ui.detail.android.ClockViewActivity" />
@@ -123,6 +125,7 @@
         <activity android:name=".ui.detail.android.SVGAnimationActivity" />
         <activity android:name=".ui.detail.android.ThreeBodyActivity" />
         <activity android:name=".ui.detail.android.SearchBarActivity" />
+        <activity android:name=".ui.detail.android.PathActivity" />
         <activity android:name=".ui.detail.android.activityLifeCycle.AActivity" />
         <activity android:name=".ui.detail.android.activityLifeCycle.BActivity"
             android:launchMode="standard"/>

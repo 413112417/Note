@@ -36,6 +36,7 @@ public class VideoViewActivity extends BaseActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
+
         return R.layout.activity_video_view;
     }
 
