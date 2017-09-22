@@ -99,6 +99,7 @@ import pers.xjh.note.ui.detail.algorithm.TreeActivity;
 import pers.xjh.note.ui.detail.algorithm.BinarySearchTreeActivity;
 import pers.xjh.note.ui.detail.algorithm.SortActivity;
 import pers.xjh.note.ui.detail.function.DownloadActivity;
+import pers.xjh.note.ui.detail.function.HikvisionActivity;
 import pers.xjh.note.ui.detail.function.RxJavaActivity;
 import pers.xjh.note.ui.detail.java.HttpServerActivity;
 import pers.xjh.note.ui.detail.function.BaiduMapActivity;
@@ -334,6 +335,7 @@ public class NoteModel {
                     noteList.add(new Note("文件下载", DownloadActivity.class));
                     noteList.add(new Note("二维码扫描", QRCodeActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("百度地图", BaiduMapActivity.class));
+                    noteList.add(new Note("海康威视", HikvisionActivity.class));
                 } else if(Constant.NOTE_AI == noteType) {
                     noteList.add(new Note("梯度下降", FittingActivity.class));
                 }

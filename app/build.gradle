@@ -17,6 +17,12 @@ android {
                 cppFlags "-frtti -fexceptions"
             }
         }
+
+        ndk {
+            // 设置支持的 SO 库构架，注意这里要根据你的实际情况来设置
+//            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+            abiFilters 'armeabi'
+        }
     }
     buildTypes {
         release {
@@ -57,12 +63,16 @@ dependencies {
     //test-tool
     compile 'com.github.413112417:test-tool:1.4'
     compile project(':network')
-    //    compile project(':test')
-
+    //compile project(':test')
     compile 'com.github.wseemann:FFmpegMediaMetadataRetriever:1.0.14'
-
+    //exoplayer
+    compile 'com.google.android.exoplayer:exoplayer:r2.3.0'
     compile project(':server')
     compile project(':zxing')
     compile project(':baidumap')
     compile project(':ai')
+    // required, enough for most devices.
+    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.7.8.1'
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.7.8.1'
+    compile files('libs/PlayerSDK.jar')
 }

@@ -15,7 +15,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven { url "https://jitpack.io" } //用于下载RecycleView 的封装库
+        maven { url "https://jitpack.io" } //用于下载test-tool
     }
 }
 
