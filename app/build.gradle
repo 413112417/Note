@@ -74,5 +74,4 @@ dependencies {
     // required, enough for most devices.
     compile 'tv.danmaku.ijk.media:ijkplayer-java:0.7.8.1'
     compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.7.8.1'
-    compile files('libs/PlayerSDK.jar')
 }
