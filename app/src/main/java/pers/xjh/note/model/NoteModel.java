@@ -110,6 +110,7 @@ import pers.xjh.note.ui.detail.function.QRCodeActivity;
 import pers.xjh.note.ui.detail.android.VideoRecorderActivity;
 import pers.xjh.note.ui.detail.android.AudioRecorderActivity;
 import pers.xjh.note.ui.detail.jni.JNITestActivity;
+import pers.xjh.note.ui.detail.jni.NeonTestActivity;
 import pers.xjh.note.ui.detail.optimize.MemoryLeakActivity;
 import pers.xjh.note.ui.detail.optimize.StringOptimizeActivity;
 import pers.xjh.note.ui.note.NoteActivity;
@@ -177,6 +178,7 @@ public class NoteModel {
                     noteList.add(new Note("Http服务器", HttpServerActivity.class));
                 } else if(Constant.NOTE_JNI == noteType) {
                     noteList.add(new Note("JNI测试", JNITestActivity.class));
+                    noteList.add(new Note("NEON测试", NeonTestActivity.class));
                 } else if(Constant.NOTE_LINUX == noteType) {
                     noteList.add(new Note("常用快捷键", R.string.linux_kjj));
                     noteList.add(new Note("目录基本操作", R.string.linux_mljbcz));

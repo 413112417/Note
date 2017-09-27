@@ -233,6 +233,7 @@
         <activity android:name=".ui.detail.function.DownloadActivity" />
 
         <activity android:name=".ui.detail.jni.JNITestActivity"/>
+        <activity android:name=".ui.detail.jni.NeonTestActivity" />
 
         <service android:name=".service.LifeCycleService" />
         <service android:name=".service.LockScreenService" />
