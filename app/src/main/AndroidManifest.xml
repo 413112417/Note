@@ -29,6 +29,10 @@
     <!-- 位置信息 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 显示系统窗口权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- 在 屏幕最顶部显示addview-->
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 安装与卸载 -->
@@ -200,6 +204,7 @@
         <activity android:name=".ui.detail.android.FlashlightActivity" />
         <activity android:name=".ui.detail.android.GPSActivity" />
         <activity android:name=".ui.detail.android.TimePickerActivity" />
+        <activity android:name=".ui.detail.android.DualviewActivity" />
 
         <activity android:name=".ui.detail.algorithm.SortActivity"
             android:screenOrientation="portrait"/>
@@ -234,6 +239,9 @@
 
         <activity android:name=".ui.detail.jni.JNITestActivity"/>
         <activity android:name=".ui.detail.jni.NeonTestActivity" />
+        <activity android:name=".ui.detail.renderscript.PictureBlurActivity" />
+        <activity android:name=".ui.detail.renderscript.SketchActivity" />
+        <activity android:name=".ui.detail.renderscript.MagnifierActivity" />
 
         <service android:name=".service.LifeCycleService" />
         <service android:name=".service.LockScreenService" />

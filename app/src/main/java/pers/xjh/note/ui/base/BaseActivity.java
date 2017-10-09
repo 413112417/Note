@@ -46,8 +46,6 @@ public abstract class BaseActivity extends AppCompatActivity  {
         // 用弱引用防止内存泄露
         AppRuntime.put(Constant.RT_CURRENT_ACTIVITY, new WeakReference(this));
 
-        getSupportActionBar().hide();
-
         //沉浸式状态栏
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();

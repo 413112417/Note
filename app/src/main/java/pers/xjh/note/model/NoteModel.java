@@ -36,6 +36,7 @@ import pers.xjh.note.ui.detail.android.DialogActivity;
 import pers.xjh.note.ui.detail.android.DispatchEventActivity;
 import pers.xjh.note.ui.detail.android.DrawerLayoutActivity;
 import pers.xjh.note.ui.detail.android.DrawingBoardActivity;
+import pers.xjh.note.ui.detail.android.DualviewActivity;
 import pers.xjh.note.ui.detail.android.FlashlightActivity;
 import pers.xjh.note.ui.detail.android.FragmentActivity;
 import pers.xjh.note.ui.detail.android.FragmentNestedActivity;
@@ -113,6 +114,9 @@ import pers.xjh.note.ui.detail.jni.JNITestActivity;
 import pers.xjh.note.ui.detail.jni.NeonTestActivity;
 import pers.xjh.note.ui.detail.optimize.MemoryLeakActivity;
 import pers.xjh.note.ui.detail.optimize.StringOptimizeActivity;
+import pers.xjh.note.ui.detail.renderscript.MagnifierActivity;
+import pers.xjh.note.ui.detail.renderscript.PictureBlurActivity;
+import pers.xjh.note.ui.detail.renderscript.SketchActivity;
 import pers.xjh.note.ui.note.NoteActivity;
 import pers.xjh.note.utils.Constant;
 
@@ -155,6 +159,7 @@ public class NoteModel {
                     noteList.add(new Note("设计模式", Constant.NOTE_DESIGN, NoteActivity.class));
                     noteList.add(new Note("算法", Constant.NOTE_ALGORITHM, NoteActivity.class));
                     noteList.add(new Note("人工智能", Constant.NOTE_AI, NoteActivity.class));
+                    noteList.add(new Note("RenderScript", Constant.NOTE_RENDER_SCRIPT, NoteActivity.class));
                 } else if(Constant.NOTE_JAVA == noteType) {
                     noteList.add(new Note("基本概念", R.string.java_jbgn));
                     noteList.add(new Note("面向对象", R.string.java_mxdx));
@@ -291,6 +296,7 @@ public class NoteModel {
                     noteList.add(new Note("闪光灯", FlashlightActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("GPS", GPSActivity.class));
                     noteList.add(new Note("时间选择", TimePickerActivity.class));
+                    noteList.add(new Note("多屏显示", DualviewActivity.class));
                 } else if(Constant.NOTE_OPTIMIZE == noteType) {
                     noteList.add(new Note("内存泄露", MemoryLeakActivity.class));
                     noteList.add(new Note("字符串优化", StringOptimizeActivity.class));
@@ -340,6 +346,10 @@ public class NoteModel {
                     noteList.add(new Note("海康威视", HikvisionActivity.class));
                 } else if(Constant.NOTE_AI == noteType) {
                     noteList.add(new Note("梯度下降", FittingActivity.class));
+                } else if(Constant.NOTE_RENDER_SCRIPT == noteType) {
+                    noteList.add(new Note("模糊", PictureBlurActivity.class));
+                    noteList.add(new Note("素描", SketchActivity.class));
+                    noteList.add(new Note("放大镜", MagnifierActivity.class));
                 }
 
                 e.onNext(noteList);

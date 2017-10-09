@@ -1,8 +1,6 @@
 //
 // Created by xjh on 17-9-26.
 //
-
-
 #include <jni.h>
 #include <cwchar>
 #include <vector>
@@ -71,7 +69,7 @@ JNIEXPORT void JNICALL Java_pers_xjh_note_model_bean_NeonTest_neonVectorMul(JNIE
     std::vector<float> vec_result(size);
 
     int i = 0;
-    for (; i < (int)vec_result.size() - 3 ; i+=4) {
+    for (; i < (int)vec_result.size() - 3; i+=4) {
         const auto data_a = vld1q_f32(&vec_a[i]);
         const auto data_b = vld1q_f32(&vec_b[i]);
         float* dst_ptr = &vec_result[i];

@@ -24,6 +24,7 @@ public class Constant {
     public static final int NOTE_DESIGN = AppRuntime.makeID(); //设计模式
     public static final int NOTE_AI = AppRuntime.makeID(); //人工智能
     public static final int NOTE_FUNCTION = AppRuntime.makeID(); //功能
+    public static final int NOTE_RENDER_SCRIPT = AppRuntime.makeID(); //renderscript
 
     /** 页面传值字段 */
     public static final String KEY_TITLE = "KEY_TITLE"; //笔记描述标题
