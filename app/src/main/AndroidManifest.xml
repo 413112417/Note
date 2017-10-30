@@ -60,6 +60,7 @@
         <activity android:name=".ui.note.NoteActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.note.NoteTextActivity" />
+        <activity android:name=".ui.detail.test.TestActivity" />
         <activity android:name=".ui.detail.android.ViewMeasureActivity" />
         <activity android:name=".ui.detail.android.CustomTextViewActivity" />
         <activity android:name=".ui.detail.android.TitleBarActivity" />
@@ -97,10 +98,12 @@
         <activity android:name=".ui.detail.android.AudioRecorderActivity" />
         <activity android:name=".ui.detail.android.CameraActivity" />
         <activity android:name=".ui.detail.android.Camera2Activity" />
+        <activity android:name=".ui.detail.android.TwoCameraActivity" />
         <activity android:name=".ui.detail.android.VideoViewActivity" />
         <activity android:name=".ui.detail.android.VideoViewNetworkActivity" />
         <activity android:name=".ui.detail.android.MediaPlayerActivity" />
         <activity android:name=".ui.detail.android.MediaPlayerNetworkActivity" />
+        <activity android:name=".ui.detail.android.MediaCodecActivity" />
         <activity android:name=".ui.detail.android.SoundPoolActivity" />
         <activity android:name=".ui.detail.android.CanvasAPIActivity" />
         <activity android:name=".ui.detail.android.ClockViewActivity" />
@@ -239,6 +242,7 @@
 
         <activity android:name=".ui.detail.jni.JNITestActivity"/>
         <activity android:name=".ui.detail.jni.NeonTestActivity" />
+        <activity android:name=".ui.detail.jni.USBCameraActivity" />
         <activity android:name=".ui.detail.renderscript.PictureBlurActivity" />
         <activity android:name=".ui.detail.renderscript.SketchActivity" />
         <activity android:name=".ui.detail.renderscript.MagnifierActivity" />

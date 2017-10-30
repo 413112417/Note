@@ -51,6 +51,7 @@ import pers.xjh.note.ui.detail.android.LayoutAnimationActivity;
 import pers.xjh.note.ui.detail.android.LineChartViewActivity;
 import pers.xjh.note.ui.detail.android.LockScreenServiceActivity;
 import pers.xjh.note.ui.detail.android.MainProcessActivity;
+import pers.xjh.note.ui.detail.android.MediaCodecActivity;
 import pers.xjh.note.ui.detail.android.MediaPlayerActivity;
 import pers.xjh.note.ui.detail.android.MediaPlayerNetworkActivity;
 import pers.xjh.note.ui.detail.android.NetworkChangeActivity;
@@ -81,6 +82,7 @@ import pers.xjh.note.ui.detail.android.TestProcessActivity;
 import pers.xjh.note.ui.detail.android.ThreeBodyActivity;
 import pers.xjh.note.ui.detail.android.TimePickerActivity;
 import pers.xjh.note.ui.detail.android.TitleBarActivity;
+import pers.xjh.note.ui.detail.android.TwoCameraActivity;
 import pers.xjh.note.ui.detail.android.UnlockActivity;
 import pers.xjh.note.ui.detail.android.ValueAnimatorActivity;
 import pers.xjh.note.ui.detail.android.VideoViewActivity;
@@ -112,11 +114,13 @@ import pers.xjh.note.ui.detail.android.VideoRecorderActivity;
 import pers.xjh.note.ui.detail.android.AudioRecorderActivity;
 import pers.xjh.note.ui.detail.jni.JNITestActivity;
 import pers.xjh.note.ui.detail.jni.NeonTestActivity;
+import pers.xjh.note.ui.detail.jni.USBCameraActivity;
 import pers.xjh.note.ui.detail.optimize.MemoryLeakActivity;
 import pers.xjh.note.ui.detail.optimize.StringOptimizeActivity;
 import pers.xjh.note.ui.detail.renderscript.MagnifierActivity;
 import pers.xjh.note.ui.detail.renderscript.PictureBlurActivity;
 import pers.xjh.note.ui.detail.renderscript.SketchActivity;
+import pers.xjh.note.ui.detail.test.TestActivity;
 import pers.xjh.note.ui.note.NoteActivity;
 import pers.xjh.note.utils.Constant;
 
@@ -152,6 +156,7 @@ public class NoteModel {
                 if(Constant.NOTE_ALL == noteType) {
                     noteList.add(new Note("Java", Constant.NOTE_JAVA, NoteActivity.class));
                     noteList.add(new Note("Android", Constant.NOTE_ANDROID, NoteActivity.class));
+                    noteList.add(new Note("JVM", Constant.NOTE_JVM, NoteActivity.class));
                     noteList.add(new Note("JNI", Constant.NOTE_JNI, NoteActivity.class));
                     noteList.add(new Note("Linux", Constant.NOTE_LINUX, NoteActivity.class));
                     noteList.add(new Note("优化", Constant.NOTE_OPTIMIZE, NoteActivity.class));
@@ -160,6 +165,8 @@ public class NoteModel {
                     noteList.add(new Note("算法", Constant.NOTE_ALGORITHM, NoteActivity.class));
                     noteList.add(new Note("人工智能", Constant.NOTE_AI, NoteActivity.class));
                     noteList.add(new Note("RenderScript", Constant.NOTE_RENDER_SCRIPT, NoteActivity.class));
+                    noteList.add(new Note("测试", TestActivity.class));
+                    noteList.add(new Note("视频硬解码", TestActivity.class));
                 } else if(Constant.NOTE_JAVA == noteType) {
                     noteList.add(new Note("基本概念", R.string.java_jbgn));
                     noteList.add(new Note("面向对象", R.string.java_mxdx));
@@ -184,6 +191,7 @@ public class NoteModel {
                 } else if(Constant.NOTE_JNI == noteType) {
                     noteList.add(new Note("JNI测试", JNITestActivity.class));
                     noteList.add(new Note("NEON测试", NeonTestActivity.class));
+                    noteList.add(new Note("外接摄像头", USBCameraActivity.class));
                 } else if(Constant.NOTE_LINUX == noteType) {
                     noteList.add(new Note("常用快捷键", R.string.linux_kjj));
                     noteList.add(new Note("目录基本操作", R.string.linux_mljbcz));
@@ -286,12 +294,14 @@ public class NoteModel {
                     noteList.add(new Note("NFC", NFCActivity.class));
                     noteList.add(new Note("视频录制", VideoRecorderActivity.class, Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO));
                     noteList.add(new Note("音频录制", AudioRecorderActivity.class, Manifest.permission.RECORD_AUDIO));
-                    noteList.add(new Note("Camera", CameraActivity.class));
-                    noteList.add(new Note("Camera2", Camera2Activity.class));
+                    noteList.add(new Note("Camera", CameraActivity.class, Manifest.permission.CAMERA));
+                    noteList.add(new Note("Camera2", Camera2Activity.class, Manifest.permission.CAMERA));
+                    noteList.add(new Note("双摄像头同时开启", TwoCameraActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("VideoView", VideoViewActivity.class));
                     noteList.add(new Note("VideoView播放网络视频", VideoViewNetworkActivity.class));
                     noteList.add(new Note("MediaPlayer", MediaPlayerActivity.class));
                     noteList.add(new Note("MediaPlayer播放网络视频", MediaPlayerNetworkActivity.class));
+                    noteList.add(new Note("MediaCodeC", MediaCodecActivity.class));
                     noteList.add(new Note("SoundPool", SoundPoolActivity.class));
                     noteList.add(new Note("闪光灯", FlashlightActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("GPS", GPSActivity.class));
@@ -302,6 +312,8 @@ public class NoteModel {
                     noteList.add(new Note("字符串优化", StringOptimizeActivity.class));
                     noteList.add(new Note("过度绘制", OverdrawActivity.class));
                     noteList.add(new Note("ViewStub", ViewStubActivity.class));
+                } else if(Constant.NOTE_JVM == noteType) {
+
                 } else if(Constant.NOTE_ALGORITHM == noteType) {
                     noteList.add(new Note("数据结构", R.string.arithmetic_structure));
                     noteList.add(new Note("排序", SortActivity.class));

@@ -26,6 +26,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bg_et_1"
+            android:textColor="@color/black"
             android:layout_weight="1"/>
 
         <TextView
@@ -43,6 +44,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bg_et_1"
+            android:textColor="@color/black"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -70,6 +72,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bg_et_1"
+            android:textColor="@color/black"
             android:layout_weight="1"/>
 
         <TextView
@@ -87,6 +90,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bg_et_1"
+            android:textColor="@color/black"
             android:layout_weight="1"/>
     </LinearLayout>
 
@@ -114,6 +118,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bg_et_1"
+            android:textColor="@color/black"
             android:layout_weight="1"/>
 
         <Button

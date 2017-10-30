@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -68,7 +69,7 @@ public class Camera2Activity extends BaseActivity {
 
             @Override
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-                
+
             }
 
             @Override
@@ -105,6 +106,12 @@ public class Camera2Activity extends BaseActivity {
 
         //获取摄像头管理
         mCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+        try {
+            String[] cameraIdList = mCameraManager.getCameraIdList();
+            Log.d("asd", cameraIdList.toString());
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
 
         //打开摄像头
         try {
