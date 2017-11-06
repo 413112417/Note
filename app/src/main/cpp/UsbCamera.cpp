@@ -246,40 +246,46 @@ int main()
     return 0;
 }
 
-camera_t* camera;
+camera_t* camera1;
+camera_t* camera2;
 
 struct timeval timeout;
 
 JNIEXPORT void JNICALL Java_pers_xjh_note_model_bean_USBCamera_init(JNIEnv *env, jclass type) {
-    camera = camera_open("/dev/video0", 640, 480);
-    camera_init(camera);
-    camera_start(camera);
+    camera1 = camera_open("/dev/video0", 640, 480);
+//    camera2 = camera_open("/dev/video1", 640, 480);
+
+    camera_init(camera1);
+    camera_start(camera1);
+
+//    camera_init(camera2);
+//    camera_start(camera2);
 
     timeout.tv_sec = 1;
     timeout.tv_usec = 0;
 
     /* skip 5 frames for booting a cam */
     for (int i = 0; i < 5; i++) {
-        camera_frame(camera, timeout);
+        camera_frame(camera1, timeout);
     }
 }
 
 JNIEXPORT jbyteArray JNICALL Java_pers_xjh_note_model_bean_USBCamera_getFrame(JNIEnv *env, jclass type) {
-    camera_frame(camera, timeout);
+    camera_frame(camera1, timeout);
 
 //    unsigned char* rgb = yuyv2rgb(camera->head.start, camera->width, camera->height);
 
-    jbyteArray byteArray = env->NewByteArray(camera->head.length);
+    jbyteArray byteArray = env->NewByteArray(camera1->head.length);
 
-    env->SetByteArrayRegion(byteArray, 0, camera->head.length, (const jbyte *) camera->head.start);
+    env->SetByteArrayRegion(byteArray, 0, camera1->head.length, (const jbyte *) camera1->head.start);
 
     return byteArray;
 }
 
 JNIEXPORT void JNICALL Java_pers_xjh_note_model_bean_USBCamera_release(JNIEnv *env, jclass type) {
-    camera_stop(camera);
-    camera_finish(camera);
-    camera_close(camera);
+    camera_stop(camera1);
+    camera_finish(camera1);
+    camera_close(camera1);
 }
 
 #ifdef __cplusplus

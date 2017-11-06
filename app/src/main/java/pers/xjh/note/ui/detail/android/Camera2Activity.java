@@ -3,10 +3,11 @@ package pers.xjh.note.ui.detail.android;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureRequest;
@@ -18,8 +19,13 @@ import android.os.HandlerThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.util.SparseIntArray;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -36,13 +42,23 @@ import pers.xjh.note.utils.ToastUtil;
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class Camera2Activity extends BaseActivity {
 
+    private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
+
+    ///为了使照片竖直显示
+    static {
+        ORIENTATIONS.append(Surface.ROTATION_0, 90);
+        ORIENTATIONS.append(Surface.ROTATION_90, 0);
+        ORIENTATIONS.append(Surface.ROTATION_180, 270);
+        ORIENTATIONS.append(Surface.ROTATION_270, 180);
+    }
+
     private SurfaceView mSurfaceView;
 
     private SurfaceHolder mSurfaceHolder;
 
     private Handler childHandler, mainHandler;
 
-    private String mCameraID;//摄像头Id 0 为后  1 为前
+    private int mCameraId;//摄像头Id 0 为后  1 为前
 
     private ImageReader mImageReader;
 
@@ -51,6 +67,10 @@ public class Camera2Activity extends BaseActivity {
     private CameraCaptureSession mCameraCaptureSession;
 
     private CameraDevice mCameraDevice;
+
+    private Button mBtnSwitch, mBtnTakePicture;
+
+    private ImageView mImgView;
 
     @Override
     protected int initContentView() {
@@ -64,7 +84,7 @@ public class Camera2Activity extends BaseActivity {
         mSurfaceHolder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
-                initCamera2();
+                initCamera(mCameraId);
             }
 
             @Override
@@ -77,30 +97,62 @@ public class Camera2Activity extends BaseActivity {
 
             }
         });
+
+        mBtnSwitch = (Button) findViewById(R.id.btn_switch);
+        mBtnSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mCameraId == 0) {
+                    mCameraId = 1;
+                } else {
+                    mCameraId = 0;
+                }
+                mCameraDevice.close();
+                initCamera(mCameraId);
+            }
+        });
+
+        mBtnTakePicture = (Button) findViewById(R.id.btn_take_picture);
+        mBtnTakePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                takePicture();
+            }
+        });
+
+        mImgView = (ImageView) findViewById(R.id.img);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCameraDevice.close();
     }
 
     /**
      * 初始化Camera2
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void initCamera2() {
+    private void initCamera(int cameraId) {
         HandlerThread handlerThread = new HandlerThread("Camera2");
         handlerThread.start();
         childHandler = new Handler(handlerThread.getLooper());
         mainHandler = new Handler(getMainLooper());
-        mCameraID = "" + CameraCharacteristics.LENS_FACING_FRONT;
         //后摄像头
         mImageReader = ImageReader.newInstance(mSurfaceView.getWidth(), mSurfaceView.getHeight(), ImageFormat.JPEG, 1);
         mImageReader.setOnImageAvailableListener(new ImageReader.OnImageAvailableListener() {
             @Override
             public void onImageAvailable(ImageReader reader) {
-                Image image = reader.acquireLatestImage();
-                //我们可以将这帧数据转成字节数组，类似于Camera1的PreviewCallback回调的预览帧数据
+                mImgView.setVisibility(View.VISIBLE);
+                // 拿到拍照照片数据
+                Image image = reader.acquireNextImage();
                 ByteBuffer buffer = image.getPlanes()[0].getBuffer();
-                byte[] data = new byte[buffer.remaining()];
-                buffer.get(data);
-                image.close();
-                ToastUtil.show("jinlaile");
+                byte[] bytes = new byte[buffer.remaining()];
+                buffer.get(bytes);//由缓冲区存入字节数组
+                final Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                if (bitmap != null) {
+                    mImgView.setImageBitmap(bitmap);
+                }
             }
         }, mainHandler);
 
@@ -108,7 +160,7 @@ public class Camera2Activity extends BaseActivity {
         mCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         try {
             String[] cameraIdList = mCameraManager.getCameraIdList();
-            Log.d("asd", cameraIdList.toString());
+            Log.d("asd", cameraIdList.length + "");
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -119,7 +171,7 @@ public class Camera2Activity extends BaseActivity {
                 PermissionUtil.requestPermission(Manifest.permission.CAMERA);
             }
             //打开相机，第一个参数指示打开哪个摄像头，第二个参数stateCallback为相机的状态回调接口，第三个参数用来确定Callback在哪个线程执行，为null的话就在当前线程执行
-            mCameraManager.openCamera(mCameraID, stateCallback, mainHandler);
+            mCameraManager.openCamera(cameraId + "", stateCallback, mainHandler);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -179,6 +231,34 @@ public class Camera2Activity extends BaseActivity {
                     ToastUtil.show("配置失败");
                 }
             }, childHandler);
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 拍照
+     */
+    private void takePicture() {
+        if (mCameraDevice == null) return;
+        // 创建拍照需要的CaptureRequest.Builder
+        final CaptureRequest.Builder captureRequestBuilder;
+        try {
+            captureRequestBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE);
+            // 将imageReader的surface作为CaptureRequest.Builder的目标
+            captureRequestBuilder.addTarget(mImageReader.getSurface());
+            // 自动对焦
+            captureRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+            // 自动曝光
+            captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
+            // 获取手机方向
+            int rotation = getWindowManager().getDefaultDisplay().getRotation();
+            // 根据设备方向计算设置照片的方向
+            captureRequestBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
+            //拍照
+            CaptureRequest mCaptureRequest = captureRequestBuilder.build();
+            mCameraCaptureSession.capture(mCaptureRequest, null, childHandler);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }

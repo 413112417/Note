@@ -313,7 +313,7 @@ public class NoteModel {
                     noteList.add(new Note("过度绘制", OverdrawActivity.class));
                     noteList.add(new Note("ViewStub", ViewStubActivity.class));
                 } else if(Constant.NOTE_JVM == noteType) {
-
+                    noteList.add(new Note("OopMap和安全点", R.raw.oopmap));
                 } else if(Constant.NOTE_ALGORITHM == noteType) {
                     noteList.add(new Note("数据结构", R.string.arithmetic_structure));
                     noteList.add(new Note("排序", SortActivity.class));
