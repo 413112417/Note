@@ -15,6 +15,6 @@ public class NeonTest {
     public static native void neonVectorMul(int size);
 
     static {
-        System.loadLibrary("NeonTest");
+//        System.loadLibrary("NeonTest");
     }
 }

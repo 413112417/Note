@@ -1,5 +1,6 @@
 package pers.xjh.note.ui.detail.test;
 
+import android.opengl.*;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -33,6 +34,6 @@ public class TestActivity extends BaseActivity {
     }
 
     private void test() {
-        test();
+
     }
 }

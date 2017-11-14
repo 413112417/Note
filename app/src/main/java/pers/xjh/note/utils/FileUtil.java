@@ -1,10 +1,14 @@
 package pers.xjh.note.utils;
 
 
+import android.content.Context;
 import android.os.Environment;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import pers.xjh.note.runtime.AppRuntime;
 
@@ -144,5 +148,29 @@ public class FileUtil {
         if(file.exists()) {
             file.delete();
         }
+    }
+
+    /**
+     * 从资源文件中读取文本
+     * @return
+     */
+    public static String readTextFileFromResourse(Context context, int resourseId) {
+        StringBuilder body = new StringBuilder();
+
+        InputStream inputStream = context.getResources().openRawResource(resourseId);
+        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+        String lineText;
+        try {
+            while ((lineText = bufferedReader.readLine()) != null) {
+                body.append(lineText);
+                body.append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return body.toString();
     }
 }

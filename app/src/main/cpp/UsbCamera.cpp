@@ -252,7 +252,7 @@ camera_t* camera2;
 struct timeval timeout;
 
 JNIEXPORT void JNICALL Java_pers_xjh_note_model_bean_USBCamera_init(JNIEnv *env, jclass type) {
-    camera1 = camera_open("/dev/video0", 640, 480);
+    camera1 = camera_open("/dev/video1", 640, 480);
 //    camera2 = camera_open("/dev/video1", 640, 480);
 
     camera_init(camera1);

@@ -99,6 +99,7 @@
         <activity android:name=".ui.detail.android.CameraActivity" />
         <activity android:name=".ui.detail.android.Camera2Activity" />
         <activity android:name=".ui.detail.android.TwoCameraActivity" />
+        <activity android:name=".ui.detail.android.TakePictureActivity" />
         <activity android:name=".ui.detail.android.VideoViewActivity" />
         <activity android:name=".ui.detail.android.VideoViewNetworkActivity" />
         <activity android:name=".ui.detail.android.MediaPlayerActivity" />
@@ -246,6 +247,8 @@
         <activity android:name=".ui.detail.renderscript.PictureBlurActivity" />
         <activity android:name=".ui.detail.renderscript.SketchActivity" />
         <activity android:name=".ui.detail.renderscript.MagnifierActivity" />
+
+        <activity android:name=".ui.detail.opengl.AirHockeyActivity" />
 
         <service android:name=".service.LifeCycleService" />
         <service android:name=".service.LockScreenService" />

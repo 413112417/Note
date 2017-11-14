@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
+import android.graphics.Matrix;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
 import android.hardware.camera2.CameraDevice;
@@ -124,17 +125,18 @@ public class Camera2Activity extends BaseActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
+        Log.d("asd","onStop");
         mCameraDevice.close();
     }
 
     /**
-     * 初始化Camera2
+     * 初始化Camera
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void initCamera(int cameraId) {
-        HandlerThread handlerThread = new HandlerThread("Camera2");
+        HandlerThread handlerThread = new HandlerThread("Camera");
         handlerThread.start();
         childHandler = new Handler(handlerThread.getLooper());
         mainHandler = new Handler(getMainLooper());
@@ -143,18 +145,27 @@ public class Camera2Activity extends BaseActivity {
         mImageReader.setOnImageAvailableListener(new ImageReader.OnImageAvailableListener() {
             @Override
             public void onImageAvailable(ImageReader reader) {
-                mImgView.setVisibility(View.VISIBLE);
-                // 拿到拍照照片数据
                 Image image = reader.acquireNextImage();
                 ByteBuffer buffer = image.getPlanes()[0].getBuffer();
                 byte[] bytes = new byte[buffer.remaining()];
                 buffer.get(bytes);//由缓冲区存入字节数组
                 final Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                if (bitmap != null) {
-                    mImgView.setImageBitmap(bitmap);
-                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mImgView.setVisibility(View.VISIBLE);
+                        // 拿到拍照照片数据
+
+                        if (bitmap != null) {
+                            // 获取手机方向
+                            int rotation = getWindowManager().getDefaultDisplay().getRotation();
+                            mImgView.setImageBitmap(rotateBitmapByDegree(bitmap, 270));
+                        }
+                    }
+                });
             }
-        }, mainHandler);
+        }, childHandler);
 
         //获取摄像头管理
         mCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
@@ -171,7 +182,7 @@ public class Camera2Activity extends BaseActivity {
                 PermissionUtil.requestPermission(Manifest.permission.CAMERA);
             }
             //打开相机，第一个参数指示打开哪个摄像头，第二个参数stateCallback为相机的状态回调接口，第三个参数用来确定Callback在哪个线程执行，为null的话就在当前线程执行
-            mCameraManager.openCamera(cameraId + "", stateCallback, mainHandler);
+            mCameraManager.openCamera(cameraId + "", stateCallback, childHandler);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
@@ -181,6 +192,7 @@ public class Camera2Activity extends BaseActivity {
     private CameraDevice.StateCallback stateCallback = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
+            Log.d("asd","onOpened");
             mCameraDevice = camera;
             //开启预览
             takePreview();
@@ -188,6 +200,7 @@ public class Camera2Activity extends BaseActivity {
 
         @Override
         public void onDisconnected(@NonNull CameraDevice camera) {
+            Log.d("asd","onDisconnected");
             if (null != mCameraDevice) {
                 mCameraDevice.close();
                 mCameraDevice = null;
@@ -196,7 +209,9 @@ public class Camera2Activity extends BaseActivity {
 
         @Override
         public void onError(@NonNull CameraDevice camera, int error) {
-            ToastUtil.show("开启摄像头失败");
+            Log.d("asd","开启摄像头失败");
+            camera.close();
+            mCameraDevice = null;
         }
     };
 
@@ -262,5 +277,24 @@ public class Camera2Activity extends BaseActivity {
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 将图片按照指定的角度进行旋转
+     *
+     * @param bitmap 需要旋转的图片
+     * @param degree 指定的旋转角度
+     * @return 旋转后的图片
+     */
+    public static Bitmap rotateBitmapByDegree(Bitmap bitmap, int degree) {
+        // 根据旋转角度，生成旋转矩阵
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        // 将原始图片按照旋转矩阵进行旋转，并得到新的图片
+        Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+        if (bitmap != null && !bitmap.isRecycled()) {
+            bitmap.recycle();
+        }
+        return newBitmap;
     }
 }
