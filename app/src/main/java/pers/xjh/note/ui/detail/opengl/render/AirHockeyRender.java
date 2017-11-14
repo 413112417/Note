@@ -10,6 +10,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import pers.xjh.note.R;
+import pers.xjh.note.ui.detail.opengl.ShaderHelper;
 import pers.xjh.note.utils.FileUtil;
 
 /**
@@ -31,6 +32,13 @@ public class AirHockeyRender implements GLSurfaceView.Renderer {
 
         String vertexShaderSource = FileUtil.readTextFileFromResourse(mContext, R.raw.simple_vertex_shader);
         String fragmentShaderSource = FileUtil.readTextFileFromResourse(mContext, R.raw.simple_fragment_shader);
+
+        int vertexShader = ShaderHelper.compileVertexShader(vertexShaderSource);
+        int fragmentShader = ShaderHelper.compileFragmentShader(fragmentShaderSource);
+
+        int program = ShaderHelper.linkProgram(vertexShader, fragmentShader);
+
+        GLES20.glUseProgram(program);
     }
 
     @Override
