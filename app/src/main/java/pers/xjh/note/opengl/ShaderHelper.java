@@ -1,4 +1,4 @@
-package pers.xjh.note.ui.detail.opengl;
+package pers.xjh.note.opengl;
 
 import android.opengl.GLES20;
 
