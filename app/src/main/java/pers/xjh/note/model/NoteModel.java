@@ -46,6 +46,7 @@ import pers.xjh.note.ui.detail.android.GPSActivity;
 import pers.xjh.note.ui.detail.android.GoodClockViewActivity;
 import pers.xjh.note.ui.detail.android.ImageClipActivity;
 import pers.xjh.note.ui.detail.android.ImageWallActivity;
+import pers.xjh.note.ui.detail.android.LaunchIntentActivity;
 import pers.xjh.note.ui.detail.android.LayerActivity;
 import pers.xjh.note.ui.detail.android.LayoutAnimationActivity;
 import pers.xjh.note.ui.detail.android.LineChartViewActivity;
@@ -273,6 +274,7 @@ public class NoteModel {
                     noteList.add(new Note("轨迹动画(路径)", PathActivity.class));
                     noteList.add(new Note("Activity生命周期与启动模式", AActivity.class));
                     noteList.add(new Note("Activity切换动画", PendingTransitionAActivity.class));
+                    noteList.add(new Note("启动其他App", LaunchIntentActivity.class));
                     noteList.add(new Note("清除任务栈", FinishOnTaskLaunchActivity.class));
                     noteList.add(new Note("Fragment", FragmentActivity.class));
                     noteList.add(new Note("Fragment嵌套", FragmentNestedActivity.class));
