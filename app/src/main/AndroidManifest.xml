@@ -162,7 +162,6 @@
             android:finishOnTaskLaunch="true"/>
         <activity android:name=".ui.detail.android.PendingTransitionAActivity"
             android:launchMode="singleTask"/>
-        <activity android:name=".ui.detail.android.LaunchIntentActivity" />
         <activity android:name=".ui.detail.android.PendingTransitionBActivity"
             android:launchMode="singleTask"/>
         <activity android:name=".ui.detail.android.ServiceLifeCycleActivity" />

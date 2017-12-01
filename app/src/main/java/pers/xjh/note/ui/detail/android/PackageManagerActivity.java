@@ -1,5 +1,6 @@
 package pers.xjh.note.ui.detail.android;
 
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -101,17 +103,27 @@ public class PackageManagerActivity extends BaseActivity implements View.OnClick
 
         private TextView tvAppName, tvAppPackage;
 
+        private Button btnLaunch;
+
         public AppInfoViewHolder(View itemView) {
             super(itemView);
             imgAppIcon = (ImageView) itemView.findViewById(R.id.img_app_icon);
             tvAppName = (TextView) itemView.findViewById(R.id.tv_app_name);
             tvAppPackage = (TextView) itemView.findViewById(R.id.tv_app_package);
+            btnLaunch = (Button) itemView.findViewById(R.id.btn_launch);
         }
 
-        public void bindView(ApplicationInfo applicationInfo) {
+        public void bindView(final ApplicationInfo applicationInfo) {
             imgAppIcon.setImageDrawable(applicationInfo.loadIcon(getPackageManager()));
             tvAppName.setText(applicationInfo.loadLabel(getPackageManager()));
             tvAppPackage.setText(applicationInfo.packageName);
+            btnLaunch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = getPackageManager().getLaunchIntentForPackage(applicationInfo.packageName);
+                    startActivity(intent);
+                }
+            });
         }
     }
 
