@@ -71,6 +71,7 @@ import pers.xjh.note.ui.detail.android.PathActivity;
 import pers.xjh.note.ui.detail.android.PathEffectActivity;
 import pers.xjh.note.ui.detail.android.PendingTransitionAActivity;
 import pers.xjh.note.ui.detail.android.PixelsActivity;
+import pers.xjh.note.ui.detail.android.PreferenceTestActivity;
 import pers.xjh.note.ui.detail.android.ReflectActivity;
 import pers.xjh.note.ui.detail.android.RefreshActivity;
 import pers.xjh.note.ui.detail.android.RoundImageActivity;
@@ -169,7 +170,6 @@ public class NoteModel {
                     noteList.add(new Note("人工智能", Constant.NOTE_AI, NoteActivity.class));
                     noteList.add(new Note("RenderScript", Constant.NOTE_RENDER_SCRIPT, NoteActivity.class));
                     noteList.add(new Note("测试", TestActivity.class));
-                    noteList.add(new Note("视频硬解码", TestActivity.class));
                 } else if(Constant.NOTE_JAVA == noteType) {
                     noteList.add(new Note("基本概念", R.string.java_jbgn));
                     noteList.add(new Note("面向对象", R.string.java_mxdx));
@@ -311,6 +311,7 @@ public class NoteModel {
                     noteList.add(new Note("GPS", GPSActivity.class));
                     noteList.add(new Note("时间选择", TimePickerActivity.class));
                     noteList.add(new Note("多屏显示", DualviewActivity.class));
+                    noteList.add(new Note("PreferenceActivity", PreferenceTestActivity.class));
                 } else if(Constant.NOTE_OPENGL == noteType) {
                     noteList.add(new Note("第一个opengl工程", AirHockeyActivity.class));
                 } else if(Constant.NOTE_OPTIMIZE == noteType) {
@@ -363,6 +364,7 @@ public class NoteModel {
                     noteList.add(new Note("百度地图", BaiduMapActivity.class));
                     noteList.add(new Note("海康威视", HikvisionActivity.class));
                 } else if(Constant.NOTE_AI == noteType) {
+                    noteList.add(new Note("梯度下降公式推导", FittingActivity.class));
                     noteList.add(new Note("梯度下降", FittingActivity.class));
                 } else if(Constant.NOTE_RENDER_SCRIPT == noteType) {
                     noteList.add(new Note("模糊", PictureBlurActivity.class));
