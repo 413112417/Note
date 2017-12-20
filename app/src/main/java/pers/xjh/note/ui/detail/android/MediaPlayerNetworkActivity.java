@@ -16,7 +16,6 @@ import android.widget.ImageView;
 
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
-import wseemann.media.FFmpegMediaMetadataRetriever;
 
 /**
  * Created by xjh on 17-9-15.
@@ -31,7 +30,6 @@ public class MediaPlayerNetworkActivity extends BaseActivity implements TextureV
     private Surface mSurface;
     private TextureView mTextureView;
     private SurfaceHolder mSurfaceHolder;
-    private FFmpegMediaMetadataRetriever mRetriever = new FFmpegMediaMetadataRetriever();
     private ImageView mImg;
 
     @Override
