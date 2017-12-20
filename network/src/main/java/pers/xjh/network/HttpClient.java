@@ -1,5 +1,9 @@
 package pers.xjh.network;
 
+import android.util.Log;
+
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -94,9 +98,13 @@ public class HttpClient {
 
             FormBody formBody = builder.build();
 
+            Log.d("HttpClient request", JSONObject.toJSONString(params));
+
             Request request = new Request.Builder().url(url).post(formBody).build();
 
-            return new pers.xjh.network.Response(mClient.newCall(request).execute());
+            pers.xjh.network.Response response = new pers.xjh.network.Response(mClient.newCall(request).execute());
+            Log.d("HttpClient response", response.getBodyString());
+            return response;
         } catch (Exception e) {
             return new pers.xjh.network.Response(e.getMessage());
         }

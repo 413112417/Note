@@ -1,14 +1,7 @@
 package pers.xjh.note.ui.detail.android;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.ImageFormat;
-import android.graphics.Rect;
-import android.graphics.YuvImage;
 import android.hardware.Camera;
 import android.widget.ImageView;
-
-import java.io.ByteArrayOutputStream;
 
 import pers.xjh.note.R;
 import pers.xjh.note.ui.base.BaseActivity;
