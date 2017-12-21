@@ -18,7 +18,7 @@ public class UiUtilTest {
         int result = UiUtil.dp2px(appContext, 10);
 
         Log.d("result", result + "");
-        assertEquals(20, result);
+        assertEquals(26, result);
     }
 
     @Test
