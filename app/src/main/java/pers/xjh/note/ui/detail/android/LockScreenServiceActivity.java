@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import pers.xjh.note.R;
+import pers.xjh.note.runtime.AppRuntime;
 import pers.xjh.note.service.LockScreenService;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.Constant;
@@ -30,7 +31,7 @@ public class LockScreenServiceActivity extends BaseActivity implements View.OnCl
         mButton = (Button) findViewById(R.id.btn);
         mButton.setOnClickListener(this);
 
-        mIsRunning = SpUtil.getBoolean(Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE);
+        mIsRunning = SpUtil.getBoolean(AppRuntime.getApplication(), Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE);
 
         if(mIsRunning) {
             mButton.setText("关闭锁屏服务");
@@ -47,12 +48,12 @@ public class LockScreenServiceActivity extends BaseActivity implements View.OnCl
                     stopLockScreenService();
                     mIsRunning = false;
                     mButton.setText("开启锁屏服务");
-                    SpUtil.putBoolean(Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE, false);
+                    SpUtil.putBoolean(AppRuntime.getApplication(), Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE, false);
                 } else {
                     startLockScreenService();
                     mIsRunning = true;
                     mButton.setText("关闭锁屏服务");
-                    SpUtil.putBoolean(Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE, true);
+                    SpUtil.putBoolean(AppRuntime.getApplication(), Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE, true);
                 }
                 break;
         }

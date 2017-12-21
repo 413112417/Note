@@ -27,5 +27,6 @@ public class SortTest {
         Sort.shellSort(data, false);
         long end = System.currentTimeMillis();
         System.out.print("selectSort:" + (end - start) + "\n");
+
     }
 }

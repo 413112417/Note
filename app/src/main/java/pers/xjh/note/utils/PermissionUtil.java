@@ -1,5 +1,6 @@
 package pers.xjh.note.utils;
 
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -33,11 +34,11 @@ public class PermissionUtil {
      * 如果没有对应权限，则请求该权限
      * @param permission
      */
-    public static void requestPermission(String... permission) {
+    public static void requestPermission(Activity activity, String... permission) {
         if(!checkPermission(permission)) {
             String[] permissionNotGranted = filterPermission(permission);
             mRequestCode = AppRuntime.makeID();
-            ActivityCompat.requestPermissions(AppRuntime.getCurrentActivity(),
+            ActivityCompat.requestPermissions(activity,
                     permissionNotGranted, mRequestCode);
         }
     }

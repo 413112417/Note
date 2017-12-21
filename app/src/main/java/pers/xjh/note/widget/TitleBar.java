@@ -178,7 +178,7 @@ public class TitleBar extends FrameLayout {
         if(specMode == MeasureSpec.UNSPECIFIED || specMode == MeasureSpec.EXACTLY) {
             result = specSize;
         } else if(specMode == MeasureSpec.AT_MOST) {
-            result = Math.min(UiUtil.dp2px(40), specSize);
+            result = Math.min(UiUtil.dp2px(getContext(), 40), specSize);
         }
         return result;
     }

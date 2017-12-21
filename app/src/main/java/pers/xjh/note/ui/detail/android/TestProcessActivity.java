@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import pers.xjh.note.R;
 import pers.xjh.note.database.TestDatabaseHelper;
+import pers.xjh.note.runtime.AppRuntime;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.note.utils.SpUtil;
@@ -44,7 +45,7 @@ public class TestProcessActivity extends BaseActivity implements View.OnClickLis
 
         mTvDB = (TextView) findViewById(R.id.tv_db);
 
-        mIsRunning = SpUtil.getBoolean(Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE);
+        mIsRunning = SpUtil.getBoolean(AppRuntime.getApplication(), Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE);
 
         mTestDatabaseHelper = new TestDatabaseHelper(this);
 
@@ -67,11 +68,11 @@ public class TestProcessActivity extends BaseActivity implements View.OnClickLis
                 if(mIsRunning) {
                     mIsRunning = false;
                     mBtnLockScreen.setText("开启锁屏服务");
-                    SpUtil.putBoolean(Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE, false);
+                    SpUtil.putBoolean(AppRuntime.getApplication(), Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE, false);
                 } else {
                     mIsRunning = true;
                     mBtnLockScreen.setText("关闭锁屏服务");
-                    SpUtil.putBoolean(Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE, true);
+                    SpUtil.putBoolean(AppRuntime.getApplication(), Constant.SP_SETTING, Constant.SP_LOCK_SCREEN_STATE, true);
                 }
                 break;
             case R.id.btn_insert_db:

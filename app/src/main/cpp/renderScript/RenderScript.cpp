@@ -13,7 +13,8 @@ extern "C" {
 #endif
 
 JNIEXPORT void JNICALL Java_pers_xjh_note_model_bean_RenderScriptTest_init(JNIEnv *env, jclass type) {
-
+    RsDevice rsDevice = new RsDevice();
+    RsContext rsContext = new RsContext();
 }
 
 #ifdef __cplusplus

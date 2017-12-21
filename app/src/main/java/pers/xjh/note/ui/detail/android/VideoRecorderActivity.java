@@ -157,7 +157,7 @@ public class VideoRecorderActivity extends BaseActivity implements SurfaceHolder
             mRecorder.setMaxDuration(60 * 1000);
             mRecorder.setPreviewDisplay(mSurfaceHolder.getSurface());
             //设置输出文件的路径
-            mRecorder.setOutputFile(FileUtil.getVideoFile(System.currentTimeMillis() + ".mp4").getAbsolutePath());
+            mRecorder.setOutputFile(FileUtil.getVideoFile(this, System.currentTimeMillis() + ".mp4").getAbsolutePath());
             //准备录制
             mRecorder.prepare();
             //开始录制

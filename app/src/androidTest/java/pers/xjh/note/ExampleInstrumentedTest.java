@@ -1,4 +1,4 @@
-package pres.xjh.note;
+package pers.xjh.note;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -21,8 +21,7 @@ public class SpUtil {
      * @param key
      * @return
      */
-    public static Boolean containsKey(String spName, String key) {
-        ContextWrapper contextWrapper = AppRuntime.getApplication();
+    public static Boolean containsKey(ContextWrapper contextWrapper, String spName, String key) {
         SharedPreferences sp = contextWrapper.getSharedPreferences(spName, Context.MODE_PRIVATE);
         return sp.contains(key);
     }
@@ -33,8 +32,7 @@ public class SpUtil {
      * @param key
      * @param value
      */
-    public static void putString(String spName, String key, String value) {
-        ContextWrapper contextWrapper = AppRuntime.getApplication();
+    public static void putString(ContextWrapper contextWrapper, String spName, String key, String value) {
         SharedPreferences sp = contextWrapper.getSharedPreferences(spName, Context.MODE_PRIVATE);
         sp.edit().putString(key, value).commit();
     }
@@ -45,8 +43,7 @@ public class SpUtil {
      * @param key
      * @return
      */
-    public static String getString(String spName, String key) {
-        ContextWrapper contextWrapper = AppRuntime.getApplication();
+    public static String getString(ContextWrapper contextWrapper, String spName, String key) {
         SharedPreferences sp = contextWrapper.getSharedPreferences(spName, Context.MODE_PRIVATE);
         return sp.getString(key, "");
     }
@@ -57,8 +54,7 @@ public class SpUtil {
      * @param key
      * @param value
      */
-    public static void putBoolean(String spName, String key, Boolean value) {
-        ContextWrapper contextWrapper = AppRuntime.getApplication();
+    public static void putBoolean(ContextWrapper contextWrapper, String spName, String key, Boolean value) {
         SharedPreferences sp = contextWrapper.getSharedPreferences(spName, Context.MODE_PRIVATE);
         sp.edit().putBoolean(key, value).commit();
     }
@@ -69,8 +65,7 @@ public class SpUtil {
      * @param key
      * @return
      */
-    public static Boolean getBoolean(String spName, String key) {
-        ContextWrapper contextWrapper = AppRuntime.getApplication();
+    public static Boolean getBoolean(ContextWrapper contextWrapper, String spName, String key) {
         SharedPreferences sp = contextWrapper.getSharedPreferences(spName, Context.MODE_PRIVATE);
         return sp.getBoolean(key, false);
     }
@@ -80,8 +75,7 @@ public class SpUtil {
      * @param spName
      * @param data
      */
-    public static void putAllString(String spName, Map<String, String> data) {
-        ContextWrapper contextWrapper = AppRuntime.getApplication();
+    public static void putAllString(ContextWrapper contextWrapper, String spName, Map<String, String> data) {
         SharedPreferences sp = contextWrapper.getSharedPreferences(spName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         for(Map.Entry<String, String> entry : data.entrySet()) {

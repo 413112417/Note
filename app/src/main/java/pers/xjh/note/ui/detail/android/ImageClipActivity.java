@@ -35,7 +35,7 @@ public class ImageClipActivity extends BaseActivity {
             public void onClick(View v) {
                 try {
                     //保存图片到本地
-                    FileOutputStream fos = new FileOutputStream(FileUtil.getImageFile("clipImage"));
+                    FileOutputStream fos = new FileOutputStream(FileUtil.getImageFile(ImageClipActivity.this, "clipImage"));
                     Bitmap bitmap = mClipImageView.clip();
                     bitmap.compress(Bitmap.CompressFormat.PNG, 90, fos);
                     fos.flush();
@@ -43,7 +43,7 @@ public class ImageClipActivity extends BaseActivity {
 
                     //跳转到图片详情
                     Intent intent = new Intent(ImageClipActivity.this, ImageDetailActivity.class);
-                    intent.putExtra(Constant.KEY_IMAGE_URL, new String[] {FileUtil.getImageFile("clipImage").getAbsolutePath()});
+                    intent.putExtra(Constant.KEY_IMAGE_URL, new String[] {FileUtil.getImageFile(ImageClipActivity.this, "clipImage").getAbsolutePath()});
                     intent.putExtra(Constant.KEY_SKIP_CACHE, true);
                     startActivity(intent);
                 } catch (IOException e) {

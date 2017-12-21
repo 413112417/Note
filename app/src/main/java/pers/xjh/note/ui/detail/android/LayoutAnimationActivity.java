@@ -48,14 +48,14 @@ public class LayoutAnimationActivity extends BaseActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.btn_1:
                 TextView tv1 = new TextView(this);
-                tv1.setTextSize(UiUtil.dp2px(10));
+                tv1.setTextSize(UiUtil.dp2px(this,10));
                 tv1.setTextColor(Color.BLACK);
                 tv1.setText("测试");
                 mViewGroup1.addView(tv1);
                 break;
             case R.id.btn_2:
                 TextView tv2 = new TextView(this);
-                tv2.setTextSize(UiUtil.dp2px(10));
+                tv2.setTextSize(UiUtil.dp2px(this,10));
                 tv2.setTextColor(Color.BLACK);
                 tv2.setText("测试");
                 mViewGroup2.addView(tv2);

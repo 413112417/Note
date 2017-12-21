@@ -193,7 +193,7 @@ public class NoteActivity extends BaseActivity implements NoteContract.NoteView 
                                 mBlockByPermissionIntent = new Intent(NoteActivity.this, note.getAction());
                                 mBlockByPermissionIntent.putExtra(Constant.KEY_TITLE, note.getNoteName());
                                 mBlockByPermissionIntent.putExtra(Constant.KEY_NOTE_TYPE, note.getNoteType());
-                                PermissionUtil.requestPermission(note.getPermission());
+                                PermissionUtil.requestPermission(NoteActivity.this, note.getPermission());
                             }
                         } else {
                             Intent intent = new Intent(NoteActivity.this, note.getAction());

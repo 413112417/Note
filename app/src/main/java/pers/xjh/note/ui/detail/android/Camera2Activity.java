@@ -179,7 +179,7 @@ public class Camera2Activity extends BaseActivity {
         //打开摄像头
         try {
             if(!PermissionUtil.checkPermission(Manifest.permission.CAMERA)) {
-                PermissionUtil.requestPermission(Manifest.permission.CAMERA);
+                PermissionUtil.requestPermission(this, Manifest.permission.CAMERA);
             }
             //打开相机，第一个参数指示打开哪个摄像头，第二个参数stateCallback为相机的状态回调接口，第三个参数用来确定Callback在哪个线程执行，为null的话就在当前线程执行
             mCameraManager.openCamera(cameraId + "", stateCallback, childHandler);

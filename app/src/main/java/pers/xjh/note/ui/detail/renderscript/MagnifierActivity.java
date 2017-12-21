@@ -41,7 +41,7 @@ public class MagnifierActivity extends BaseActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        RenderScriptUtil.magnifierBitmap(mBmp, ((int) event.getX()), ((int) event.getY()), UiUtil.dp2px(mRadius), mScale, MagnifierActivity.this);
+                        RenderScriptUtil.magnifierBitmap(mBmp, ((int) event.getX()), ((int) event.getY()), UiUtil.dp2px(MagnifierActivity.this, mRadius), mScale, MagnifierActivity.this);
                         mImg.setImageBitmap(mBmp);
                         break;
                     case MotionEvent.ACTION_MOVE:
@@ -49,7 +49,7 @@ public class MagnifierActivity extends BaseActivity {
                         mBmp = BitmapFactory.decodeResource(getResources(), R.drawable.beauty);
                         mImg.setImageBitmap(mBmp);
                         //进行放大
-                        RenderScriptUtil.magnifierBitmap(mBmp, ((int) event.getX()), ((int) event.getY()), UiUtil.dp2px(mRadius), mScale, MagnifierActivity.this);
+                        RenderScriptUtil.magnifierBitmap(mBmp, ((int) event.getX()), ((int) event.getY()), UiUtil.dp2px(MagnifierActivity.this, mRadius), mScale, MagnifierActivity.this);
                         mImg.setImageBitmap(mBmp);
                         break;
                     case MotionEvent.ACTION_UP:

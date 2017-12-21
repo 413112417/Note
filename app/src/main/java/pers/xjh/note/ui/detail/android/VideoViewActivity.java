@@ -70,7 +70,7 @@ public class VideoViewActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         try {
-            File[] videoFiles = FileUtil.getVideoDir().listFiles();
+            File[] videoFiles = FileUtil.getVideoDir(this).listFiles();
             if(videoFiles.length > 0) {
                 Uri uri = Uri.parse(videoFiles[videoFiles.length-1].getAbsolutePath());
                 mVideoView.setVideoURI(uri);

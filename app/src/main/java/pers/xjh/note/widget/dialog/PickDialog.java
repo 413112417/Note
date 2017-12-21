@@ -191,7 +191,7 @@ public class PickDialog extends BaseDialog {
             if(builder.mItemDatas != null && builder.mItemDatas.length > 0) {
                 for(int i=0; i<builder.mItemDatas.length; i++) {
                     final TextView tv = new TextView(getContext());
-                    tv.setPadding(0, UiUtil.dp2px(6), 0, UiUtil.dp2px(6));
+                    tv.setPadding(0, UiUtil.dp2px(getContext(), 6), 0, UiUtil.dp2px(getContext(), 6));
                     tv.setTextSize(16);
                     tv.setTextColor(getContext().getResources().getColor(R.color.black));
                     tv.setText(builder.mItemDatas[i]);

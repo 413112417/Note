@@ -36,7 +36,7 @@ public class ToastUtil {
     public static void show(String msg, int duration, int gravity) {
         if(Gravity.BOTTOM == gravity) {
             //底部对齐方式默认距离底部60dp
-            show(msg, duration, gravity, 0, UiUtil.dp2px(60));
+            show(msg, duration, gravity, 0, UiUtil.dp2px(AppRuntime.getApplication(), 60));
         } else {
             show(msg, duration, gravity, 0, 0);
         }

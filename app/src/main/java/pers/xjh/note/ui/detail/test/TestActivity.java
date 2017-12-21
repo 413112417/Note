@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import pers.xjh.note.R;
+import pers.xjh.note.model.bean.RenderScriptTest;
 import pers.xjh.note.ui.base.BaseActivity;
 
 /**
@@ -34,6 +35,6 @@ public class TestActivity extends BaseActivity {
     }
 
     private void test() {
-
+        RenderScriptTest.init();
     }
 }
