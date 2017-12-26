@@ -93,7 +93,7 @@ public class CameraPreview extends TextureView implements TextureView.SurfaceTex
             parameters.setPreviewSize(expected.width, expected.height);
 //            parameters.setFocusMode(Camera.Parameters.FOCUS_DISTANCE_FAR_INDEX);
             //parameters.setPreviewFpsRange();
-            mCamera.setDisplayOrientation(90);
+//            mCamera.setDisplayOrientation(90);
             mCamera.setParameters(parameters);
             // Start camera preview when id scanned. Del by linhx 20170428 begin
             mCamera.startPreview();

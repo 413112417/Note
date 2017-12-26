@@ -38,7 +38,7 @@ public class MediaPlayerActivity extends BaseActivity implements View.OnClickLis
         mMediaPlayer = new MediaPlayer();
         try {
             mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            File[] voiceFiles = FileUtil.getAudioDir(this).listFiles();
+            File[] voiceFiles = FileUtil.getAudioDir().listFiles();
             if(voiceFiles.length > 0) {
                 mMediaPlayer.setDataSource(voiceFiles[voiceFiles.length - 1].getAbsolutePath());
                 mMediaPlayer.prepare();

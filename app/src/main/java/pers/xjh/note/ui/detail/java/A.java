@@ -5,6 +5,11 @@ package pers.xjh.note.ui.detail.java;
  */
 
 public class A {
+
+    static {
+        System.out.print("A init");
+    }
+
     protected A(int i) {
 
     }

@@ -9,12 +9,20 @@ import java.util.ArrayList;
 
 public class JavaTest {
 
+    public static int a = 6;
+
+    static {
+        System.out.println(a);
+    }
+
     public static void main(String[] args) {
         try {
             ArrayList<Integer> list = new ArrayList<>();
             Method method = list.getClass().getMethod("add", Object.class);
             method.invoke(list, "Java反射机制实例。");
             System.out.println(list.get(0));
+
+            method.getClass().getClassLoader();
         } catch (Exception e) {
 
         }

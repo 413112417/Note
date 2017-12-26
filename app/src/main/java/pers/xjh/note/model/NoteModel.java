@@ -116,7 +116,7 @@ import pers.xjh.note.ui.detail.function.RxJavaActivity;
 import pers.xjh.note.ui.detail.java.HttpServerActivity;
 import pers.xjh.note.ui.detail.jni.JNITestActivity;
 import pers.xjh.note.ui.detail.jni.NeonTestActivity;
-import pers.xjh.note.ui.detail.jni.USBCameraActivity;
+import pers.xjh.note.ui.detail.jni.usbCamera.USBCameraActivity;
 import pers.xjh.note.ui.detail.opengl.AirHockeyActivity;
 import pers.xjh.note.ui.detail.optimize.MemoryLeakActivity;
 import pers.xjh.note.ui.detail.optimize.StringOptimizeActivity;
@@ -320,7 +320,8 @@ public class NoteModel {
                     noteList.add(new Note("过度绘制", OverdrawActivity.class));
                     noteList.add(new Note("ViewStub", ViewStubActivity.class));
                 } else if(Constant.NOTE_JVM == noteType) {
-                    noteList.add(new Note("OopMap和安全点", R.raw.oopmap));
+                    noteList.add(new Note("OopMap和安全点", R.raw.jvm_oopmap));
+                    noteList.add(new Note("类加载机制", R.raw.jvm_class));
                 } else if(Constant.NOTE_ALGORITHM == noteType) {
                     noteList.add(new Note("数据结构", R.string.arithmetic_structure));
                     noteList.add(new Note("排序", SortActivity.class));

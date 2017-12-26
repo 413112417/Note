@@ -37,6 +37,18 @@ add_library( # Sets the name of the library.
               # Provides a relative path to your source file(s).
               src/main/cpp/UsbCamera.cpp )
 
+#add_library( # Sets the name of the library.
+#            UsbCameraProc
+
+            # Sets the library as a shared library.
+#            SHARED
+
+            # Provides a relative path to your source file(s).
+#            src/main/cpp/usbCamera/UsbCameraProc.cpp
+#            src/main/cpp/usbCamera/ImageProc.c
+#            src/main/cpp/usbCamera/utils.c
+#            src/main/cpp/usbCamera/jpegDecode.c )
+
 add_library( # Sets the name of the library.
             RenderScript
 
@@ -83,6 +95,13 @@ target_link_libraries( # Specifies the target library.
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )
+
+#target_link_libraries( # Specifies the target library.
+#                       UsbCameraProc
+
+                       # Links the target library to the log library
+                       # included in the NDK.
+#                       ${log-lib} )
 
 target_link_libraries( # Specifies the target library.
                        RenderScript

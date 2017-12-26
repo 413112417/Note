@@ -13,6 +13,6 @@ public class USBCamera {
     public static native void release();
 
     static {
-        System.loadLibrary("UsbCamera");
+        System.loadLibrary("usbCamera");
     }
 }

@@ -25,12 +25,14 @@ public class FileUtil {
      *    getFilesDir得到内部文件路径
      */
 
+    public static String ROOT_PATH = Environment.getExternalStorageDirectory().getAbsolutePath();
+
     /**
      * 得到视频的文件夹的路径
      * @return
      */
-    public static File getVideoDir(Context context) {
-        File videoDir= new File(context.getExternalFilesDir(Environment.DIRECTORY_MOVIES).getAbsolutePath());
+    public static File getVideoDir() {
+        File videoDir= new File(ROOT_PATH, "/video");
         if(!videoDir.exists()) {
             videoDir.mkdir();
         }
@@ -41,8 +43,8 @@ public class FileUtil {
      * 得到音频的文件夹的路径
      * @return
      */
-    public static File getAudioDir(Context context) {
-        File audioDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC).getAbsolutePath());
+    public static File getAudioDir() {
+        File audioDir = new File(ROOT_PATH, "/audio");
         if(!audioDir.exists()) {
             audioDir.mkdir();
         }
@@ -53,8 +55,8 @@ public class FileUtil {
      * 得到下载的文件夹的路径
      * @return
      */
-    public static File getDownloadDir(Context context) {
-        File downloadDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath());
+    public static File getDownloadDir() {
+        File downloadDir = new File(ROOT_PATH, "/download");
         if(!downloadDir.exists()) {
             downloadDir.mkdir();
         }
@@ -65,8 +67,8 @@ public class FileUtil {
      * 得到图片的文件夹的路径
      * @return
      */
-    public static File getImageDir(Context context) {
-        File imageDir = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath());
+    public static File getImageDir() {
+        File imageDir = new File(ROOT_PATH, "/image");
         if(!imageDir.exists()) {
             imageDir.mkdir();
         }
@@ -77,8 +79,8 @@ public class FileUtil {
      * 生成一个对应名字的视频路径
      * @return
      */
-    public static File getVideoFile(Context context, String fileName) {
-        File videoFile = new File(getVideoDir(context).getAbsolutePath(), fileName);
+    public static File getVideoFile(String fileName) {
+        File videoFile = new File(getVideoDir().getAbsolutePath(), fileName);
         try {
             if(!videoFile.exists()) {
                 videoFile.createNewFile();
@@ -93,8 +95,8 @@ public class FileUtil {
      * 生成一个对应名字的音频路径
      * @return
      */
-    public static File getAudioFile(Context context, String fileName) {
-        File audioFile = new File(getAudioDir(context).getAbsolutePath(), fileName);
+    public static File getAudioFile(String fileName) {
+        File audioFile = new File(getAudioDir().getAbsolutePath(), fileName);
         try {
             if(!audioFile.exists()) {
                 audioFile.createNewFile();
@@ -110,8 +112,8 @@ public class FileUtil {
      * @param fileName
      * @return
      */
-    public static File getDownloadFile(Context context, String fileName) {
-        File downloadFile = new File(getDownloadDir(context).getAbsolutePath(), fileName);
+    public static File getDownloadFile(String fileName) {
+        File downloadFile = new File(getDownloadDir().getAbsolutePath(), fileName);
         try {
             if(!downloadFile.exists()) {
                 downloadFile.createNewFile();
@@ -127,8 +129,8 @@ public class FileUtil {
      * @param fileName
      * @return
      */
-    public static File getImageFile(Context context, String fileName) {
-        File imageFile = new File(getImageDir(context).getAbsolutePath(), fileName);
+    public static File getImageFile(String fileName) {
+        File imageFile = new File(getImageDir().getAbsolutePath(), fileName);
         try {
             if(!imageFile.exists()) {
                 imageFile.createNewFile();

@@ -63,7 +63,7 @@ public class AudioRecorderActivity extends BaseActivity {
         }
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mRecorder.setOutputFile(FileUtil.getAudioFile(this, System.currentTimeMillis() + ".mp3").getPath());
+        mRecorder.setOutputFile(FileUtil.getAudioFile(System.currentTimeMillis() + ".mp3").getPath());
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
         try {
             mRecorder.prepare();

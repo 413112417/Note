@@ -244,7 +244,7 @@
 
         <activity android:name=".ui.detail.jni.JNITestActivity"/>
         <activity android:name=".ui.detail.jni.NeonTestActivity" />
-        <activity android:name=".ui.detail.jni.USBCameraActivity" />
+        <activity android:name=".ui.detail.jni.usbCamera.USBCameraActivity" />
         <activity android:name=".ui.detail.renderscript.PictureBlurActivity" />
         <activity android:name=".ui.detail.renderscript.SketchActivity" />
         <activity android:name=".ui.detail.renderscript.MagnifierActivity" />

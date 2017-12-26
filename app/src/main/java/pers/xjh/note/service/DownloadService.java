@@ -65,7 +65,7 @@ public class DownloadService extends Service {
 
         @Override
         public void run() {
-            HttpClient.download(url, FileUtil.getDownloadFile(DownloadService.this, saveFileName), new ProgressCallback() {
+            HttpClient.download(url, FileUtil.getDownloadFile(saveFileName), new ProgressCallback() {
                 @Override
                 public void onProgress(int progress) {
                     mProgress = progress;

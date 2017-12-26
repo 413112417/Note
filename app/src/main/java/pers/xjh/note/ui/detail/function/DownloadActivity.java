@@ -80,7 +80,7 @@ public class DownloadActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DownloadActivity.this, ImageDetailActivity.class);
-                intent.putExtra(Constant.KEY_IMAGE_URL, new String[] {FileUtil.getDownloadFile(DownloadActivity.this, "test.jpg").getAbsolutePath()});
+                intent.putExtra(Constant.KEY_IMAGE_URL, new String[] {FileUtil.getDownloadFile("test.jpg").getAbsolutePath()});
                 intent.putExtra(Constant.KEY_SKIP_CACHE, true);
                 DownloadActivity.this.startActivity(intent);
             }
