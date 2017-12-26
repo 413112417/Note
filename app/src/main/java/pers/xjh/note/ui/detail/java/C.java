@@ -5,4 +5,16 @@ package pers.xjh.note.ui.detail.java;
  */
 
 public class C {
+
+    static {
+        System.out.print("this is from C static {}\n");
+    }
+
+    {
+        System.out.print("this is from C {}\n");
+    }
+
+    public C() {
+        System.out.print("this is from C()\n");
+    }
 }

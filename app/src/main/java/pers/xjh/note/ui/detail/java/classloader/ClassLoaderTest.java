@@ -3,8 +3,6 @@ package pers.xjh.note.ui.detail.java.classloader;
 import java.io.IOException;
 import java.io.InputStream;
 
-import pers.xjh.note.ui.detail.java.A;
-
 /**
  * Created by xjh on 17-12-26.
  */
