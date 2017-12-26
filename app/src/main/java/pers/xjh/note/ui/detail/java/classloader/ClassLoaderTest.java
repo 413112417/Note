@@ -35,7 +35,7 @@ public class ClassLoaderTest {
         };
 
         try {
-            Object object = loader.loadClass("pers.xjh.note.ui.detail.java.C").newInstance();
+            Object object = loader.loadClass("pers.xjh.note.ui.detail.java.classloader.A").newInstance();
             System.out.print(object.getClass());
         } catch (InstantiationException e) {
             e.printStackTrace();
