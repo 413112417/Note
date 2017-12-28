@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/font_size_small"
             android:textColor="@color/black"
-            android:text="http://www.baidu.com"/>
+            android:text="http://192.168.0.162:8000"/>
 
         <Button
             android:id="@+id/btn_build_post"

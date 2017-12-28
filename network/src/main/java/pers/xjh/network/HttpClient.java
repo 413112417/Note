@@ -26,7 +26,7 @@ import pers.xjh.network.interfaces.ProgressCallback;
 public class HttpClient {
 
     /** 超时时间*/
-    private static final long TIME_OUT = 30;
+    private static final long TIME_OUT = 10;
 
     private static OkHttpClient mClient;
 

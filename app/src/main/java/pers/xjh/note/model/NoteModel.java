@@ -109,7 +109,6 @@ import pers.xjh.note.ui.detail.android.viewLifeCycle.FrameLayoutLifeCycleActivit
 import pers.xjh.note.ui.detail.android.viewLifeCycle.ViewLifeCycleActivity;
 import pers.xjh.note.ui.detail.function.BaiduMapActivity;
 import pers.xjh.note.ui.detail.function.DownloadActivity;
-import pers.xjh.note.ui.detail.function.HikvisionActivity;
 import pers.xjh.note.ui.detail.function.NetworkActivity;
 import pers.xjh.note.ui.detail.function.QRCodeActivity;
 import pers.xjh.note.ui.detail.function.RxJavaActivity;
@@ -363,7 +362,6 @@ public class NoteModel {
                     noteList.add(new Note("文件下载", DownloadActivity.class));
                     noteList.add(new Note("二维码扫描", QRCodeActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("百度地图", BaiduMapActivity.class));
-                    noteList.add(new Note("海康威视", HikvisionActivity.class));
                 } else if(Constant.NOTE_AI == noteType) {
                     noteList.add(new Note("梯度下降公式推导", FittingActivity.class));
                     noteList.add(new Note("梯度下降", FittingActivity.class));

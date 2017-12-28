@@ -84,9 +84,4 @@ public class AppRuntime {
         intent.setFlags(flag);
         AppRuntime.getCurrentActivity().startActivity(intent);
     }
-
-    public static void startActivityForResult(Class activity, int requestCode) {
-        Intent intent = new Intent(AppRuntime.getCurrentActivity(), activity);
-        AppRuntime.getCurrentActivity().startActivityForResult(intent, requestCode);
-    }
 }
