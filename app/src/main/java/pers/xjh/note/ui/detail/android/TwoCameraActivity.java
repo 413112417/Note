@@ -19,9 +19,6 @@ public class TwoCameraActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        if (Camera.getNumberOfCameras() > 1) {
-            Camera.open(0);
-            Camera.open(1);
-        }
+
     }
 }

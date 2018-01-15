@@ -22,7 +22,7 @@ import pers.xjh.note.R;
 import pers.xjh.note.model.bean.ImageProc;
 import pers.xjh.note.utils.FileUtil;
 
-class CameraView extends SurfaceView implements SurfaceHolder.Callback, Runnable, ImageProc.RecordCallback {
+public class CameraView extends SurfaceView implements SurfaceHolder.Callback, Runnable, ImageProc.RecordCallback {
 
 	private static final String TAG = "CameraView";
 	protected Context mContext;

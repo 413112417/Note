@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/font_size_small"
             android:textColor="@color/black"
-            android:text="http://192.168.0.162:8000"/>
+            android:text="http://127.0.0.1:9999?a=b&amp;c=d"/>
 
         <Button
             android:id="@+id/btn_build_post"

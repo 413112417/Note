@@ -1,10 +1,12 @@
 package pers.xjh.note.ui.detail.android;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,9 +58,36 @@ public class PackageManagerActivity extends BaseActivity implements View.OnClick
     @Override
     protected void start() {
         mAllApplicationInfoList = getPackageManager().getInstalledApplications(PackageManager.MATCH_UNINSTALLED_PACKAGES);
+
         mShowApplicationInfoList = new ArrayList<>();
-        mShowApplicationInfoList.addAll(mAllApplicationInfoList);
+        for(ApplicationInfo applicationInfo : mAllApplicationInfoList) {
+            if(appCanLaunchTheMainActivity(applicationInfo.packageName)) {
+                mShowApplicationInfoList.add(applicationInfo);
+            }
+        }
+
         mAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * whether app can Launch the main activity.
+     * Return true when can Launch,otherwise return false.
+     * @param packageName
+     * @return
+     */
+    private boolean appCanLaunchTheMainActivity(String packageName){
+        boolean canLaunchTheMainActivity=false;
+        do{
+            if(TextUtils.isEmpty(packageName)){
+                break;
+            }
+
+            PackageManager pm = getPackageManager();
+            Intent intent=pm.getLaunchIntentForPackage(packageName);
+            canLaunchTheMainActivity=(null==intent)?(false):(true);
+        }while(false);
+
+        return canLaunchTheMainActivity;
     }
 
     @Override
@@ -67,12 +96,14 @@ public class PackageManagerActivity extends BaseActivity implements View.OnClick
         switch (v.getId()) {
             case R.id.btn_all:
                 for(ApplicationInfo app : mAllApplicationInfoList) {
-                    mShowApplicationInfoList.add(app);
+                    if(appCanLaunchTheMainActivity(app.packageName)) {
+                        mShowApplicationInfoList.add(app);
+                    }
                 }
                 break;
             case R.id.btn_system:
                 for(ApplicationInfo app : mAllApplicationInfoList) {
-                    if((app.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                    if(appCanLaunchTheMainActivity(app.packageName)) {
                         mShowApplicationInfoList.add(app);
                     }
                 }
@@ -80,16 +111,22 @@ public class PackageManagerActivity extends BaseActivity implements View.OnClick
             case R.id.btn_third:
                 for(ApplicationInfo app : mAllApplicationInfoList) {
                     if((app.flags & ApplicationInfo.FLAG_SYSTEM) <= 0) {
-                        mShowApplicationInfoList.add(app);
+                        if(appCanLaunchTheMainActivity(app.packageName)) {
+                            mShowApplicationInfoList.add(app);
+                        }
                     } else if((app.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0) {
-                        mShowApplicationInfoList.add(app);
+                        if(appCanLaunchTheMainActivity(app.packageName)) {
+                            mShowApplicationInfoList.add(app);
+                        }
                     }
                 }
                 break;
             case R.id.btn_sd_card:
                 for(ApplicationInfo app : mAllApplicationInfoList) {
                     if((app.flags & ApplicationInfo.FLAG_EXTERNAL_STORAGE) != 0) {
-                        mShowApplicationInfoList.add(app);
+                        if(appCanLaunchTheMainActivity(app.packageName)) {
+                            mShowApplicationInfoList.add(app);
+                        }
                     }
                 }
                 break;

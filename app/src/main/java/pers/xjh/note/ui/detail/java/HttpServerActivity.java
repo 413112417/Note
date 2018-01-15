@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import org.nanohttpd.protocols.http.NanoHTTPD;
+import org.nanohttpd.util.ServerRunner;
+import org.nanohttpd.webserver.SimpleWebServer;
+
+import java.io.File;
 import java.io.IOException;
 
 import pers.xjh.note.R;
@@ -12,6 +17,7 @@ import pers.xjh.note.ui.detail.android.WebViewActivity;
 import pers.xjh.note.utils.Constant;
 import pers.xjh.server.HttpConfig;
 import pers.xjh.server.HttpServer;
+import pers.xjh.server.WebServer;
 
 /**
  * Created by XJH on 2017/5/25.
@@ -24,6 +30,8 @@ public class HttpServerActivity extends BaseActivity implements View.OnClickList
     private HttpServer mHttpServer;
 
     private Button mBtnStartStop;
+
+    private WebServer mWebServer;
 
     private boolean mIsEnable;
 
@@ -39,10 +47,13 @@ public class HttpServerActivity extends BaseActivity implements View.OnClickList
 
         findViewById(R.id.btn_open).setOnClickListener(this);
 
-        mHttpConfig = new HttpConfig();
-        mHttpConfig.setPort(8088);
-        mHttpConfig.setMaxParallels(5);
-        mHttpServer = new HttpServer(mHttpConfig);
+        mWebServer = new WebServer(9999);
+
+        try {
+            mWebServer.start(NanoHTTPD.SOCKET_READ_TIMEOUT, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -62,12 +73,12 @@ public class HttpServerActivity extends BaseActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.btn_start_stop:
                 if(!mIsEnable) {
-                    mHttpServer.start();
+                    mWebServer.stop();
                     mIsEnable = true;
                     mBtnStartStop.setText("停止服务");
                 } else {
                     try {
-                        mHttpServer.stop();
+                        mWebServer.start();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -77,7 +88,7 @@ public class HttpServerActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.btn_open:
                 Intent intent = new Intent(this, WebViewActivity.class);
-                intent.putExtra(Constant.KEY_WEB_URL, "http://localhost:" + mHttpConfig.getPort());
+                intent.putExtra(Constant.KEY_WEB_URL, "http://127.0.0.1:" + 9999);
                 startActivity(intent);
                 break;
         }

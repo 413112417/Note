@@ -6,7 +6,7 @@ import android.content.Context;
 
 import com.baidu.mapapi.SDKInitializer;
 
-//import org.xjh.testtool.TestTool;
+import org.xjh.testtool.TestTool;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class NoteApplication extends Application {
     private void initMainProcess() {
         AppRuntime.put(Constant.RT_APP, this);
 
-//        TestTool.install(this);
+        TestTool.install(this);
         //内存泄露检测工具
 //        LeakCanary.install(this);
 
