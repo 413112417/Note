@@ -2,19 +2,22 @@
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
 
     <header
-        android:fragment="pers.xjh.note.ui.detail.android.fragment.PreferenceTestFragment"
-        android:icon="@mipmap/ic_launcher"
+        android:fragment="pers.xjh.note.ui.setting.PreferenceTestFragment"
+        android:icon="@drawable/android"
+        android:textColor="@color/black"
         android:summary="设置第一个参数"
         android:title="设置1" />
 
     <header
         android:fragment="pers.xjh.note.ui.detail.android.fragment.BFragment"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/android"
+        android:textColor="@color/black"
         android:summary="设置第二个参数"
         android:title="设置2" />
 
     <header
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/android"
+        android:textColor="@color/black"
         android:summary="view baidu website"
         android:title="baidu">
         <intent

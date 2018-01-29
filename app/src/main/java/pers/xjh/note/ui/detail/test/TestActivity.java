@@ -35,6 +35,6 @@ public class TestActivity extends BaseActivity {
     }
 
     private void test() {
-        RenderScriptTest.init();
+
     }
 }

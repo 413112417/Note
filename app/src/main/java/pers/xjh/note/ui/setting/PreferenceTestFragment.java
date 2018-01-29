@@ -1,4 +1,4 @@
-package pers.xjh.note.ui.detail.android.fragment;
+package pers.xjh.note.ui.setting;
 
 import android.os.Bundle;
 import android.preference.EditTextPreference;

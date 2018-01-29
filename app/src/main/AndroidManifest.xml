@@ -39,6 +39,17 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-feature android:name="android.hardware.location.gps" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+
+    作者：JBD
+    链接：https://www.jianshu.com/p/3a372af38103
+    來源：简书
+    著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
     <!-- 安装与卸载 -->
     <!--<uses-permission android:name="android.permission.INSTALL_PACKAGES" />-->
     <!--<uses-permission android:name="android.permission.DELETE_PACKAGES" />-->
@@ -128,6 +139,7 @@
         <activity android:name=".ui.detail.android.PathEffectActivity" />
         <activity android:name=".ui.detail.android.SineWaveActivity" />
         <activity android:name=".ui.detail.android.DrawingBoardActivity" />
+        <activity android:name=".ui.detail.android.BluetooehActivity" />
         <activity android:name=".ui.detail.android.WebViewActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".ui.detail.android.ViewAnimationActivity" />
@@ -175,6 +187,7 @@
         <activity android:name=".ui.detail.android.TestProcessActivity"
             android:process="pers.xjh.test"/>
         <activity android:name=".ui.detail.android.NetworkChangeActivity" />
+        <activity android:name=".ui.detail.android.FileEncryptActivity" />
         <activity android:name=".ui.detail.android.ImageWallActivity" />
         <activity android:name=".ui.detail.android.BuildInfoActivity" />
         <activity android:name=".ui.detail.android.SystemPropertyActivity" />
@@ -215,7 +228,7 @@
         <activity android:name=".ui.detail.android.GPSActivity" />
         <activity android:name=".ui.detail.android.TimePickerActivity" />
         <activity android:name=".ui.detail.android.DualviewActivity" />
-        <activity android:name=".ui.detail.android.PreferenceTestActivity" />
+        <activity android:name=".ui.setting.PreferenceTestActivity" />
 
         <activity android:name=".ui.detail.algorithm.SortActivity"
             android:screenOrientation="portrait"/>

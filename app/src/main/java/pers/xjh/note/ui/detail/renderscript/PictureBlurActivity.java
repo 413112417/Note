@@ -1,18 +1,11 @@
 package pers.xjh.note.ui.detail.renderscript;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v8.renderscript.Allocation;
-import android.support.v8.renderscript.Element;
-import android.support.v8.renderscript.RenderScript;
-import android.support.v8.renderscript.ScriptIntrinsicBlur;
-import android.support.v8.renderscript.Type;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import pers.xjh.note.R;
-import pers.xjh.note.renderscript.ScriptC_sketch;
 import pers.xjh.note.ui.base.BaseActivity;
 import pers.xjh.note.utils.RenderScriptUtil;
 

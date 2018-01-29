@@ -26,6 +26,7 @@ import pers.xjh.note.ui.detail.algorithm.TreeActivity;
 import pers.xjh.note.ui.detail.android.ActivityManagerActivity;
 import pers.xjh.note.ui.detail.android.AudioRecorderActivity;
 import pers.xjh.note.ui.detail.android.AudioWaveformActivity;
+import pers.xjh.note.ui.detail.android.BluetooehActivity;
 import pers.xjh.note.ui.detail.android.BuildInfoActivity;
 import pers.xjh.note.ui.detail.android.CalendarActivity;
 import pers.xjh.note.ui.detail.android.Camera2Activity;
@@ -42,6 +43,7 @@ import pers.xjh.note.ui.detail.android.DispatchEventActivity;
 import pers.xjh.note.ui.detail.android.DrawerLayoutActivity;
 import pers.xjh.note.ui.detail.android.DrawingBoardActivity;
 import pers.xjh.note.ui.detail.android.DualviewActivity;
+import pers.xjh.note.ui.detail.android.FileEncryptActivity;
 import pers.xjh.note.ui.detail.android.FingerprintActivity;
 import pers.xjh.note.ui.detail.android.FlashlightActivity;
 import pers.xjh.note.ui.detail.android.FragmentActivity;
@@ -71,7 +73,7 @@ import pers.xjh.note.ui.detail.android.PathActivity;
 import pers.xjh.note.ui.detail.android.PathEffectActivity;
 import pers.xjh.note.ui.detail.android.PendingTransitionAActivity;
 import pers.xjh.note.ui.detail.android.PixelsActivity;
-import pers.xjh.note.ui.detail.android.PreferenceTestActivity;
+import pers.xjh.note.ui.setting.PreferenceTestActivity;
 import pers.xjh.note.ui.detail.android.ReflectActivity;
 import pers.xjh.note.ui.detail.android.RefreshActivity;
 import pers.xjh.note.ui.detail.android.RoundImageActivity;
@@ -251,6 +253,7 @@ public class NoteModel {
                     noteList.add(new Note("颜色矩阵api", ColorMatrixApiActivity.class));
                     noteList.add(new Note("颜色矩阵", ColorMatrixActivity.class));
                     noteList.add(new Note("像素点分析", PixelsActivity.class));
+                    noteList.add(new Note("文件加密", FileEncryptActivity.class));
                     noteList.add(new Note("图片墙", ImageWallActivity.class, Manifest.permission.READ_EXTERNAL_STORAGE));
                     noteList.add(new Note("图片裁剪", ImageClipActivity.class));
                     noteList.add(new Note("飘扬效果", WavingActivity.class));
@@ -315,6 +318,7 @@ public class NoteModel {
                     noteList.add(new Note("时间选择", TimePickerActivity.class));
                     noteList.add(new Note("多屏显示", DualviewActivity.class));
                     noteList.add(new Note("PreferenceActivity", PreferenceTestActivity.class));
+                    noteList.add(new Note("蓝牙", BluetooehActivity.class));
                 } else if(Constant.NOTE_OPENGL == noteType) {
                     noteList.add(new Note("第一个opengl工程", AirHockeyActivity.class));
                 } else if(Constant.NOTE_OPTIMIZE == noteType) {
