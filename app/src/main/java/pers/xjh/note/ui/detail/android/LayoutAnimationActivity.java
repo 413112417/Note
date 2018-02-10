@@ -37,7 +37,7 @@ public class LayoutAnimationActivity extends BaseActivity implements View.OnClic
         sa.setDuration(300);
         //设置布局动画显示属性
         LayoutAnimationController lac = new LayoutAnimationController(sa, 0.5f);
-        lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
+        lac.setOrder(LayoutAnimationController.ORDER_REVERSE);
         //为ViewGroup设置布局动画
         mViewGroup2.setLayoutAnimation(lac);
         mViewGroup2.startLayoutAnimation();

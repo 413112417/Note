@@ -2,10 +2,14 @@ package pers.xjh.note.ui.detail.android;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,9 +24,13 @@ import pers.xjh.note.ui.base.BaseActivity;
 
 public class BluetooehActivity extends BaseActivity {
 
+    private static final String TAG = "BluetooehActivity";
+
     private BluetoothAdapter mBluetoothAdapter;
 
     private List<BluetoothDevice> bluetoothDeviceArrayList = new ArrayList<>();
+
+    private TextView mTvContent;
 
     @Override
     protected int initContentView() {
@@ -31,6 +39,10 @@ public class BluetooehActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
+        mTvContent = (TextView) findViewById(R.id.tv_content);
+
+        final StringBuilder sb = new StringBuilder();
 
         // Initializes Bluetooth adapter.
         final BluetoothManager bluetoothManager =
@@ -48,12 +60,33 @@ public class BluetooehActivity extends BaseActivity {
             @Override
             public void onLeScan(final BluetoothDevice device, int rssi, byte[] scanRecord) {
                 bluetoothDeviceArrayList.add(device);
-                Log.d("ASd", "run: scanning...");
-                Toast.makeText(BluetooehActivity.this, rssi + "", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, device.getAddress() + "");
+                if("20:15:10:19:12:70".equals(device.getAddress())) {
+                    device.connectGatt(BluetooehActivity.this, true, new BluetoothGattCallback() {
+                        @Override
+                        public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
+                            super.onCharacteristicRead(gatt, characteristic, status);
+                            if (status == BluetoothGatt.GATT_SUCCESS) {
+                                Log.d(TAG, "read value: " + characteristic.getValue());
+                                sb.append(characteristic.getValue());
+                                mTvContent.setText(sb.toString());
+                            }
+                        }
+                    });
+
+                    mBluetoothAdapter.stopLeScan(null);
+                }
+
             }
         };
 
         mBluetoothAdapter.startLeScan(callback);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mBluetoothAdapter.stopLeScan(null);
     }
 }

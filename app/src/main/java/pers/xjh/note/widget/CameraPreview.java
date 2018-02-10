@@ -2,8 +2,10 @@ package pers.xjh.note.widget;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
+import android.media.Image;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Surface;
@@ -91,6 +93,7 @@ public class CameraPreview extends TextureView implements TextureView.SurfaceTex
             }
             Camera.Parameters parameters = mCamera.getParameters();
             parameters.setPreviewSize(expected.width, expected.height);
+//            parameters.setPreviewFormat(ImageFormat.YUY2);
 //            parameters.setFocusMode(Camera.Parameters.FOCUS_DISTANCE_FAR_INDEX);
             //parameters.setPreviewFpsRange();
 //            mCamera.setDisplayOrientation(90);
