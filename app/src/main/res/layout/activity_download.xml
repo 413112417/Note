@@ -29,6 +29,7 @@
             android:background="@drawable/bg_et_1"
             android:layout_weight="1"
             android:textSize="@dimen/font_size_small"
+            android:textColor="@color/black"
             android:text="http://img.taopic.com/uploads/allimg/131009/235013-13100ZP54561.jpg"/>
 
         <Button
