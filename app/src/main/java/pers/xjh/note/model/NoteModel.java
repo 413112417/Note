@@ -73,6 +73,7 @@ import pers.xjh.note.ui.detail.android.PathActivity;
 import pers.xjh.note.ui.detail.android.PathEffectActivity;
 import pers.xjh.note.ui.detail.android.PendingTransitionAActivity;
 import pers.xjh.note.ui.detail.android.PixelsActivity;
+import pers.xjh.note.ui.detail.android.RecyclerViewActivity;
 import pers.xjh.note.ui.detail.android.USBCameraActivity;
 import pers.xjh.note.ui.setting.PreferenceTestActivity;
 import pers.xjh.note.ui.detail.android.ReflectActivity;
@@ -320,6 +321,7 @@ public class NoteModel {
                     noteList.add(new Note("多屏显示", DualviewActivity.class));
                     noteList.add(new Note("PreferenceActivity", PreferenceTestActivity.class));
                     noteList.add(new Note("蓝牙", BluetooehActivity.class, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION));
+                    noteList.add(new Note("RecyclerView动画效果", RecyclerViewActivity.class));
                 } else if(Constant.NOTE_OPENGL == noteType) {
                     noteList.add(new Note("第一个opengl工程", AirHockeyActivity.class));
                 } else if(Constant.NOTE_OPTIMIZE == noteType) {
