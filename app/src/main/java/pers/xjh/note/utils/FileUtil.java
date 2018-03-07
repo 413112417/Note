@@ -32,7 +32,7 @@ public class FileUtil {
      *    getFilesDir得到内部文件路径
      */
 
-    public static String ROOT_PATH = AppRuntime.getApplication().getFilesDir().getAbsolutePath();
+    public static String ROOT_PATH = AppRuntime.getApplication().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
 
     /**
      * 得到视频的文件夹的路径

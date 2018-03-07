@@ -94,5 +94,6 @@ dependencies {
     compile 'tv.danmaku.ijk.media:ijkplayer-java:0.7.8.1'
     compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.7.8.1'
     compile 'com.alibaba:fastjson:1.2.39'
+    compile 'com.arialyy.aria:aria-core:3.3.14'
     compile files('libs/opencv-3.2.jar')
 }

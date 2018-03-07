@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 
 import pers.xjh.network.HttpClient;
 import pers.xjh.network.Response;
-import pers.xjh.network.interfaces.ProgressCallback;
+import pers.xjh.network.interfaces.DownloadCallback;
 import pers.xjh.note.utils.FileUtil;
 import pers.xjh.note.utils.ThreadPool;
 
@@ -65,7 +65,7 @@ public class DownloadService extends Service {
 
         @Override
         public void run() {
-            HttpClient.download(url, FileUtil.getDownloadFile(saveFileName), new ProgressCallback() {
+            HttpClient.download(url, FileUtil.getDownloadFile(saveFileName), new DownloadCallback() {
                 @Override
                 public void onProgress(int progress) {
                     mProgress = progress;

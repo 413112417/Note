@@ -29,25 +29,16 @@ add_library( # Sets the name of the library.
              src/main/cpp/NeonTest.cpp )
 
 add_library( # Sets the name of the library.
-              UsbCamera
-
-              # Sets the library as a shared library.
-              SHARED
-
-              # Provides a relative path to your source file(s).
-              src/main/cpp/UsbCamera.cpp )
-
-#add_library( # Sets the name of the library.
-#            UsbCameraProc
+            UsbCamera
 
             # Sets the library as a shared library.
-#            SHARED
+            SHARED
 
             # Provides a relative path to your source file(s).
-#            src/main/cpp/usbCamera/UsbCameraProc.cpp
-#            src/main/cpp/usbCamera/ImageProc.c
-#            src/main/cpp/usbCamera/utils.c
-#            src/main/cpp/usbCamera/jpegDecode.c )
+            src/main/cpp/usbCamera/UsbCameraProc.cpp
+            src/main/cpp/usbCamera/ImageProc.c
+            src/main/cpp/usbCamera/utils.c
+            src/main/cpp/usbCamera/jpegDecode.c )
 
 add_library( # Sets the name of the library.
             RenderScript
@@ -70,6 +61,13 @@ find_library( # Sets the name of the path variable.
               # Specifies the name of the NDK library that
               # you want CMake to locate.
               log )
+
+find_library( # Sets the name of the path variable.
+              jnigraphics-lib
+
+              # Specifies the name of the NDK library that
+              # you want CMake to locate.
+              jnigraphics )
 
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
@@ -94,14 +92,8 @@ target_link_libraries( # Specifies the target library.
 
                        # Links the target library to the log library
                        # included in the NDK.
-                       ${log-lib} )
-
-#target_link_libraries( # Specifies the target library.
-#                       UsbCameraProc
-
-                       # Links the target library to the log library
-                       # included in the NDK.
-#                       ${log-lib} )
+                       ${log-lib}
+                       ${jnigraphics-lib})
 
 target_link_libraries( # Specifies the target library.
                        RenderScript

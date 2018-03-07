@@ -7,7 +7,7 @@ import pers.xjh.network.Response;
  * 带进度的回调
  * Created by xjh on 2017/1/11.
  */
-public interface ProgressCallback {
+public interface DownloadCallback {
     /** 进度的回调 */
     void onProgress(int progress);
     /** 成功的回调 */

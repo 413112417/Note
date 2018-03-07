@@ -113,6 +113,7 @@
         <activity android:name=".ui.detail.android.AudioRecorderActivity" />
         <activity android:name=".ui.detail.android.CameraActivity" />
         <activity android:name=".ui.detail.android.Camera2Activity" />
+        <activity android:name=".ui.detail.android.USBCameraActivity" />
         <activity android:name=".ui.detail.android.TwoCameraActivity" />
         <activity android:name=".ui.detail.android.TakePictureActivity" />
         <activity android:name=".ui.detail.android.VideoViewActivity" />

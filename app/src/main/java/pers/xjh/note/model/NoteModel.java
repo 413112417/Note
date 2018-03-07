@@ -73,6 +73,7 @@ import pers.xjh.note.ui.detail.android.PathActivity;
 import pers.xjh.note.ui.detail.android.PathEffectActivity;
 import pers.xjh.note.ui.detail.android.PendingTransitionAActivity;
 import pers.xjh.note.ui.detail.android.PixelsActivity;
+import pers.xjh.note.ui.detail.android.USBCameraActivity;
 import pers.xjh.note.ui.setting.PreferenceTestActivity;
 import pers.xjh.note.ui.detail.android.ReflectActivity;
 import pers.xjh.note.ui.detail.android.RefreshActivity;
@@ -119,7 +120,6 @@ import pers.xjh.note.ui.detail.function.RxJavaActivity;
 import pers.xjh.note.ui.detail.java.HttpServerActivity;
 import pers.xjh.note.ui.detail.jni.JNITestActivity;
 import pers.xjh.note.ui.detail.jni.NeonTestActivity;
-import pers.xjh.note.ui.detail.jni.usbCamera.USBCameraActivity;
 import pers.xjh.note.ui.detail.opengl.AirHockeyActivity;
 import pers.xjh.note.ui.detail.optimize.MemoryLeakActivity;
 import pers.xjh.note.ui.detail.optimize.StringOptimizeActivity;
@@ -197,7 +197,7 @@ public class NoteModel {
                 } else if(Constant.NOTE_JNI == noteType) {
                     noteList.add(new Note("JNI测试", JNITestActivity.class));
                     noteList.add(new Note("NEON测试", NeonTestActivity.class));
-                    noteList.add(new Note("外接摄像头", USBCameraActivity.class));
+                    noteList.add(new Note("外接摄像头", pers.xjh.note.ui.detail.jni.usbCamera.USBCameraActivity.class));
                 } else if(Constant.NOTE_LINUX == noteType) {
                     noteList.add(new Note("常用快捷键", R.string.linux_kjj));
                     noteList.add(new Note("目录基本操作", R.string.linux_mljbcz));
@@ -305,6 +305,7 @@ public class NoteModel {
                     noteList.add(new Note("音频录制", AudioRecorderActivity.class, Manifest.permission.RECORD_AUDIO));
                     noteList.add(new Note("Camera", CameraActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("Camera2", Camera2Activity.class, Manifest.permission.CAMERA));
+                    noteList.add(new Note("USBCamera", USBCameraActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("拍照", TakePictureActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("双摄像头同时开启", TwoCameraActivity.class, Manifest.permission.CAMERA));
                     noteList.add(new Note("VideoView", VideoViewActivity.class));
